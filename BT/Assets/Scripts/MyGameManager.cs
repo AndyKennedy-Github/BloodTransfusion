@@ -23,6 +23,7 @@ public class MyGameManager : MonoBehaviour
 {
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
+    public string Prompt;
 
     //array of hardcoded commands for testing
     string [] mycommands = {
@@ -199,7 +200,9 @@ public class MyGameManager : MonoBehaviour
                     yield return null;  //make sure we don't get caught in infinite loop which hangs unity
                     continue;
                 }
-
+                if (command == "prompt"){     //GOTO a line number in the Scenario file
+                    Prompt = cparams;
+                }
 
 
             }else //Not Game Manager command, so send commands to other game objects
@@ -382,6 +385,17 @@ public class MyGameManager : MonoBehaviour
         if (GUIcommandLine!=null){
 
            GUI.TextArea(new Rect(10, 10, Screen.width/2, Screen.height/5), GUIlastcommandLine + "\n" + GUIcommandLine,style);
+//           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
+ 
+        }
+        GUI.contentColor = new Color(1.0f,1.0f,0f);
+
+        //GUIStyle style = new GUIStyle(GUI.skin.textArea);
+
+        style.fontSize = Screen.height/10; //change the font size 
+        if (Prompt!=null && Prompt != ""){
+
+           GUI.TextArea(new Rect(0, Screen.height*.8f, Screen.width, Screen.height/5), Prompt,style);
 //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
  
         }
