@@ -17,11 +17,14 @@ public class ObjectMessageHandler : MonoBehaviour
     string radialMenuResult;
 
     private Rigidbody rb; //This object's ridid body
-
+    Animator animator;
+    IKController ikcontroller;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
+        oldpos = this.transform.position;
+        ikcontroller = GetComponent<IKController>();
     }
 
 
@@ -104,11 +107,41 @@ public class ObjectMessageHandler : MonoBehaviour
             //do something...
         }
 
+        // GRAB
+        if (msg == "grab")
+        {
+            print("grab ");
+
+            
+            GameObject go=GameObject.Find(param); //moveTo object's position
+                print("grabbing game object "+ go.name);
+            ikcontroller.rightHandObj= go.transform;
+            ikcontroller.lookObj = go.transform;
+            StartCoroutine(Grab(1.0f));
+
+
+            //do something...
+        }
+        if (msg == "release")
+        {
+            print("release ");
+
+            
+//            GameObject go=GameObject.Find(param); //moveTo object's position
+//                print("releasing game object "+ go.name);
+//            ikcontroller.rightHandObj= go;
+//            ikcontroller.lookObj = go;
+            StartCoroutine(Release(1.0f));
+
+
+            //do something...
+        }
         // MOVETO
         if (msg == "moveto" || msg== "align")
         {
             print("hello, I am moving");
             toMove = true;
+            Vector3 oldpos = transform.position;
             if ((param[0] == '-'  || System.Char.IsDigit (param[0]))){ //moveTo position
                 pos = getVector3(param);
                 transform.position = pos;
@@ -273,6 +306,31 @@ public class ObjectMessageHandler : MonoBehaviour
         return rValue;
     }
 
+    private IEnumerator Grab(float duration)
+    {
+        ikcontroller.ikActive = true;
+        float t = 0.0f;
+        while (t < duration)
+        {
+            //print("Grabbing "+ transform.rotation);
+            t += Time.deltaTime;
+            ikcontroller.ikStrength = t/duration;
+            yield return null;
+        }
+    }
+    private IEnumerator Release(float duration)
+    {
+        float t = 0.0f;
+        while (t < duration)
+        {
+            //print("Grabbing "+ transform.rotation);
+            t += Time.deltaTime;
+            ikcontroller.ikStrength = 1.0f - t/duration;
+            yield return null;
+        }
+        ikcontroller.ikActive = false;
+    }
+
     private IEnumerator RotateMe(float duration)
     {
         Quaternion startRot = transform.rotation;
@@ -337,19 +395,30 @@ public class ObjectMessageHandler : MonoBehaviour
         print("at SCALE the scale is = to" + scale);
         toScale=false;
     }
-
     private void followPlayer()
     {
+
         var player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
         transform.LookAt(player.transform);
+
         //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
         this.transform.position = ((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
-    }
+
+
+   }
+
+    Vector3 oldpos ;
 
     // Update is called once per frame
     private void Update()
     {
+        Vector3 pos = this.transform.position;
+        float velocity = ((oldpos - pos)/Time.deltaTime).magnitude;
+        //print("Velocity = "+ velocity);
+        if (animator)
+            animator.SetFloat("Speed",velocity);
+        oldpos = this.transform.position;
     }
 
     private void FixedUpdate()
