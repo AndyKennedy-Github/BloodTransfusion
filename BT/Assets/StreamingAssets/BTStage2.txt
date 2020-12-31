@@ -1,8 +1,10 @@
-GM Do PatientEnters.txt 
-#GM Load Env/TVOn.txt
-GM Prompt Check how patient is feeling.
-GM Do CheckPatient.txt
-View lookAt Patient/Face
-GM Wait 1
-GM Do Env/TVOn.txt
-GM Wait 9
+GM  Do PatientEnters.txt 
+    Patient Grab Form
+GM  Prompt Check how patient is feeling.
+GM  Do CheckPatient.txt
+    View lookAt Patient/Face
+    Patient Release
+GM  Prompt Wait for next patient.
+GM  Wait 1
+GM  Do Env/TVOn.txt
+GM  Wait 9

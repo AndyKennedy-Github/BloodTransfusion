@@ -1,8 +1,8 @@
-GM Create Form MedForm
+Create Form MedForm 
 MedForm moveTo /ExamRoom1/Desk/Left
 MedForm lookAtMe
 GM Wait 2
-GM Load Form/CheckSignature.txt
-GM Load Form/CheckDate.txt
+GM Do Form/CheckSignature.txt
+GM Do Form/CheckDate.txt
 GM Wait 2
 #MedForm lookAtMe 0.0,2.0,-0.0  #zoom out still looking at MedForm

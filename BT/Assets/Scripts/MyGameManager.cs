@@ -18,12 +18,21 @@ public class CommandSequence{
 
 }
 
+static class Extensions
+{
+    public static void AddSafe(this Dictionary<string, int> dictionary, string key, int value)
+    {
+        if (!dictionary.ContainsKey(key))
+            dictionary.Add(key, value);
+    }
+}
 
 public class MyGameManager : MonoBehaviour
 {
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
     public string Prompt;
+    Dictionary<string, int> label = new Dictionary<string, int>();
 
     //array of hardcoded commands for testing
     string [] mycommands = {
@@ -84,8 +93,23 @@ public class MyGameManager : MonoBehaviour
     }
 
 //    private GameObject go;
+    List<string> GMcommands = new List<string> {
+        "if",
+        "then",
+        "else",
+        "endif",
+        "do",
+        "load",
+        "waitfor",
+        "wait",
+        "create",
+        "goto",
+        "prompt",
+        "label"
+    };
 
 
+    
     
     string GUIcommandLine,GUIlastcommandLine;
 
@@ -110,11 +134,17 @@ public class MyGameManager : MonoBehaviour
             char [] separators = new char[] { ' ','\t' };
             string [] splitArray = cs.commandLine.Split(separators,StringSplitOptions.RemoveEmptyEntries);
             objName = splitArray[0];  //
-            if (splitArray.Length>1)
-                command = splitArray[1];  
+            int paramStart = 2;
+            if (GMcommands.Contains(objName.ToLower())){ //GM command without GM
+                command = objName;
+                paramStart = 1;
+            }else{  //GM or other object
+                if (splitArray.Length>1)
+                    command = splitArray[1];  
+            }
             print("command="+command);
 
-            if (splitArray.Length>2){ //there are parameters too
+            if (splitArray.Length>paramStart){ //there are parameters too
                 //find where parameters start (after command)
                 
                 int start = 0;
@@ -140,8 +170,9 @@ public class MyGameManager : MonoBehaviour
                 continue;
 
             //execute GameManager commands
-            if (objName=="GM"){  //special Game Manager commands
-
+            if (objName=="GM" || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            {
+                print("GM command :"+ command);
                 if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
                     print("cs.IFstate after stateswitch = "+ cs.IFstate);
                     continue;
@@ -165,14 +196,14 @@ public class MyGameManager : MonoBehaviour
                 //Add additional commands below.
                 if (command == "create")
                 {
-
-                    print("Create "+ splitArray[2]);
-                    GameObject obj = (GameObject)Instantiate(Resources.Load(splitArray[2]));
+                    var objPrefabName = splitArray[paramStart];
+                    print("Create "+ objPrefabName);
+                    GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
                     ObjectMessageHandler omh;
                     if (!obj.GetComponent<ObjectMessageHandler>())
                         omh = obj.AddComponent<ObjectMessageHandler>() as ObjectMessageHandler;
-                    if (splitArray.Length > 3)
-                        obj.name = splitArray[3];
+                    if (splitArray.Length > paramStart+1)
+                        obj.name = splitArray[paramStart+1];
                         
                 }
                 if (command == "load" || command == "do")
@@ -189,19 +220,27 @@ public class MyGameManager : MonoBehaviour
                     
                 }
                 if (command == "wait"){    //Sleep for a given time in seconds
-                    string paramStr = splitArray[2];
+                    string paramStr = cparams;//splitArray[2];
                     print("Sleep for "+ paramStr);
                     float delay = float.Parse(paramStr);
                     yield return new WaitForSeconds(delay);
                 }
                 if (command == "goto"){     //GOTO a line number in the Scenario file
-                    string paramStr = splitArray[2];
-                    i= int.Parse(paramStr) -2;  //array starts at 0, and i increments, so must minus 2
+                    string paramStr = cparams;//splitArray[2];
+                    if ((paramStr[0] == '-'  || System.Char.IsDigit (paramStr[0]))){ //moveTo position
+                        i= int.Parse(paramStr) -2;  //array starts at 0, and i increments, so must minus 2
+                    }else{  //is a label
+                        i = label[paramStr];  //starts at line after label
+                    }
                     yield return null;  //make sure we don't get caught in infinite loop which hangs unity
                     continue;
                 }
                 if (command == "prompt"){     //GOTO a line number in the Scenario file
                     Prompt = cparams;
+                }
+                if (command == "label"){
+                    string paramStr = cparams;//splitArray[2];
+                    label.AddSafe(paramStr,i);
                 }
 
 

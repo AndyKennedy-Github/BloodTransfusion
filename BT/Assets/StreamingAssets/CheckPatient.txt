@@ -2,13 +2,16 @@
 # Radial Menu on how patient feels
 ##################################
    View LookAt /Patient/Face 
-GM Wait 1
+   Wait 1
    TV/Screen off
-GM Create RadialChoice FeelingWellQuestion #Make a radial menu
+   Create RadialChoice FeelingWellQuestion #Make a radial menu
+Wait 1
    FeelingWellQuestion Menu.Question Are you feeling well?
+   Wait 1
    FeelingWellQuestion Menu.Choices YES MAYBE NO
+   Wait 1
    FeelingWellQuestion Menu.On Patient/Face #/ExamRoom1/Desk/Left
-GM WaitFor
+WaitFor
    FeelingWellQuestion Menu.Done 
 GM If
      FeelingWellQuestion Menu.Result YES
