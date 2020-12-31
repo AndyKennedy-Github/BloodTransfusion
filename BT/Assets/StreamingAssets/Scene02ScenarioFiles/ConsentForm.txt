@@ -1,0 +1,4 @@
+GM Do Scene02ScenarioFiles\DateCheckConsent.txt
+GM Do Scene02ScenarioFiles\SigValidConsent.txt
+GM Do Scene02ScenarioFiles\PatientCheckConsent.txt
+GM Do Scene02ScenarioFiles\ValidConsent.txt

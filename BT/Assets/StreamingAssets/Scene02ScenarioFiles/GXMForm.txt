@@ -1,0 +1,3 @@
+GM Do Scene02ScenarioFiles\PatientCheckGXM.txt
+GM Do Scene02ScenarioFiles\BloodOrderGXM.txt
+GM Do Scene02ScenarioFiles\ValidGXM.txt

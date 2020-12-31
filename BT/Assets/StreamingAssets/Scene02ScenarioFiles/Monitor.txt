@@ -1,0 +1,5 @@
+Player lookAt Monitor
+Player follow Monitor
+GM Wait 1
+Player follow false
+GM Do Scene02ScenarioFiles\CheckPreMonitor.txt

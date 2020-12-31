@@ -1,0 +1,19 @@
+GM Wait 1
+   Phone Menu.Question Call Blood Bank?
+   Phone Menu.on Phone/Phone
+GM WaitFor 
+   Phone Menu.Done 
+GM Wait 1
+GM If
+    Phone Menu.Result YES
+GM Then
+GM  Create CheckMark NameMark
+GM Else
+GM   Create XMark NameMark
+GM Endif
+   NameMark MoveTo Phone/Phone
+GM Wait 1
+Player moveto DefCamPos
+Player lookAt DefLook
+GM Wait 1
+GM Do Scene02ScenarioFiles\Scene02Test.txt

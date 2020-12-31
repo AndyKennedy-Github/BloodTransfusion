@@ -7,6 +7,10 @@ TagManager:
   - Playable
   - Monitor
   - Phone
+  - Default
+  - DefLook
+  - GXMForm
+  - ConsentForm
   layers:
   - Default
   - TransparentFX
