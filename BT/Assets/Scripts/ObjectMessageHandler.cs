@@ -9,6 +9,8 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toScale = false;
     public bool toMove = false;
     public bool follow = false;
+    public bool pressed = false;
+    public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
@@ -57,11 +59,22 @@ public class ObjectMessageHandler : MonoBehaviour
         if (msg == "follow")
         {
             if (param != "false"){
+                followTarget = param;
                 follow = true;
-                print("I will follow");
+                print("I will follow " + param);
             }else{
                 follow = false;
             }
+        }
+
+        if (msg == "reset")
+        {
+            pressed = false;
+        }
+
+        if (msg == "pressed")
+        {
+            return pressed;
         }
 
         // JUMP
@@ -314,6 +327,10 @@ public class ObjectMessageHandler : MonoBehaviour
             jump = false;
         }
     }
+    public void Pressed()
+    {
+        pressed = true;
+    }
 
     private void Move()
     {
@@ -372,7 +389,7 @@ public class ObjectMessageHandler : MonoBehaviour
         if (follow)
         {
             follow = true;
-            followPlayer();
+            FollowObj();
         }
     }
 
@@ -485,5 +502,18 @@ public class ObjectMessageHandler : MonoBehaviour
                 }
             }
         }
+    }
+    private void FollowObj()
+    {
+        var player = GameObject.FindGameObjectWithTag(followTarget);
+        Vector3 direction = player.transform.position - transform.position;
+        transform.LookAt(player.transform);
+        //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
+        
+        if(Vector3.Distance(player.transform.position, transform.position) > .01f)
+        {
+            this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime);
+        }
+        //(direction * movementSpeed * Time.fixedDeltaTime));
     }
 }
