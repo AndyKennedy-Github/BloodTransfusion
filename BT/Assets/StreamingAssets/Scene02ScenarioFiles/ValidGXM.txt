@@ -16,4 +16,4 @@ GM Endif
    ValMark MoveTo GXMForm/ValidLine
 GM Wait 2
    GXMForm lookAtMe 0.0,0.5,-0.05
-GM Do Scene02ScenarioFiles\ConsentForm.txt
+GM Do Scene02ScenarioFiles/ConsentForm.txt

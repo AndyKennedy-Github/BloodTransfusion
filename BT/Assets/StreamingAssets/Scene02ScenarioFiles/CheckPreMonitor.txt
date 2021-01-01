@@ -17,4 +17,4 @@ GM Wait 1
 Player moveto DefCamPos
 Player lookAt DefLook
 GM Wait 1
-GM Do Scene02ScenarioFiles\Scene02Test.txt
+GM Do Scene02ScenarioFiles/Scene02Test.txt

@@ -3823,6 +3823,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1745478374306295894, guid: 8500b4b45374f7f42ad7ccf916742ee1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.099609
+      objectReference: {fileID: 0}
     - target: {fileID: 1745478374398112580, guid: 8500b4b45374f7f42ad7ccf916742ee1,
         type: 3}
       propertyPath: m_sharedMaterial
@@ -3838,6 +3843,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1745478374607469273, guid: 8500b4b45374f7f42ad7ccf916742ee1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.099609
+      objectReference: {fileID: 0}
     - target: {fileID: 1745478374621364343, guid: 8500b4b45374f7f42ad7ccf916742ee1,
         type: 3}
       propertyPath: m_sharedMaterial
@@ -4167,7 +4177,7 @@ PrefabInstance:
     - target: {fileID: 4732855561549989715, guid: a4a7e2295e08a5d4da5a240430f5a42c,
         type: 3}
       propertyPath: CommandFiles.Array.data[0]
-      value: Scene02ScenarioFiles\Scene02Test.txt
+      value: Scene02ScenarioFiles/Scene02Test.txt
       objectReference: {fileID: 0}
     - target: {fileID: 8211080305873289071, guid: a4a7e2295e08a5d4da5a240430f5a42c,
         type: 3}

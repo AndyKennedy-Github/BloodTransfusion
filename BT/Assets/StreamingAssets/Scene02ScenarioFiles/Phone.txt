@@ -2,4 +2,4 @@ Player lookAt Phone
 Player follow Phone
 GM Wait 1
 Player follow false
-GM Do Scene02ScenarioFiles\CallBloodBank.txt
+GM Do Scene02ScenarioFiles/CallBloodBank.txt
