@@ -10,6 +10,7 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toMove = false;
     public bool follow = false;
     public bool pressed = false;
+    public int pointTotal = 0;
     public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
@@ -51,11 +52,15 @@ public class ObjectMessageHandler : MonoBehaviour
         center.x = screenPos.x;
         center.y = Screen.height - screenPos.y;//GUI starts in upper-left, not bottom-left
         MenuSetup();
+
+        pointTotal = 0;
     }
 
     public virtual bool HandleMessage(string msg, string param = null)
     {
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
+
+        //New follow code, follows a target, then stops following them when set to false
         if (msg == "follow")
         {
             if (param != "false"){
@@ -67,6 +72,7 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        //These two keywords relate to buttons, just so they can be tracked within the scene
         if (msg == "reset")
         {
             pressed = false;
@@ -75,6 +81,18 @@ public class ObjectMessageHandler : MonoBehaviour
         if (msg == "pressed")
         {
             return pressed;
+        }
+
+        if(msg == "gain")
+        {
+            if(param != null)
+            {
+                pointTotal += int.Parse(param);
+            }
+            else
+            {
+                pointTotal += 1;
+            }
         }
 
         // JUMP

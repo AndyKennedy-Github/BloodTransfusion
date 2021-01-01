@@ -9,6 +9,7 @@ GM If
     ConsentForm Menu.Result YES
 GM Then
 GM  Create CheckMark PatiMark
+ScoreTracker gain 1
 GM Else
 GM   Create XMark PatiMark
 GM Endif
