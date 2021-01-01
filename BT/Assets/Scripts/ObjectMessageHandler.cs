@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ObjectMessageHandler : MonoBehaviour
     public Vector3 pos = new Vector3(5, 5, 5);
     public Vector3 offset = new Vector3(0.0f,0.2f,-0.10f);
     string radialMenuResult;
+
 
     private Rigidbody rb; //This object's ridid body
 
@@ -71,7 +73,12 @@ public class ObjectMessageHandler : MonoBehaviour
                 follow = false;
             }
         }
-
+        //Need a command to switch scenes, for now uses scene name in the param to trans
+        if (msg == "switchToScene")
+        {
+            print("I'm going to the first scene!");
+            SceneManager.LoadScene(0);
+        }
         //These two keywords relate to buttons, just so they can be tracked within the scene
         if (msg == "reset")
         {

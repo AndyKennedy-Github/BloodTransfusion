@@ -11,13 +11,17 @@ GM Then
 /Canvas/SelectionPanel/SelectionPanel/Papers reset
 GM Do Scene02ScenarioFiles\Papers.txt
 GM ENDIF
-IF
-/Canvas/SelectionPanel/SelectionPanel/Phone pressed
 GM If
 /Canvas/SelectionPanel/SelectionPanel/Phone pressed
 GM Then
 /Canvas/SelectionPanel/SelectionPanel/Phone reset
 GM Do Scene02ScenarioFiles\Phone.txt
 GM ENDIF
+GM If
+/Canvas/SelectionPanel/SelectionPanel/MainMenu pressed
+GM Then
+/Canvas/SelectionPanel/SelectionPanel/MainMenu reset
+/SceneManager switchToScene
+GM ENDIF
 GM Wait 1
-GM Goto 2
+GM Goto 1

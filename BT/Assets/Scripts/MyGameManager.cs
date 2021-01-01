@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
 
 
@@ -203,6 +204,7 @@ public class MyGameManager : MonoBehaviour
                 if (command == "prompt"){     //GOTO a line number in the Scenario file
                     Prompt = cparams;
                 }
+
 
 
             }else //Not Game Manager command, so send commands to other game objects
