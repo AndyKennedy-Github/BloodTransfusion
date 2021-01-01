@@ -74,10 +74,10 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
         //Need a command to switch scenes, for now uses scene name in the param to trans
-        if (msg == "switchToScene")
+        if (msg == "switchtoscene")
         {
-            print("I'm going to the first scene!");
-            SceneManager.LoadScene(0);
+            print("I'm going to scene " + param);
+            SceneManager.LoadScene(param);
         }
         //These two keywords relate to buttons, just so they can be tracked within the scene
         if (msg == "reset")

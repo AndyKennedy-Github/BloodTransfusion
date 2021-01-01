@@ -21,7 +21,7 @@ GM If
 /Canvas/SelectionPanel/SelectionPanel/MainMenu pressed
 GM Then
 /Canvas/SelectionPanel/SelectionPanel/MainMenu reset
-/SceneManager switchToScene
+/SceneManager switchToScene Scenes/MainMenu
 GM ENDIF
 GM Wait 1
 GM Goto 1
