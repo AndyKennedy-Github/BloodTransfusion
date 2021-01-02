@@ -1,0 +1,19 @@
+Player lookAt ConsentForm/SignatureLine 0.0,0.4,-0.05
+GM Wait 2
+   ConsentForm Menu.Question Are the signatures valid?
+   ConsentForm Menu.on ConsentForm/SignatureLine
+GM WaitFor 
+   ConsentForm Menu.Done 
+GM Wait 1
+GM If
+    ConsentForm Menu.Result YES
+GM Then
+GM  Create CheckMark SigMark
+ScoreTracker gain 1
+GM Else
+GM   Create XMark SigMark
+GM Endif
+   SigMark MoveTo ConsentForm/SignatureLine
+GM Wait 2
+   ConsentForm lookAtMe 0.0,0.5,-0.05
+GM Wait 1

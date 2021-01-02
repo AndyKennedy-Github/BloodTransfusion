@@ -1,0 +1,19 @@
+Player lookAt ConsentForm/DateLine 0.0,0.4,-0.05
+GM Wait 2
+   ConsentForm Menu.Question Are the dates valid?
+   ConsentForm Menu.on ConsentForm/DateLine
+GM WaitFor 
+   ConsentForm Menu.Done 
+GM Wait 1
+GM If
+    ConsentForm Menu.Result YES
+GM Then
+GM  Create CheckMark DateMark
+ScoreTracker gain 1
+GM Else
+GM   Create XMark DateMark
+GM Endif
+   DateMark MoveTo ConsentForm/DateLine
+GM Wait 2
+   ConsentForm lookAtMe 0.0,0.5,-0.05
+GM Wait 1
