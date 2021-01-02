@@ -1,0 +1,19 @@
+Player lookAt ConsentForm/PatientLine 0.0,0.4,-0.05
+GM Wait 2
+   ConsentForm Menu.Question Is this the correct patient?
+   ConsentForm Menu.on ConsentForm/PatientLine
+GM WaitFor 
+   ConsentForm Menu.Done 
+GM Wait 1
+GM If
+    ConsentForm Menu.Result YES
+GM Then
+GM  Create CheckMark PatiMark
+ScoreTracker gain 1
+GM Else
+GM   Create XMark PatiMark
+GM Endif
+   PatiMark MoveTo ConsentForm/PatientLine
+GM Wait 2
+   ConsentForm lookAtMe 0.0,0.5,-0.05
+GM Wait 1

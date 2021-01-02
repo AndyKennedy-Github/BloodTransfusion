@@ -1,0 +1,20 @@
+GM Wait 1
+   Monitor Menu.Question Is there a valid prescription?
+   Monitor Menu.on Monitor/PrescriptionCheck
+GM WaitFor 
+   Monitor Menu.Done 
+GM Wait 1
+GM If
+    Monitor Menu.Result YES
+GM Then
+GM  Create CheckMark NameMark
+	ScoreTracker gain 1
+GM Else
+GM   Create XMark NameMark
+GM Endif
+   NameMark MoveTo Monitor/PrescriptionCheck
+GM Wait 1
+Player moveto DefCamPos
+Player lookAt DefLook
+GM Wait 1
+GM Do Scene02ScenarioFiles/Scene02Test.txt

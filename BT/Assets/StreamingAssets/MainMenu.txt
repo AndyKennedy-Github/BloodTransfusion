@@ -1,0 +1,7 @@
+GM If
+Canvas/Scene02 pressed
+GM Then
+SceneManager switchToScene Scenes/02
+GM ENDIF
+GM Wait 1
+GM goto 1

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toScale = false;
     public bool toMove = false;
     public bool follow = false;
+    public bool pressed = false;
+    public int pointTotal = 0;
+    public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
     public Vector3 pos = new Vector3(5, 5, 5);
     public Vector3 offset = new Vector3(0.0f,0.2f,-0.10f);
     string radialMenuResult;
+
 
     private Rigidbody rb; //This object's ridid body
 
@@ -49,18 +54,51 @@ public class ObjectMessageHandler : MonoBehaviour
         center.x = screenPos.x;
         center.y = Screen.height - screenPos.y;//GUI starts in upper-left, not bottom-left
         MenuSetup();
+
+        pointTotal = 0;
     }
 
     public virtual bool HandleMessage(string msg, string param = null)
     {
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
+
+        //New follow code, follows a target, then stops following them when set to false
         if (msg == "follow")
         {
             if (param != "false"){
+                followTarget = param;
                 follow = true;
-                print("I will follow");
+                print("I will follow " + param);
             }else{
                 follow = false;
+            }
+        }
+        //Need a command to switch scenes, for now uses scene name in the param to trans
+        if (msg == "switchtoscene")
+        {
+            print("I'm going to scene " + param);
+            SceneManager.LoadScene(param);
+        }
+        //These two keywords relate to buttons, just so they can be tracked within the scene
+        if (msg == "reset")
+        {
+            pressed = false;
+        }
+
+        if (msg == "pressed")
+        {
+            return pressed;
+        }
+
+        if(msg == "gain")
+        {
+            if(param != null)
+            {
+                pointTotal += int.Parse(param);
+            }
+            else
+            {
+                pointTotal += 1;
             }
         }
 
@@ -314,6 +352,10 @@ public class ObjectMessageHandler : MonoBehaviour
             jump = false;
         }
     }
+    public void Pressed()
+    {
+        pressed = true;
+    }
 
     private void Move()
     {
@@ -372,7 +414,7 @@ public class ObjectMessageHandler : MonoBehaviour
         if (follow)
         {
             follow = true;
-            followPlayer();
+            FollowObj();
         }
     }
 
@@ -485,5 +527,18 @@ public class ObjectMessageHandler : MonoBehaviour
                 }
             }
         }
+    }
+    private void FollowObj()
+    {
+        var player = GameObject.FindGameObjectWithTag(followTarget);
+        Vector3 direction = player.transform.position - transform.position;
+        transform.LookAt(player.transform);
+        //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
+        
+        if(Vector3.Distance(player.transform.position, transform.position) > .01f)
+        {
+            this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime);
+        }
+        //(direction * movementSpeed * Time.fixedDeltaTime));
     }
 }
