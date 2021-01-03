@@ -11,8 +11,10 @@ public class CommandSequence{
         // Update is called once per frame
     public enum IFState {False, Condition, Then, Else};
     public enum WAITState {False,Condition};
+    public enum CHOICEState {False,Choice,NotChoice};
     public IFState IFstate = IFState.False;
     public WAITState WAITstate = WAITState.False;
+    public CHOICEState CHOICEstate = CHOICEState.False;
     public bool IFresult = true;
     public string commandLine;
     public int nestingLevel;
@@ -254,6 +256,11 @@ public class MyGameManager : MonoBehaviour
         "else",
         "endif",
         "do",
+        "dochoice",
+        "[",
+        "choices",
+        "choices[",
+        "]",
         "load",
         "waitfor",
         "wait",
@@ -264,6 +271,7 @@ public class MyGameManager : MonoBehaviour
     };
 
     string GUIcommandLine,GUIlastcommandLine;
+
 
     //Executes array of commands
     IEnumerator ExecuteCommands(string [] commands)
@@ -323,10 +331,14 @@ public class MyGameManager : MonoBehaviour
             if (objName.Length<1 || objName[0]=='#')  //skip comments
                 continue;
 
-            //execute GameManager commands
-            if (objName=="GM" || objName[0] == '$' || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
-            {
-                print("GM command :"+ command);
+            if (command == "]"){  //endo of choices
+                cs.CHOICEstate = CommandSequence.CHOICEState.False;
+                continue;
+            }
+            if (cs.CHOICEstate== CommandSequence.CHOICEState.NotChoice)
+                continue;
+            if (cs.CHOICEstate== CommandSequence.CHOICEState.Choice)
+                cs.CHOICEstate = CommandSequence.CHOICEState.NotChoice;
 
                 //First check IF states
                 if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
@@ -342,6 +354,28 @@ public class MyGameManager : MonoBehaviour
                     print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
                     continue;
                 }
+
+            //execute GameManager commands
+            if (objName=="GM" || objName[0] == '$' || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            {
+                print("GM command :"+ command);
+/*
+                //First check IF states
+                if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
+                    print("cs.IFstate after stateswitch = "+ cs.IFstate);
+                    continue;
+                }
+                //check if in conditional blocks (THEN or ELSE)
+                if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult){  //skip then if false
+                    print("GM:Skipping THEN block Command["+ cs.commandNum+ "] = " + cs.commandLine);
+                    continue;
+                }
+                if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult){  //skip else if true
+                    print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
+                    continue;
+                }
+
+*/
 
                 if (command == "waitfor"){ //handle WAITFOR commands
                     cs.WAITstate = CommandSequence.WAITState.Condition;
@@ -410,12 +444,24 @@ public class MyGameManager : MonoBehaviour
                     }
                     
                 }
+                if (command == "dochoice"){    //Sleep for a given time in seconds
+                    string paramStr = cparams;//splitArray[2];
+                    print("Do choice "+ paramStr);
+                    int choicenum = (int) (float) ep.EvaluateParam(cparams);//float.Parse(paramStr);
+                    i += choicenum;
+                    cs.CHOICEstate = CommandSequence.CHOICEState.Choice;
+                    yield return null;                    
+                    continue;
+                }
+         
+
                 if (command == "wait"){    //Sleep for a given time in seconds
                     string paramStr = cparams;//splitArray[2];
                     print("Sleep for "+ paramStr);
                     float delay = ep.EvaluateParam(cparams);//float.Parse(paramStr);
                     yield return new WaitForSeconds(delay);
                 }
+
                 if (command == "goto"){     //GOTO a line number in the Scenario file
                     string paramStr = cparams;//splitArray[2];
                     if ((paramStr[0] == '-'  || System.Char.IsDigit (paramStr[0]))){ //moveTo position
@@ -434,10 +480,12 @@ public class MyGameManager : MonoBehaviour
                     string paramStr = cparams;//splitArray[2];
                     label.AddSafe(paramStr,i);
                 }
+                continue;
 
 
             }else //Not Game Manager command, so send commands to other game objects
             {   
+/*                
                 //check if in conditional blocks (THEN or ELSE)
                 if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult){  //skip then if false
                     print("GM:Skipping THEN block Command["+ cs.commandNum+ "] = " + cs.commandLine);
@@ -447,6 +495,7 @@ public class MyGameManager : MonoBehaviour
                     print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
                     continue;
                 }
+*/
                 print("IFstate before " + command + " = " + cs.IFstate);
                 bool result = processObjectsCommand(objName,command,cparams);
                 print("returned from processObjCom " + command + ", result= "+ result);
