@@ -1,8 +1,17 @@
 Label TopLine
-Prompt 'Check loading file by parameter'
+Prompt 'Check loading file by parameter array'
 Wait 1
-$fileName = 'CheckPatient.txt'
-#Do fileName
+$choice = 2
+$fileName = 'fileName'
+$fileName1 = 'CheckPatient.txt'
+$fileName2 = 'Forms/CheckSignature.txt'
+$fileName3 = 'CheckPatient3.txt'
+$fileName4 = 'CheckPatient4.txt'
+$fileName5 = 'CheckPatient5.txt'
+$choiceFile =$ fileName + choice
+Prompt 'Going to load ' + choiceFile
+#Do choiceFile
+Wait 2
 $str1 = 'foo'
 $bool1 = true
 Prompt 'Check Convert function'
@@ -14,10 +23,19 @@ Wait 1
 Prompt IIF(bool1 = false, 'Bool1 is false','Bool1 is true')
 Wait 2
 Label Line2
-Prompt 'Chech numeric expressions'
+Prompt 'Check numeric expressions'
 Wait 1
 $foo = 5
-$foo
+Prompt foo
+Prompt 'Check numeric array'
+Wait 1
+$numarray1 = 10.1
+$numarray2 = 20.2
+$numarray3 = 30.3
+$numarray4 = 40
+$value =$ 'numarray' + choice
+Prompt 'Value = ' + value
+Wait 2
 $bar = 5 * (4-1)
 Prompt bar
 Wait 1

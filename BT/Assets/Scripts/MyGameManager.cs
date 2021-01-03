@@ -100,6 +100,7 @@ public class ExpressionParser
         loDataColumn = new DataColumn("EvalBool", typeof (bool), "false");
         loDataTable.Columns.Add(loDataColumn);
         loDataTable.Rows.Add(0);
+        loDataTable.Rows.Add(1);
         dataType = DataType.Number;
     }
 
@@ -108,8 +109,10 @@ public class ExpressionParser
         CreateVar(name,value);
         Debug.Log("Setting variable with name "+ name);
 //        loDataTable.Rows[0][name] = value;
-        if (value.dataType== DataType.Number)
+        if (value.dataType== DataType.Number){
             loDataTable.Rows[0][name] = value.number;
+            loDataTable.Rows[1][name] = value.number+1;
+        }
         if (value.dataType== DataType.Bool)
             loDataTable.Rows[0][name] = value.boolean;
         if (value.dataType== DataType.String)
@@ -369,6 +372,8 @@ public class MyGameManager : MonoBehaviour
                         //ep.CreateVar(varname);
 
                         res =  ep.EvaluateParam(cparams);
+                        if (command == "=$")
+                            res =  ep.EvaluateParam(res.str);
                     }
                     string t = res.ToString();
                     Debug.Log("T="+t);
