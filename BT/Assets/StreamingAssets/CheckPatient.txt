@@ -22,7 +22,7 @@ GM Then
 GM Else
      # View lookAt /ExamRoom1/Desk/Left 
      # Not feeling well, so fill out Med Form
-     GM Do CheckMedForm.txt
+     GM Do 'CheckMedForm.txt'
      #/ExamRoom1/Desk/Right lookAtMe  0.0,1.0,1.0
 GM Endif
    View LookAt /Patient/Face 

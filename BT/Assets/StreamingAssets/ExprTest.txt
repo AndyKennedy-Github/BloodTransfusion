@@ -1,0 +1,69 @@
+Label TopLine
+Prompt 'Check loading file by parameter'
+Wait 1
+$fileName = 'CheckPatient.txt'
+#Do fileName
+$str1 = 'foo'
+$bool1 = true
+Prompt 'Check Convert function'
+Wait 1
+Prompt 'Result = ' + Convert(bool1 = true, 'System.String') + str1
+Wait 2
+Prompt 'Check IIF function'
+Wait 1
+Prompt IIF(bool1 = false, 'Bool1 is false','Bool1 is true')
+Wait 2
+Label Line2
+Prompt 'Chech numeric expressions'
+Wait 1
+$foo = 5
+$foo
+$bar = 5 * (4-1)
+Prompt bar
+Wait 1
+Prompt 'Check mixed types'
+Prompt str1 + bar
+Wait 1
+Prompt str1 + bool1
+Wait 1
+Prompt bar + bool1
+Wait 1
+$bool2 = str1 = 'foo' OR bar = 10  
+Prompt bool2
+Wait 1
+$x4 = bar
+$x5 = x4
+Prompt 'bar = '
+Wait 1
+Prompt bar
+Wait 1
+Prompt 'bool1 = '
+Wait 1
+Prompt bool1
+Wait 2
+If 
+  $bool1
+Then
+  $bar = 5 * 2
+  Prompt 'In Then'
+  Wait 2
+Else
+  $bar = 11
+  Prompt 'In Else'
+  Wait 1
+Endif
+Prompt 'Bar changed to ' + Convert(bar,'System.String')
+Wait 5
+$x6 = bar
+$x1 = bar 
+$bar = bar + 1
+$x6 = bar
+$x3 = bar
+$x2 = bar * 3
+Prompt 'Prompt 2'
+Wait 1
+Prompt 'Number 3'
+Wait 1
+Goto TopLine
+Prompt 'Number 4'
+Wait 1

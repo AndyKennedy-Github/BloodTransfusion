@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,14 +19,162 @@ public class CommandSequence{
 
 }
 
+
 static class Extensions
 {
+    public static void AddSafe(this Dictionary<string, float> dictionary, string key, float value)
+    {
+        if (!dictionary.ContainsKey(key))
+            dictionary.Add(key, value);
+        else
+        {
+            dictionary[key]=value;
+        }
+    }
     public static void AddSafe(this Dictionary<string, int> dictionary, string key, int value)
     {
         if (!dictionary.ContainsKey(key))
             dictionary.Add(key, value);
+        else
+        {
+            dictionary[key]=value;
+        }
     }
 }
+
+public enum DataType {Number,Bool,String};
+
+public class ParamData
+{
+    public DataType dataType;
+    public double number;
+    public bool boolean;
+    public string str;
+//    public static explicit operator string(ParamData v)
+//    {
+//        string temp=  v.ToString();
+//        Debug.Log("string cast = "+ temp);
+//        return temp;
+//    }
+    public static implicit operator string(ParamData v)
+    {
+        string temp=  v.ToString();
+        Debug.Log("string cast = "+ temp);
+        return temp;
+    }
+//    public static explicit operator float(ParamData v)
+//    {
+//        return (float) number;
+//    }
+    public static implicit operator float(ParamData v)
+    {
+        return (float) v.number;
+    }
+
+    public override string ToString()
+    {
+        Debug.Log("ParamData.ToString() "+ dataType);
+        if (dataType== DataType.Number)
+            return number.ToString();
+        if (dataType== DataType.Bool)
+            return boolean.ToString();
+        if (dataType== DataType.String)
+            return str.ToString();
+        return "Undefined Data Type";
+    }
+}
+
+public class ExpressionParser
+{
+    public DataTable loDataTable;
+
+    public DataType dataType;
+
+    public ExpressionParser()
+    {
+        loDataTable = new DataTable();
+        var loDataColumn = new DataColumn("EvalNum", typeof (double), "0");
+        loDataTable.Columns.Add(loDataColumn);
+        loDataColumn = new DataColumn("EvalString", typeof (string), "");
+        loDataTable.Columns.Add(loDataColumn);
+        loDataColumn = new DataColumn("EvalBool", typeof (bool), "false");
+        loDataTable.Columns.Add(loDataColumn);
+        loDataTable.Rows.Add(0);
+        dataType = DataType.Number;
+    }
+
+    public void SetVar(string name,ParamData value)
+    {
+        CreateVar(name,value);
+        Debug.Log("Setting variable with name "+ name);
+//        loDataTable.Rows[0][name] = value;
+        if (value.dataType== DataType.Number)
+            loDataTable.Rows[0][name] = value.number;
+        if (value.dataType== DataType.Bool)
+            loDataTable.Rows[0][name] = value.boolean;
+        if (value.dataType== DataType.String)
+            loDataTable.Rows[0][name] = value.str;
+    }
+
+    void CreateVar(string name,ParamData value)
+    {
+        if (loDataTable.Columns.Contains(name)){
+            return;
+        }
+        Debug.Log("Creating variable with name "+ name);
+        DataColumn varColumn = new DataColumn();
+        if (value.dataType== DataType.Number)
+            varColumn.DataType = typeof(double);
+        if (value.dataType== DataType.Bool)
+            varColumn.DataType = typeof(bool);
+        if (value.dataType== DataType.String)
+            varColumn.DataType = typeof(string);
+        varColumn.ColumnName = name;
+//        varColumn.DefaultValue = 50;
+        loDataTable.Columns.Add(varColumn);
+    }
+
+
+    public ParamData EvaluateParam(string expression) {
+        //var loDataColumn;
+//        if (!loDataTable.Columns.Contains("EvalNum"))
+//            return 0.0;
+        Debug.Log("EvaluateParam: "+ expression);
+        ParamData ret = new ParamData();
+        var loDataColumn = loDataTable.Columns["EvalNum"];
+        try{
+            loDataColumn.Expression = expression;
+            ret.number =  (double) (loDataTable.Rows[0]["EvalNum"]);
+            ret.boolean = !(ret.number==0f);
+            ret.dataType = DataType.Number;
+            return ret;
+        }
+        catch (Exception ex){
+            Debug.Log("Ok Error:"+ ex.Message);
+            loDataColumn = loDataTable.Columns["EvalBool"];
+            try{
+                loDataColumn.Expression = expression;
+                ret.boolean =  (bool) (loDataTable.Rows[0]["EvalBool"]);
+                ret.dataType = DataType.Bool;
+                return ret;
+
+            }
+            catch (Exception ex2){
+                Debug.Log("Ok Error:"+ ex2.Message);
+                loDataColumn = loDataTable.Columns["EvalString"];
+                loDataColumn.Expression = expression;
+                ret.str =  (string) (loDataTable.Rows[0]["EvalString"]);
+                ret.dataType = DataType.String;
+                return ret;
+            }
+        }
+//        Debug.Log("eval = "+ loDataTable.Rows[0]["EvalNum"]);
+        
+//        return (double) (loDataTable.Rows[0]["EvalNum"]);
+    }
+    
+}
+
 
 public class MyGameManager : MonoBehaviour
 {
@@ -33,6 +182,7 @@ public class MyGameManager : MonoBehaviour
     private int currentNestingLevel=0;
     public string Prompt;
     Dictionary<string, int> label = new Dictionary<string, int>();
+    Dictionary<string, float> variables = new Dictionary<string, float>();
 
     //array of hardcoded commands for testing
     string [] mycommands = {
@@ -46,12 +196,14 @@ public class MyGameManager : MonoBehaviour
         "Room1/Room scale 5.0,7.5"
 
     };
+    public ExpressionParser ep;
 
     // Start is called before the first frame update
     // This starts the 
     void Start()
     {
-       
+        ep = new ExpressionParser();
+
         StartCoroutine(exectueScenarioFiles(CommandFiles));
         //StartCoroutine(ExecuteCommands(commands));
 
@@ -108,9 +260,6 @@ public class MyGameManager : MonoBehaviour
         "label"
     };
 
-
-    
-    
     string GUIcommandLine,GUIlastcommandLine;
 
     //Executes array of commands
@@ -128,6 +277,7 @@ public class MyGameManager : MonoBehaviour
             cs.commandLine = commands[cs.commandNum];
             cs.commandLine = cs.commandLine.Trim(); //remove extra newlines or whitespace at beginning and end
             print("GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
+            print("GM:IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
             GUIcommandLine = cs.commandLine;
 
             //split up cs.commandLine into objName, command, and cparams
@@ -144,6 +294,7 @@ public class MyGameManager : MonoBehaviour
             }
             print("command="+command);
 
+            //Get the parameters
             if (splitArray.Length>paramStart){ //there are parameters too
                 //find where parameters start (after command)
                 
@@ -170,9 +321,11 @@ public class MyGameManager : MonoBehaviour
                 continue;
 
             //execute GameManager commands
-            if (objName=="GM" || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            if (objName=="GM" || objName[0] == '$' || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
             {
                 print("GM command :"+ command);
+
+                //First check IF states
                 if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
                     print("cs.IFstate after stateswitch = "+ cs.IFstate);
                     continue;
@@ -193,6 +346,39 @@ public class MyGameManager : MonoBehaviour
                 }
 
                 //Handle Game Manager commands
+
+                if (objName[0] == '$'){ //expression
+                    var varname = objName.Substring(1);
+                    print("variable name = "+ varname);
+
+                    print("command = "+ command);
+                    ParamData res;
+                    if (command == "#"){  // no assignment, so just lookup expression value
+                        print("Just param: Evaluate param  "+varname);
+                        res =  ep.EvaluateParam(varname);
+                         //get return value if in conditional statement (last statement was IF)
+                        if (cs.IFstate == CommandSequence.IFState.Condition){
+                            cs.IFresult = res.boolean;
+                            print("IF Conditional = "+ res.boolean);
+                        }
+                        continue;
+                    }
+                    else{
+                        print("expression = " + cparams);
+                        //now replace $vars with numbers
+                        //ep.CreateVar(varname);
+
+                        res =  ep.EvaluateParam(cparams);
+                    }
+                    string t = res.ToString();
+                    Debug.Log("T="+t);
+                    print("RESULT: " + varname + " = " + t);
+                    ep.SetVar(varname,res);
+//                    variables.AddSafe(varname,res);
+                    print("ADDED VARIABLE: " + varname + " = " + res);
+
+                }
+
                 //Add additional commands below.
                 if (command == "create")
                 {
@@ -209,7 +395,7 @@ public class MyGameManager : MonoBehaviour
                 if (command == "load" || command == "do")
                 {
                     string [] sArray = {""};
-                    sArray[0] = cparams;  //convert to string array for loadStreamingAsset
+                    sArray[0] = ep.EvaluateParam(cparams);//cparams;  //convert to string array for loadStreamingAsset
                     print("Load "+ sArray[0]);
                     currentNestingLevel++;
                     StartCoroutine(exectueScenarioFiles(sArray));
@@ -222,7 +408,7 @@ public class MyGameManager : MonoBehaviour
                 if (command == "wait"){    //Sleep for a given time in seconds
                     string paramStr = cparams;//splitArray[2];
                     print("Sleep for "+ paramStr);
-                    float delay = float.Parse(paramStr);
+                    float delay = ep.EvaluateParam(cparams);//float.Parse(paramStr);
                     yield return new WaitForSeconds(delay);
                 }
                 if (command == "goto"){     //GOTO a line number in the Scenario file
@@ -235,10 +421,11 @@ public class MyGameManager : MonoBehaviour
                     yield return null;  //make sure we don't get caught in infinite loop which hangs unity
                     continue;
                 }
-                if (command == "prompt"){     //GOTO a line number in the Scenario file
-                    Prompt = cparams;
+                if (command == "prompt"){   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt = (string) ep.EvaluateParam(cparams);
                 }
-                if (command == "label"){
+                if (command == "label"){     //Label a line number in the Scenario file
                     string paramStr = cparams;//splitArray[2];
                     label.AddSafe(paramStr,i);
                 }

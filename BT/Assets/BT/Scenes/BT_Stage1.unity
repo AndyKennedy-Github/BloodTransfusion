@@ -2424,13 +2424,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CommandFiles:
-  - BTStage3.txt
+  - BTStage2.txt
   Prompt: 
 --- !u!114 &1098089192
 MonoBehaviour:
@@ -2439,13 +2439,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CommandFiles:
-  - Env/TVon.txt
+  - ExprTest.txt
   Prompt: 
 --- !u!114 &1098089193
 MonoBehaviour:
