@@ -116,7 +116,7 @@ public class ObjectMessageHandler : MonoBehaviour
             GameObject go=GameObject.Find(param); //moveTo object's position
                 print("grabbing game object "+ go.name);
             ikcontroller.rightHandObj= go.transform;
-            ikcontroller.lookObj = go;
+            ikcontroller.lookObj = go.transform;
             StartCoroutine(Grab(1.0f));
 
 

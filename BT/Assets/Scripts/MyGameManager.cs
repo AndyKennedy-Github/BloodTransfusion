@@ -145,7 +145,7 @@ public class ExpressionParser
 public class CommandSequence{
     public int commandNum=0;
     public enum IFState {False, Condition, Then, Else};
-    public enum WAITState {False,Condition};
+    public enum WAITState {False,Condition,ConditionAny,ConditionAll};
     public enum CHOICEState {False,Choice,NotChoice};
     public IFState IFstate = IFState.False;
     public WAITState WAITstate = WAITState.False;
@@ -277,7 +277,12 @@ public class MyGameManager : MonoBehaviour
                 //Handle Game Manager commands
 
                 if (command == "waitfor"){ //handle WAITFOR commands to wait on next line's boolean value
-                    cs.WAITstate = CommandSequence.WAITState.Condition;
+                    if (cparams.ToLower() == "any")
+                        cs.WAITstate = CommandSequence.WAITState.ConditionAny;
+                    else if (cparams.ToLower() == "all")
+                        cs.WAITstate = CommandSequence.WAITState.ConditionAll;
+                    else
+                        cs.WAITstate = CommandSequence.WAITState.Condition;
                     continue;
                 }
 
