@@ -1,3 +1,4 @@
+/Canvas/SelectionPanel off
 Player lookAt Phone
 Player follow Phone
 GM Wait 1
