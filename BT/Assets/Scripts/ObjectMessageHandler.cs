@@ -20,8 +20,15 @@ public class ObjectMessageHandler : MonoBehaviour
     Animator animator;
     IKController ikcontroller;
     // Start is called before the first frame update
+
+    //instance of expression parser to handle number, string, and bool expressions
+    public ExpressionParser ep;
+
+    // Start is called before the first frame update
+    // This starts the message handler
     void Start()
     {
+        ep = new ExpressionParser();
         animator = GetComponent<Animator>();
         oldpos = this.transform.position;
         ikcontroller = GetComponent<IKController>();
@@ -56,6 +63,11 @@ public class ObjectMessageHandler : MonoBehaviour
 
     public virtual bool HandleMessage(string msg, string param = null)
     {
+        /*
+        ParamData res;
+        if (param[0] == '$') 
+            param =  ep.EvaluateParam(param);
+        */
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
         if (msg == "follow")
         {
@@ -112,7 +124,7 @@ public class ObjectMessageHandler : MonoBehaviour
         {
             print("grab ");
 
-            
+
             GameObject go=GameObject.Find(param); //moveTo object's position
                 print("grabbing game object "+ go.name);
             ikcontroller.rightHandObj= go.transform;
@@ -146,6 +158,7 @@ public class ObjectMessageHandler : MonoBehaviour
                 pos = getVector3(param);
                 transform.position = pos;
             }else{
+
                 GameObject go=GameObject.Find(param); //moveTo object's position
                 print("moving to position of game object "+ go.name);
                 pos= go.transform.position;
@@ -252,7 +265,7 @@ public class ObjectMessageHandler : MonoBehaviour
         // lookAt targetObject viewerObject(for position)
         if (msg == "lookat")
         {
-            print("lookAt");
+            print("lookAt" + param);
             //toMove = true;
             Vector3 vpos,tpos;
             /*  Need to support both object and offset*/

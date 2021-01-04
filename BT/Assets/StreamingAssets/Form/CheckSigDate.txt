@@ -1,4 +1,5 @@
-  View lookAt MedForm/SignatureLine 0.0,0.2,-0.05
+$form = 'MedForm/SignatureLine'
+  View lookAt $form 0.0,0.2,-0.05
 GM Wait 2
    MedForm Menu.Question Is it signed?
    MedForm Menu.on MedForm/SignatureLine
@@ -12,7 +13,7 @@ GM  Create CheckMark SigMark
 GM Else
 GM   Create XMark SigMark
 GM Endif
-   SigMark MoveTo MedForm/SignatureLine
+   SigMark MoveTo $form
 GM Wait 3
    MedForm lookAtMe 0.0,0.3,-0.05  #zoom out still looking at MedForm
 GM Wait 1

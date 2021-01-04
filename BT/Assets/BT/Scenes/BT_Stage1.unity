@@ -2393,8 +2393,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1098089190}
   - component: {fileID: 1098089191}
-  - component: {fileID: 1098089194}
   - component: {fileID: 1098089192}
+  - component: {fileID: 1098089194}
   - component: {fileID: 1098089193}
   m_Layer: 0
   m_Name: GameManager
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
@@ -2469,14 +2469,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CommandFiles:
-  - PatientEnters.txt
-  - BTStage2.txt
+  - CheckMedForm.txt
   Prompt: 
 --- !u!1 &1280027116
 GameObject:
@@ -2730,7 +2729,7 @@ PrefabInstance:
     - target: {fileID: 5172767810703264342, guid: 6c973ad2e18fb45948b72a42d002f8df,
         type: 3}
       propertyPath: m_Name
-      value: Form
+      value: MedForm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c973ad2e18fb45948b72a42d002f8df, type: 3}

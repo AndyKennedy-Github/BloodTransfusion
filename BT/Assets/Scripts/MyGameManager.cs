@@ -102,9 +102,14 @@ public class ExpressionParser
 
 
     public ParamData EvaluateParam(string expression) {
+            char [] separators = new char[] { ' ','\t' };
+
         //var loDataColumn;
         //        if (!loDataTable.Columns.Contains("EvalNum"))
         //            return 0.0;
+        if (expression[0]=='$'){ //strip off leading $
+            expression = expression.Substring(1);
+        }
         Debug.Log("EvaluateParam: "+ expression);
         ParamData ret = new ParamData();
         var loDataColumn = loDataTable.Columns["EvalNum"];
@@ -128,10 +133,24 @@ public class ExpressionParser
             catch (Exception ex2){
                 //Debug.Log("Ok Error:"+ ex2.Message);
                 loDataColumn = loDataTable.Columns["EvalString"];
-                loDataColumn.Expression = expression;
-                ret.str =  (string) (loDataTable.Rows[0]["EvalString"]);
-                ret.dataType = DataType.String;
-                return ret;
+                try{
+                    loDataColumn.Expression = expression;
+                    ret.str =  (string) (loDataTable.Rows[0]["EvalString"]);
+                    ret.dataType = DataType.String;
+                    return ret;
+                }
+                catch (Exception ex3){
+                    string [] splitArray = expression.Split(separators,StringSplitOptions.RemoveEmptyEntries);
+                    loDataColumn.Expression = splitArray[0];
+                    string restparams = expression.StringAfter(splitArray[0]);
+                    ret.str =  (string) (loDataTable.Rows[0]["EvalString"]);
+                    ret.dataType = DataType.String;
+                    Debug.Log("Rest of params: "+ restparams);
+                    ret.str = ret.str + " " + restparams;
+                    Debug.Log("Evaluated first part of params: "+ ret.str);
+                    return ret;
+
+                }
             }
         }
     }
@@ -270,16 +289,16 @@ public class MyGameManager : MonoBehaviour
             }
 
             //Check if Game Manager commands or expressions (begin with $)
-            if (objName=="GM" || objName[0] == '$' || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            if (objName=="GM" || (objName[0] == '$'  && (command==null || command[0]=='='))  || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
             {
                 //execute GameManager commands
-                print("GM command :"+ command);
+                print("GM command : "+ command + " for object "+ objName);
                 //Handle Game Manager commands
 
                 if (command == "waitfor"){ //handle WAITFOR commands to wait on next line's boolean value
-                    if (cparams.ToLower() == "any")
+                    if (cparams!=null  && cparams.ToLower() == "any")
                         cs.WAITstate = CommandSequence.WAITState.ConditionAny;
-                    else if (cparams.ToLower() == "all")
+                    else if (cparams!=null &&cparams.ToLower() == "all")
                         cs.WAITstate = CommandSequence.WAITState.ConditionAll;
                     else
                         cs.WAITstate = CommandSequence.WAITState.Condition;
@@ -329,20 +348,25 @@ public class MyGameManager : MonoBehaviour
                 if (command == "create")
                 {
                     string [] splitArray = cparams.Split(separators,StringSplitOptions.RemoveEmptyEntries);
-                    var objPrefabName = splitArray[0];
+                    string objPrefabName = splitArray[0];
+                    if (objPrefabName[0] == '$')
+                        objPrefabName = ep.EvaluateParam(objPrefabName);
                     print("Create "+ objPrefabName);
                     GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
                     ObjectMessageHandler omh;
                     if (!obj.GetComponent<ObjectMessageHandler>())
                         omh = obj.AddComponent<ObjectMessageHandler>() as ObjectMessageHandler;
                     if (splitArray.Length > 1)
-                        obj.name = splitArray[1];
+                        obj.name = ep.EvaluateParam(splitArray[1]);
                         
                 }
                 if (command == "load" || command == "do")
                 {
                     string [] sArray = {""};
-                    sArray[0] = ep.EvaluateParam(cparams);//cparams;  //convert to string array for loadStreamingAsset
+//                    if (cparams[0]=='$')
+                        sArray[0] = ep.EvaluateParam(cparams);
+//                    else 
+//                        sArray[0] = cparams;  //convert to string array for loadStreamingAsset
                     print("Load "+ sArray[0]);
                     currentNestingLevel++;
                     StartCoroutine(exectueScenarioFiles(sArray));
@@ -372,6 +396,8 @@ public class MyGameManager : MonoBehaviour
 
                 if (command == "goto"){     //GOTO a line number in the Scenario file
                     string paramStr = cparams;
+                    if (cparams[0]=='$')
+                        paramStr = ep.EvaluateParam(cparams);
                     if ((paramStr[0] == '-'  || System.Char.IsDigit (paramStr[0]))){ //moveTo position
                         i= int.Parse(paramStr) -2;  //array starts at 0, and i increments, so must minus 2
                     }else{  //is a label
@@ -395,6 +421,8 @@ public class MyGameManager : MonoBehaviour
             else //Not Game Manager command, so send commands to other game objects
             {   
 
+                if (objName[0] == '$')
+                    objName = ep.EvaluateParam(objName);
                 //print("IFstate before " + command + " = " + cs.IFstate);
                 bool result = processObjectsCommand(objName,command,cparams);
                 print("returned from processObjCom " + command + ", result= "+ result);
@@ -474,6 +502,8 @@ public class MyGameManager : MonoBehaviour
         cs.commandLine = commands[cs.commandNum];
         cs.commandLine = cs.commandLine.Trim(); //remove extra newlines or whitespace at beginning and end
         print("-----GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
+        if (cs.commandLine=="")
+            return false;
         print("IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
         GUIcommandLine = cs.commandLine;
 
@@ -493,7 +523,7 @@ public class MyGameManager : MonoBehaviour
         //Get the parameters
         if (splitArray.Length>paramStart){ //there are parameters too
             //find where parameters start (after command)
-            
+            /*
             int start = 0;
             int end = cs.commandLine.Length;
             int count = end - start;
@@ -503,7 +533,8 @@ public class MyGameManager : MonoBehaviour
 
             //Trim off end comments like this  #this is a comment
             //print("cs.commandLine cparams starts at "+ start);
-            string ptmp = cs.commandLine.Substring(start);
+            string ptmp = cs.commandLine.Substring(start);*/
+            string ptmp = cs.commandLine.StringAfter(command);
             //print("ptmp="+ptmp);
             string [] tmp = ptmp.Split('#');
             cparams = tmp[0].Trim();
@@ -512,7 +543,22 @@ public class MyGameManager : MonoBehaviour
         command = command.ToLower();//change command to lower case
         return true;
     }
+/*
+    //gets the rest of "all" after location of "match" in all.
+    public string StringAfter(string all,string match)
+    {
+        int start = 0;
+        int end = all.Length;
+        int count = end - start;
+        int at = all.IndexOf(match, start, count);
+        if (at == -1) return "";
+        start = at+match.Length+1;
 
+        //Trim off end comments like this  #this is a comment
+        //print("cs.commandLine cparams starts at "+ start);
+        return all.Substring(start);
+    }
+*/
     private GameObject[] m_gameObjects;
 
     //Find children objects of objName for commands meant for multiple objects
@@ -604,6 +650,14 @@ public class MyGameManager : MonoBehaviour
             print("Object " + go.name + " missing message handler.");
             return false;
         }
+
+
+        //evaluate expressions
+        ParamData res;
+        if (command!=null && command[0] == '$') 
+            command =  ep.EvaluateParam(command);
+        if (cparams!=null && cparams[0] == '$') 
+            cparams =  ep.EvaluateParam(cparams);
         //pass command and parameters to message handler
         bool result = mhand.HandleMessage(command,cparams); //commands return BOOL for IF statements
         return result;
@@ -649,6 +703,21 @@ public class MyGameManager : MonoBehaviour
 //AddSafe is a dictionary helper class to add extension that overrides duplcate entries
 static class Extensions
 {
+    //gets the rest of "all" after location of "match" in all.
+    public static string StringAfter(this string all,string match)
+    {
+        int start = 0;
+        int end = all.Length;
+        int count = end - start;
+        int at = all.IndexOf(match, start, count);
+        Debug.Log("StringAfter: "+ all + ","+ match + ", at="+ at);
+        if (at == -1) return "";
+        start = at+match.Length+1;
+
+        //Trim off end comments like this  #this is a comment
+        //print("cs.commandLine cparams starts at "+ start);
+        return all.Substring(start);
+    }
     public static void AddSafe(this Dictionary<string, float> dictionary, string key, float value)
     {
         if (!dictionary.ContainsKey(key))
