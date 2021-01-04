@@ -21,22 +21,14 @@ public class ParamData
     public double number;
     public bool boolean;
     public string str;
-//    public static explicit operator string(ParamData v)
-//    {
-//        string temp=  v.ToString();
-//        Debug.Log("string cast = "+ temp);
-//        return temp;
-//    }
+
     public static implicit operator string(ParamData v)
     {
         string temp=  v.ToString();
-//        Debug.Log("string cast = "+ temp);
+        //        Debug.Log("string cast = "+ temp);
         return temp;
     }
-//    public static explicit operator float(ParamData v)
-//    {
-//        return (float) number;
-//    }
+
     public static implicit operator float(ParamData v)
     {
         return (float) v.number;
@@ -261,52 +253,10 @@ public class MyGameManager : MonoBehaviour
         cs.nestingLevel = currentNestingLevel;
         for (int i = 0; i < commands.Length; i++)
         {
-            string objName,command,cparams;
-            command="#";
-            cparams=null;
+            string objName="",command="",cparams="";
             cs.commandNum=i;
-            GUIlastcommandLine = cs.commandLine;
-            cs.commandLine = commands[cs.commandNum];
-            cs.commandLine = cs.commandLine.Trim(); //remove extra newlines or whitespace at beginning and end
-            print("-----GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
-            print("IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
-            GUIcommandLine = cs.commandLine;
-
-            //split up cs.commandLine into objName, command, and cparams
-            char [] separators = new char[] { ' ','\t' };
-            string [] splitArray = cs.commandLine.Split(separators,StringSplitOptions.RemoveEmptyEntries);
-            objName = splitArray[0];  //
-            int paramStart = 2;
-            if (GMcommands.Contains(objName.ToLower())){ //GM command without GM
-                command = objName;
-                paramStart = 1;
-            }else{  //GM or other object
-                if (splitArray.Length>1)
-                    command = splitArray[1];  
-            }
-            print("command="+command);
-
-            //Get the parameters
-            if (splitArray.Length>paramStart){ //there are parameters too
-                //find where parameters start (after command)
-                
-                int start = 0;
-                int end = cs.commandLine.Length;
-                int count = end - start;
-                int at = cs.commandLine.IndexOf(command, start, count);
-                if (at == -1) continue;
-                start = at+command.Length+1;
-
-                //Trim off end comments like this  #this is a comment
-                //print("cs.commandLine cparams starts at "+ start);
-                string ptmp = cs.commandLine.Substring(start);
-                //print("ptmp="+ptmp);
-                string [] tmp = ptmp.Split('#');
-                cparams = tmp[0].Trim();
-
-            }
-            //have to change to lower after params because command is searched to calc params
-            command = command.ToLower();//change command to lower case
+            if (!GetCommandParts(cs, ref commands, ref objName,ref command, ref cparams))
+                continue;
 
 
             if (objName.Length<1 || objName[0]=='#')  //skip comments
@@ -326,7 +276,7 @@ public class MyGameManager : MonoBehaviour
                 print("GM command :"+ command);
                 //Handle Game Manager commands
 
-                if (command == "waitfor"){ //handle WAITFOR commands
+                if (command == "waitfor"){ //handle WAITFOR commands to wait on next line's boolean value
                     cs.WAITstate = CommandSequence.WAITState.Condition;
                     continue;
                 }
@@ -348,7 +298,11 @@ public class MyGameManager : MonoBehaviour
                         }
                         continue;
                     }
-                    else{
+                    else{  //assignment.  Get value and assign
+                        if (cparams==null || cparams==""){ //gets value from command on next line
+
+                        }
+
                         print("expression = " + cparams);
                         //now replace $vars with numbers
                         //ep.CreateVar(varname);
@@ -369,14 +323,15 @@ public class MyGameManager : MonoBehaviour
                 //Add additional commands below.
                 if (command == "create")
                 {
-                    var objPrefabName = splitArray[paramStart];
+                    string [] splitArray = cparams.Split(separators,StringSplitOptions.RemoveEmptyEntries);
+                    var objPrefabName = splitArray[0];
                     print("Create "+ objPrefabName);
                     GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
                     ObjectMessageHandler omh;
                     if (!obj.GetComponent<ObjectMessageHandler>())
                         omh = obj.AddComponent<ObjectMessageHandler>() as ObjectMessageHandler;
-                    if (splitArray.Length > paramStart+1)
-                        obj.name = splitArray[paramStart+1];
+                    if (splitArray.Length > 1)
+                        obj.name = splitArray[1];
                         
                 }
                 if (command == "load" || command == "do")
@@ -393,7 +348,7 @@ public class MyGameManager : MonoBehaviour
                     
                 }
                 if (command == "dochoice"){    //Sleep for a given time in seconds
-                    string paramStr = cparams;//splitArray[2];
+                    string paramStr = cparams;
                     print("Do choice "+ paramStr);
                     int choicenum = (int) (float) ep.EvaluateParam(cparams);//float.Parse(paramStr);
                     i += choicenum;
@@ -404,14 +359,14 @@ public class MyGameManager : MonoBehaviour
          
 
                 if (command == "wait"){    //Sleep for a given time in seconds
-                    string paramStr = cparams;//splitArray[2];
+                    string paramStr = cparams;
                     print("Sleep for "+ paramStr);
                     float delay = ep.EvaluateParam(cparams);//float.Parse(paramStr);
                     yield return new WaitForSeconds(delay);
                 }
 
                 if (command == "goto"){     //GOTO a line number in the Scenario file
-                    string paramStr = cparams;//splitArray[2];
+                    string paramStr = cparams;
                     if ((paramStr[0] == '-'  || System.Char.IsDigit (paramStr[0]))){ //moveTo position
                         i= int.Parse(paramStr) -2;  //array starts at 0, and i increments, so must minus 2
                     }else{  //is a label
@@ -425,7 +380,7 @@ public class MyGameManager : MonoBehaviour
                     Prompt = (string) ep.EvaluateParam(cparams);
                 }
                 if (command == "label"){     //Label a line number in the Scenario file
-                    string paramStr = cparams;//splitArray[2];
+                    string paramStr = cparams;
                     label.AddSafe(paramStr,i);
                 }
                 continue;
@@ -501,6 +456,56 @@ public class MyGameManager : MonoBehaviour
         if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult)  //skip ELSE if conditional is true
                 return true;
         return false;
+    }
+    char [] separators = new char[] { ' ','\t' };
+
+    //breaks up current line into command object parameters
+    bool GetCommandParts(CommandSequence cs, ref string [] commands, ref string objName,ref string command, ref string cparams)
+    {
+        command="#";
+        cparams=null;
+
+        GUIlastcommandLine = cs.commandLine;
+        cs.commandLine = commands[cs.commandNum];
+        cs.commandLine = cs.commandLine.Trim(); //remove extra newlines or whitespace at beginning and end
+        print("-----GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
+        print("IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
+        GUIcommandLine = cs.commandLine;
+
+        //split up cs.commandLine into objName, command, and cparams
+        string [] splitArray = cs.commandLine.Split(separators,StringSplitOptions.RemoveEmptyEntries);
+        objName = splitArray[0];  //
+        int paramStart = 2;
+        if (GMcommands.Contains(objName.ToLower())){ //GM command without GM
+            command = objName;
+            paramStart = 1;
+        }else{  //GM or other object
+            if (splitArray.Length>1)
+                command = splitArray[1];  
+        }
+        print("command="+command);
+
+        //Get the parameters
+        if (splitArray.Length>paramStart){ //there are parameters too
+            //find where parameters start (after command)
+            
+            int start = 0;
+            int end = cs.commandLine.Length;
+            int count = end - start;
+            int at = cs.commandLine.IndexOf(command, start, count);
+            if (at == -1) return false;
+            start = at+command.Length+1;
+
+            //Trim off end comments like this  #this is a comment
+            //print("cs.commandLine cparams starts at "+ start);
+            string ptmp = cs.commandLine.Substring(start);
+            //print("ptmp="+ptmp);
+            string [] tmp = ptmp.Split('#');
+            cparams = tmp[0].Trim();
+        }
+        //have to change to lower after params because command is searched to calc params
+        command = command.ToLower();//change command to lower case
+        return true;
     }
 
     private GameObject[] m_gameObjects;
