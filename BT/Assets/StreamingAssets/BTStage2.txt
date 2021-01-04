@@ -7,5 +7,5 @@ Viewer lookAt Patient/Face
 Patient Release
 Prompt 'Wait for next patient.'
 Wait 1
-Do Env/TVOn.txt
+Do 'Env/TVOn.txt'
 Wait 9

@@ -6,46 +6,15 @@ using UnityEngine;
 using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
 
 
-public class CommandSequence{
-    public int commandNum=0;
-        // Update is called once per frame
-    public enum IFState {False, Condition, Then, Else};
-    public enum WAITState {False,Condition};
-    public enum CHOICEState {False,Choice,NotChoice};
-    public IFState IFstate = IFState.False;
-    public WAITState WAITstate = WAITState.False;
-    public CHOICEState CHOICEstate = CHOICEState.False;
-    public bool IFresult = true;
-    public string commandLine;
-    public int nestingLevel;
+/////////////////////////////////////////////////////////////////////////////////////////
+// Parameter expressions routines
+/////////////////////////////////////////////////////////////////////////////////////////
+#region Parameter expressions
 
-}
-
-
-static class Extensions
-{
-    public static void AddSafe(this Dictionary<string, float> dictionary, string key, float value)
-    {
-        if (!dictionary.ContainsKey(key))
-            dictionary.Add(key, value);
-        else
-        {
-            dictionary[key]=value;
-        }
-    }
-    public static void AddSafe(this Dictionary<string, int> dictionary, string key, int value)
-    {
-        if (!dictionary.ContainsKey(key))
-            dictionary.Add(key, value);
-        else
-        {
-            dictionary[key]=value;
-        }
-    }
-}
-
+//Data types for parameter expressions
 public enum DataType {Number,Bool,String};
 
+//Parameter data returned by expressions
 public class ParamData
 {
     public DataType dataType;
@@ -61,7 +30,7 @@ public class ParamData
     public static implicit operator string(ParamData v)
     {
         string temp=  v.ToString();
-        Debug.Log("string cast = "+ temp);
+//        Debug.Log("string cast = "+ temp);
         return temp;
     }
 //    public static explicit operator float(ParamData v)
@@ -142,8 +111,8 @@ public class ExpressionParser
 
     public ParamData EvaluateParam(string expression) {
         //var loDataColumn;
-//        if (!loDataTable.Columns.Contains("EvalNum"))
-//            return 0.0;
+        //        if (!loDataTable.Columns.Contains("EvalNum"))
+        //            return 0.0;
         Debug.Log("EvaluateParam: "+ expression);
         ParamData ret = new ParamData();
         var loDataColumn = loDataTable.Columns["EvalNum"];
@@ -155,7 +124,7 @@ public class ExpressionParser
             return ret;
         }
         catch (Exception ex){
-            Debug.Log("Ok Error:"+ ex.Message);
+            //Debug.Log("Ok Error:"+ ex.Message);
             loDataColumn = loDataTable.Columns["EvalBool"];
             try{
                 loDataColumn.Expression = expression;
@@ -165,7 +134,7 @@ public class ExpressionParser
 
             }
             catch (Exception ex2){
-                Debug.Log("Ok Error:"+ ex2.Message);
+                //Debug.Log("Ok Error:"+ ex2.Message);
                 loDataColumn = loDataTable.Columns["EvalString"];
                 loDataColumn.Expression = expression;
                 ret.str =  (string) (loDataTable.Rows[0]["EvalString"]);
@@ -173,13 +142,26 @@ public class ExpressionParser
                 return ret;
             }
         }
-//        Debug.Log("eval = "+ loDataTable.Rows[0]["EvalNum"]);
-        
-//        return (double) (loDataTable.Rows[0]["EvalNum"]);
     }
-    
 }
+#endregion
 
+/////////////////////////////////////////////////////////////////////////////////////////
+// Game Manager command parsing/handling
+/////////////////////////////////////////////////////////////////////////////////////////
+
+public class CommandSequence{
+    public int commandNum=0;
+    public enum IFState {False, Condition, Then, Else};
+    public enum WAITState {False,Condition};
+    public enum CHOICEState {False,Choice,NotChoice};
+    public IFState IFstate = IFState.False;
+    public WAITState WAITstate = WAITState.False;
+    public CHOICEState CHOICEstate = CHOICEState.False;
+    public bool IFresult = true;
+    public string commandLine;
+    public int nestingLevel;
+}
 
 public class MyGameManager : MonoBehaviour
 {
@@ -188,6 +170,28 @@ public class MyGameManager : MonoBehaviour
     public string Prompt;
     Dictionary<string, int> label = new Dictionary<string, int>();
     Dictionary<string, float> variables = new Dictionary<string, float>();
+
+    List<string> GMcommands = new List<string> {
+        "if",
+        "then",
+        "else",
+        "endif",
+        "do",
+        "dochoice",
+        "[",
+        "choices",
+        "choices[",
+        "]",
+        "load",
+        "waitfor",
+        "wait",
+        "create",
+        "goto",
+        "prompt",
+        "label"
+    };
+
+    string GUIcommandLine,GUIlastcommandLine;
 
     //array of hardcoded commands for testing
     string [] mycommands = {
@@ -199,8 +203,9 @@ public class MyGameManager : MonoBehaviour
         "GM Sleep 1",
         "/RoomLight on",
         "Room1/Room scale 5.0,7.5"
-
     };
+
+    //instance of expression parser to handle number, string, and bool expressions
     public ExpressionParser ep;
 
     // Start is called before the first frame update
@@ -211,7 +216,6 @@ public class MyGameManager : MonoBehaviour
 
         StartCoroutine(exectueScenarioFiles(CommandFiles));
         //StartCoroutine(ExecuteCommands(commands));
-
     }
 
     //loads local or remote file
@@ -249,29 +253,6 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
-//    private GameObject go;
-    List<string> GMcommands = new List<string> {
-        "if",
-        "then",
-        "else",
-        "endif",
-        "do",
-        "dochoice",
-        "[",
-        "choices",
-        "choices[",
-        "]",
-        "load",
-        "waitfor",
-        "wait",
-        "create",
-        "goto",
-        "prompt",
-        "label"
-    };
-
-    string GUIcommandLine,GUIlastcommandLine;
-
 
     //Executes array of commands
     IEnumerator ExecuteCommands(string [] commands)
@@ -287,8 +268,8 @@ public class MyGameManager : MonoBehaviour
             GUIlastcommandLine = cs.commandLine;
             cs.commandLine = commands[cs.commandNum];
             cs.commandLine = cs.commandLine.Trim(); //remove extra newlines or whitespace at beginning and end
-            print("GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
-            print("GM:IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
+            print("-----GM:Execute Command["+ cs.commandNum+ "] = " + cs.commandLine);
+            print("IFstate = "+ cs.IFstate + ", IFResult = "+ cs.IFresult);
             GUIcommandLine = cs.commandLine;
 
             //split up cs.commandLine into objName, command, and cparams
@@ -331,58 +312,25 @@ public class MyGameManager : MonoBehaviour
             if (objName.Length<1 || objName[0]=='#')  //skip comments
                 continue;
 
-            if (command == "]"){  //endo of choices
-                cs.CHOICEstate = CommandSequence.CHOICEState.False;
+
+            //First check IF states and DoChoice blocks
+            if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
+                print("cs.IFstate after stateswitch = "+ cs.IFstate);
                 continue;
             }
-            if (cs.CHOICEstate== CommandSequence.CHOICEState.NotChoice)
-                continue;
-            if (cs.CHOICEstate== CommandSequence.CHOICEState.Choice)
-                cs.CHOICEstate = CommandSequence.CHOICEState.NotChoice;
 
-                //First check IF states
-                if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
-                    print("cs.IFstate after stateswitch = "+ cs.IFstate);
-                    continue;
-                }
-                //check if in conditional blocks (THEN or ELSE)
-                if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult){  //skip then if false
-                    print("GM:Skipping THEN block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-                if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult){  //skip else if true
-                    print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-
-            //execute GameManager commands
+            //Check if Game Manager commands or expressions (begin with $)
             if (objName=="GM" || objName[0] == '$' || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
             {
+                //execute GameManager commands
                 print("GM command :"+ command);
-/*
-                //First check IF states
-                if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
-                    print("cs.IFstate after stateswitch = "+ cs.IFstate);
-                    continue;
-                }
-                //check if in conditional blocks (THEN or ELSE)
-                if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult){  //skip then if false
-                    print("GM:Skipping THEN block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-                if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult){  //skip else if true
-                    print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-
-*/
+                //Handle Game Manager commands
 
                 if (command == "waitfor"){ //handle WAITFOR commands
                     cs.WAITstate = CommandSequence.WAITState.Condition;
                     continue;
                 }
 
-                //Handle Game Manager commands
 
                 if (objName[0] == '$'){ //expression
                     var varname = objName.Substring(1);
@@ -483,23 +431,14 @@ public class MyGameManager : MonoBehaviour
                 continue;
 
 
-            }else //Not Game Manager command, so send commands to other game objects
+            }
+            else //Not Game Manager command, so send commands to other game objects
             {   
-/*                
-                //check if in conditional blocks (THEN or ELSE)
-                if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult){  //skip then if false
-                    print("GM:Skipping THEN block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-                if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult){  //skip else if true
-                    print("GM:Skipping ELSE block Command["+ cs.commandNum+ "] = " + cs.commandLine);
-                    continue;
-                }
-*/
-                print("IFstate before " + command + " = " + cs.IFstate);
+
+                //print("IFstate before " + command + " = " + cs.IFstate);
                 bool result = processObjectsCommand(objName,command,cparams);
                 print("returned from processObjCom " + command + ", result= "+ result);
-                print("cs.IFstate after = "+ cs.IFstate);
+                //print("cs.IFstate after = "+ cs.IFstate);
 
                 //get return value if in conditional statement (last statement was IF)
                 if (cs.IFstate == CommandSequence.IFState.Condition){
@@ -512,7 +451,7 @@ public class MyGameManager : MonoBehaviour
                     //print("Wait ready = "+ result);
                     if (!WAITresult){ //keep doing until result is ready
                         i--;
-                        yield return new WaitForSeconds(1.0f);
+                        yield return new WaitForSeconds(0.5f);
                     }
                     else
                         cs.WAITstate = CommandSequence.WAITState.False;
@@ -522,36 +461,45 @@ public class MyGameManager : MonoBehaviour
         currentNestingLevel--;
     }
 
-    //Handles states for If-Then-Else-Endif blocks
+    //Handles states for If-Then-Else-Endif and DoChoice blocks
     bool IFstateSwitch(string command,CommandSequence cs)
     {                    
-                //Handle IF-THEN-ELSE-ENDIF statements
-                //cs.IFstate keeps track of where we are in the IF statement
-                if (cs.IFstate == CommandSequence.IFState.Condition){  //If we are in conditional part (IF)
-                    if (command == "then"){         //IF switches us to next state
-                        cs.IFstate = CommandSequence.IFState.Then;
-                        return true;
-                    }
-                }
-                if (cs.IFstate == CommandSequence.IFState.Then){       //If we are in THEN statements
-                    if (command == "else"){         //switch state when ELSE statement
-                        cs.IFstate = CommandSequence.IFState.Else;
-                        return true;
-                    }
-                }
-                if (command == "endif"){            //Leave cs.IFstate when ENDIF is reached
-                        cs.IFstate = CommandSequence.IFState.False;
-                        return true;
-                }
-                if (command == "if"){       //IF command
-                    cs.IFstate = CommandSequence.IFState.Condition;
-                        return true;
-                }
-                
-                if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult)  //skip THEN if conditiional is false
-                        return true;
-                if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult)  //skip ELSE if conditional is true
-                        return true;
+        if (command == "]"){  //endo of choices
+            cs.CHOICEstate = CommandSequence.CHOICEState.False;
+            return true;
+        }
+        if (cs.CHOICEstate== CommandSequence.CHOICEState.NotChoice)
+            return true;
+        if (cs.CHOICEstate== CommandSequence.CHOICEState.Choice)
+            cs.CHOICEstate = CommandSequence.CHOICEState.NotChoice;
+
+        //Handle IF-THEN-ELSE-ENDIF statements
+        //cs.IFstate keeps track of where we are in the IF statement
+        if (cs.IFstate == CommandSequence.IFState.Condition){  //If we are in conditional part (IF)
+            if (command == "then"){         //IF switches us to next state
+                cs.IFstate = CommandSequence.IFState.Then;
+                return true;
+            }
+        }
+        if (cs.IFstate == CommandSequence.IFState.Then){       //If we are in THEN statements
+            if (command == "else"){         //switch state when ELSE statement
+                cs.IFstate = CommandSequence.IFState.Else;
+                return true;
+            }
+        }
+        if (command == "endif"){            //Leave cs.IFstate when ENDIF is reached
+                cs.IFstate = CommandSequence.IFState.False;
+                return true;
+        }
+        if (command == "if"){       //IF command
+            cs.IFstate = CommandSequence.IFState.Condition;
+                return true;
+        }
+        
+        if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult)  //skip THEN if conditiional is false
+                return true;
+        if (cs.IFstate== CommandSequence.IFState.Else && cs.IFresult)  //skip ELSE if conditional is true
+                return true;
         return false;
     }
 
@@ -681,5 +629,32 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+}
 
+/////////////////////////////////////////////////////////////////////////////////////////
+// Game Manager command parsing/handling
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+//AddSafe is a dictionary helper class to add extension that overrides duplcate entries
+static class Extensions
+{
+    public static void AddSafe(this Dictionary<string, float> dictionary, string key, float value)
+    {
+        if (!dictionary.ContainsKey(key))
+            dictionary.Add(key, value);
+        else
+        {
+            dictionary[key]=value;
+        }
+    }
+    public static void AddSafe(this Dictionary<string, int> dictionary, string key, int value)
+    {
+        if (!dictionary.ContainsKey(key))
+            dictionary.Add(key, value);
+        else
+        {
+            dictionary[key]=value;
+        }
+    }
 }
