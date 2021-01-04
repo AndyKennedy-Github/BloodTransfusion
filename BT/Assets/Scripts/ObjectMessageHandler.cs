@@ -116,7 +116,7 @@ public class ObjectMessageHandler : MonoBehaviour
             GameObject go=GameObject.Find(param); //moveTo object's position
                 print("grabbing game object "+ go.name);
             ikcontroller.rightHandObj= go.transform;
-            ikcontroller.lookObj = go.transform;
+            ikcontroller.lookObj = go;
             StartCoroutine(Grab(1.0f));
 
 
@@ -159,9 +159,13 @@ public class ObjectMessageHandler : MonoBehaviour
             //do something...
         }
 
+
         // RADIALMENU
-        // Form radialMenu Form/SignatureLine
-        // Form radialMenu Form/SignatureLine
+        //Each object can have its own GUI menu element, so multiple ones can be present at a time.
+        //Menu.on turns on the menu at either this object's location or a location that you give it.
+        //[ObjectHandlingMessage] Menu.on [OptionalObjectOrPositionToLookat]
+        //MedForm Menu.on MedForm/SignatureLine
+        //MedForm Menu.on 0.0 1.0 0.3
         if (msg == "menu.on")
         {
             print("Setup and Turn radialMenu on for "+ this.name);
@@ -191,6 +195,8 @@ public class ObjectMessageHandler : MonoBehaviour
 
             //do something...
         }
+
+        //MedForm Menu.Question Is it signed?
         if (msg == "menu.question")
         {
             print(this.name + ": mhandler: Setting Question to "+ param);
