@@ -1,7 +1,7 @@
 /Patient on
-/ExamRoom1/ER1Door rotateY 10.2
+ExamRoom1/ER1Door rotateY 10.2
 GM Wait 3
-/Patient follow Player
+/Patient follow true
 GM Wait 3
 /Patient follow false
 GM Wait 3

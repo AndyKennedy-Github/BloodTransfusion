@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -10,9 +9,6 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toScale = false;
     public bool toMove = false;
     public bool follow = false;
-    public bool pressed = false;
-    public int pointTotal = 0;
-    public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
@@ -20,13 +16,22 @@ public class ObjectMessageHandler : MonoBehaviour
     public Vector3 offset = new Vector3(0.0f,0.2f,-0.10f);
     string radialMenuResult;
 
-
     private Rigidbody rb; //This object's ridid body
+    Animator animator;
+    IKController ikcontroller;
+    // Start is called before the first frame update
+
+    //instance of expression parser to handle number, string, and bool expressions
+    public ExpressionParser ep;
 
     // Start is called before the first frame update
+    // This starts the message handler
     void Start()
     {
-
+        ep = new ExpressionParser();
+        animator = GetComponent<Animator>();
+        oldpos = this.transform.position;
+        ikcontroller = GetComponent<IKController>();
     }
 
 
@@ -54,51 +59,23 @@ public class ObjectMessageHandler : MonoBehaviour
         center.x = screenPos.x;
         center.y = Screen.height - screenPos.y;//GUI starts in upper-left, not bottom-left
         MenuSetup();
-
-        pointTotal = 0;
     }
 
     public virtual bool HandleMessage(string msg, string param = null)
     {
+        /*
+        ParamData res;
+        if (param[0] == '$') 
+            param =  ep.EvaluateParam(param);
+        */
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
-
-        //New follow code, follows a target, then stops following them when set to false
         if (msg == "follow")
         {
             if (param != "false"){
-                followTarget = param;
                 follow = true;
-                print("I will follow " + param);
+                print("I will follow");
             }else{
                 follow = false;
-            }
-        }
-        //Need a command to switch scenes, for now uses scene name in the param to trans
-        if (msg == "switchtoscene")
-        {
-            print("I'm going to scene " + param);
-            SceneManager.LoadScene(param);
-        }
-        //These two keywords relate to buttons, just so they can be tracked within the scene
-        if (msg == "reset")
-        {
-            pressed = false;
-        }
-
-        if (msg == "pressed")
-        {
-            return pressed;
-        }
-
-        if(msg == "gain")
-        {
-            if(param != null)
-            {
-                pointTotal += int.Parse(param);
-            }
-            else
-            {
-                pointTotal += 1;
             }
         }
 
@@ -142,15 +119,46 @@ public class ObjectMessageHandler : MonoBehaviour
             //do something...
         }
 
+        // GRAB
+        if (msg == "grab")
+        {
+            print("grab ");
+
+
+            GameObject go=GameObject.Find(param); //moveTo object's position
+                print("grabbing game object "+ go.name);
+            ikcontroller.rightHandObj= go.transform;
+            ikcontroller.lookObj = go.transform;
+            StartCoroutine(Grab(1.0f));
+
+
+            //do something...
+        }
+        if (msg == "release")
+        {
+            print("release ");
+
+            
+//            GameObject go=GameObject.Find(param); //moveTo object's position
+//                print("releasing game object "+ go.name);
+//            ikcontroller.rightHandObj= go;
+//            ikcontroller.lookObj = go;
+            StartCoroutine(Release(1.0f));
+
+
+            //do something...
+        }
         // MOVETO
         if (msg == "moveto" || msg== "align")
         {
             print("hello, I am moving");
             toMove = true;
+            Vector3 oldpos = transform.position;
             if ((param[0] == '-'  || System.Char.IsDigit (param[0]))){ //moveTo position
                 pos = getVector3(param);
                 transform.position = pos;
             }else{
+
                 GameObject go=GameObject.Find(param); //moveTo object's position
                 print("moving to position of game object "+ go.name);
                 pos= go.transform.position;
@@ -164,9 +172,13 @@ public class ObjectMessageHandler : MonoBehaviour
             //do something...
         }
 
+
         // RADIALMENU
-        // Form radialMenu Form/SignatureLine
-        // Form radialMenu Form/SignatureLine
+        //Each object can have its own GUI menu element, so multiple ones can be present at a time.
+        //Menu.on turns on the menu at either this object's location or a location that you give it.
+        //[ObjectHandlingMessage] Menu.on [OptionalObjectOrPositionToLookat]
+        //MedForm Menu.on MedForm/SignatureLine
+        //MedForm Menu.on 0.0 1.0 0.3
         if (msg == "menu.on")
         {
             print("Setup and Turn radialMenu on for "+ this.name);
@@ -196,6 +208,8 @@ public class ObjectMessageHandler : MonoBehaviour
 
             //do something...
         }
+
+        //MedForm Menu.Question Is it signed?
         if (msg == "menu.question")
         {
             print(this.name + ": mhandler: Setting Question to "+ param);
@@ -251,7 +265,7 @@ public class ObjectMessageHandler : MonoBehaviour
         // lookAt targetObject viewerObject(for position)
         if (msg == "lookat")
         {
-            print("lookAt");
+            print("lookAt" + param);
             //toMove = true;
             Vector3 vpos,tpos;
             /*  Need to support both object and offset*/
@@ -311,6 +325,31 @@ public class ObjectMessageHandler : MonoBehaviour
         return rValue;
     }
 
+    private IEnumerator Grab(float duration)
+    {
+        ikcontroller.ikActive = true;
+        float t = 0.0f;
+        while (t < duration)
+        {
+            //print("Grabbing "+ transform.rotation);
+            t += Time.deltaTime;
+            ikcontroller.ikStrength = t/duration;
+            yield return null;
+        }
+    }
+    private IEnumerator Release(float duration)
+    {
+        float t = 0.0f;
+        while (t < duration)
+        {
+            //print("Grabbing "+ transform.rotation);
+            t += Time.deltaTime;
+            ikcontroller.ikStrength = 1.0f - t/duration;
+            yield return null;
+        }
+        ikcontroller.ikActive = false;
+    }
+
     private IEnumerator RotateMe(float duration)
     {
         Quaternion startRot = transform.rotation;
@@ -352,10 +391,6 @@ public class ObjectMessageHandler : MonoBehaviour
             jump = false;
         }
     }
-    public void Pressed()
-    {
-        pressed = true;
-    }
 
     private void Move()
     {
@@ -379,19 +414,30 @@ public class ObjectMessageHandler : MonoBehaviour
         print("at SCALE the scale is = to" + scale);
         toScale=false;
     }
-
     private void followPlayer()
     {
+
         var player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
         transform.LookAt(player.transform);
+
         //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
         this.transform.position = ((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
-    }
+
+
+   }
+
+    Vector3 oldpos ;
 
     // Update is called once per frame
     private void Update()
     {
+        Vector3 pos = this.transform.position;
+        float velocity = ((oldpos - pos)/Time.deltaTime).magnitude;
+        //print("Velocity = "+ velocity);
+        if (animator)
+            animator.SetFloat("Speed",velocity);
+        oldpos = this.transform.position;
     }
 
     private void FixedUpdate()
@@ -414,7 +460,7 @@ public class ObjectMessageHandler : MonoBehaviour
         if (follow)
         {
             follow = true;
-            FollowObj();
+            followPlayer();
         }
     }
 
@@ -527,18 +573,5 @@ public class ObjectMessageHandler : MonoBehaviour
                 }
             }
         }
-    }
-    private void FollowObj()
-    {
-        var player = GameObject.FindGameObjectWithTag(followTarget);
-        Vector3 direction = player.transform.position - transform.position;
-        transform.LookAt(player.transform);
-        //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
-        
-        if(Vector3.Distance(player.transform.position, transform.position) > .01f)
-        {
-            this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime);
-        }
-        //(direction * movementSpeed * Time.fixedDeltaTime));
     }
 }
