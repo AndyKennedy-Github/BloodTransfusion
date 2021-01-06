@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toScale = false;
     public bool toMove = false;
     public bool follow = false;
+    public bool pressed = false;
+    public int pointTotal = 0;
+    public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
@@ -71,13 +75,46 @@ public class ObjectMessageHandler : MonoBehaviour
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
         if (msg == "follow")
         {
-            if (param != "false"){
+            if (param != "false")
+            {
+                followTarget = param;
                 follow = true;
-                print("I will follow");
-            }else{
+                print("I will follow " + param);
+            }
+            else
+            {
                 follow = false;
             }
         }
+        //Need a command to switch scenes, for now uses scene name in the param to trans
+        if (msg == "switchtoscene")
+        {
+            print("I'm going to scene " + param);
+            SceneManager.LoadScene(param);
+        }
+        //These two keywords relate to buttons, just so they can be tracked within the scene
+        if (msg == "reset")
+        {
+            pressed = false;
+        }
+
+        if (msg == "pressed")
+        {
+            return pressed;
+        }
+
+        if (msg == "gain")
+        {
+            if (param != null)
+            {
+                pointTotal += int.Parse(param);
+            }
+            else
+            {
+                pointTotal += 1;
+            }
+        }
+
 
         // JUMP
         if (msg == "jump")
@@ -427,7 +464,21 @@ public class ObjectMessageHandler : MonoBehaviour
 
    }
 
-    Vector3 oldpos ;
+    private void FollowObj()
+    {
+        var player = GameObject.FindGameObjectWithTag(followTarget);
+        Vector3 direction = player.transform.position - transform.position;
+        transform.LookAt(player.transform);
+        //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
+
+        if (Vector3.Distance(player.transform.position, transform.position) > .01f)
+        {
+            this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime);
+        }
+        //(direction * movementSpeed * Time.fixedDeltaTime));
+    }
+
+Vector3 oldpos ;
 
     // Update is called once per frame
     private void Update()
@@ -460,7 +511,7 @@ public class ObjectMessageHandler : MonoBehaviour
         if (follow)
         {
             follow = true;
-            followPlayer();
+            FollowObj();
         }
     }
 
