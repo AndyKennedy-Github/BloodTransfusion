@@ -115,6 +115,10 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        if(msg == "play")
+        {
+            animator.SetTrigger(param);
+        }
 
         // JUMP
         if (msg == "jump")
