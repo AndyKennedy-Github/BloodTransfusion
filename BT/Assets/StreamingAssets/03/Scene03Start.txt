@@ -1,0 +1,34 @@
+Player lookAt PlayerResetLook
+/Canvas/SelectionPanel on
+GM If
+/Canvas/SelectionPanel/Panel/BloodBox pressed
+GM Then
+/Canvas/SelectionPanel/Panel/BloodBox reset
+BloodBox/Lid play Open
+ Wait 1
+BloodBox/Divider play Out
+#Do '03/BloodBox.txt'
+GM ENDIF
+GM If
+/Canvas/SelectionPanel/Panel/Fridge pressed
+GM Then
+/Canvas/SelectionPanel/Panel/Fridge reset
+Refrigerator/RefrigeratorDoor play open
+ Wait 1
+IcePack play In
+#Do '03/Fridge.txt'
+GM ENDIF
+GM If
+/Canvas/SelectionPanel/Panel/Paper pressed
+GM Then
+/Canvas/SelectionPanel/Panel/Paper reset
+BloodBox/Divider play In
+ Wait 1
+BloodBox/Lid play Close
+ Wait 1
+Paper play On
+ Wait 1
+#Do '03/Paper.txt'
+GM ENDIF
+GM Wait 1
+GM Goto 1

@@ -118,6 +118,7 @@ public class ObjectMessageHandler : MonoBehaviour
         if(msg == "play")
         {
             animator.SetTrigger(param);
+            print("I'm playing " + param);
         }
 
         // JUMP
@@ -466,8 +467,11 @@ public class ObjectMessageHandler : MonoBehaviour
         this.transform.position = ((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
 
 
-   }
-
+    }
+    public void Pressed()
+    {
+        pressed = true;
+    }
     private void FollowObj()
     {
         var player = GameObject.FindGameObjectWithTag(followTarget);
@@ -475,10 +479,7 @@ public class ObjectMessageHandler : MonoBehaviour
         transform.LookAt(player.transform);
         //rb.MovePosition((Vector3)transform.position + transform.forward *  Time.fixedDeltaTime);//(direction * movementSpeed * Time.fixedDeltaTime));
 
-        if (Vector3.Distance(player.transform.position, transform.position) > .01f)
-        {
-            this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime);
-        }
+        this.transform.position = ((Vector3)transform.position + transform.forward * Time.fixedDeltaTime * .5f);
         //(direction * movementSpeed * Time.fixedDeltaTime));
     }
 

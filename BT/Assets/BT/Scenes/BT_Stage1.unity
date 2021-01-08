@@ -243,6 +243,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -291,6 +294,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -707,6 +713,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 600000000
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -804,6 +813,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -1171,6 +1183,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -1326,6 +1341,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 600000000
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -1452,6 +1470,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 600000000
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -2289,6 +2310,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -2332,6 +2356,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 600000000
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
@@ -2424,7 +2451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
@@ -2469,7 +2496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098089189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
@@ -3005,6 +3032,9 @@ MonoBehaviour:
   toScale: 0
   toMove: 0
   follow: 0
+  pressed: 0
+  pointTotal: 0
+  followTarget: 
   movementSpeed: 600000000
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
