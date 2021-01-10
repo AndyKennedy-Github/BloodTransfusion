@@ -1,5 +1,5 @@
-Player lookAt PlayerResetLook
 /Canvas/SelectionPanel on
+/Canvas/Table off
 GM If
 /Canvas/SelectionPanel/Panel/BloodBox pressed
 GM Then
@@ -7,7 +7,6 @@ GM Then
 BloodBox/Lid play Open
  Wait 1
 BloodBox/Divider play Out
-#Do '03/BloodBox.txt'
 GM ENDIF
 GM If
 /Canvas/SelectionPanel/Panel/Fridge pressed
@@ -15,20 +14,11 @@ GM Then
 /Canvas/SelectionPanel/Panel/Fridge reset
 Refrigerator/RefrigeratorDoor play open
  Wait 1
-IcePack play In
-#Do '03/Fridge.txt'
-GM ENDIF
-GM If
-/Canvas/SelectionPanel/Panel/Paper pressed
-GM Then
-/Canvas/SelectionPanel/Panel/Paper reset
-BloodBox/Divider play In
+IcePack play Table
  Wait 1
-BloodBox/Lid play Close
+Player play Table
  Wait 1
-Paper play On
- Wait 1
-#Do '03/Paper.txt'
+Do '03/Table.txt'
 GM ENDIF
 GM Wait 1
 GM Goto 1
