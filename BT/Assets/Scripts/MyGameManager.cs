@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
-
+using System.Linq;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Parameter expressions routines
@@ -179,6 +179,7 @@ public class MyGameManager : MonoBehaviour
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
     public string Prompt;
+    Dictionary<string, string> fullnames = new Dictionary<string, string>();
     Dictionary<string, int> label = new Dictionary<string, int>();
     Dictionary<string, float> variables = new Dictionary<string, float>();
 
@@ -624,7 +625,20 @@ public class MyGameManager : MonoBehaviour
                     }
                 }
         }else{  //only call for named GameObject
-            GameObject go=GameObject.Find(objName);
+            string fullname = objName;
+            if (!objName.Contains("/")){ //might not have full path, so check if in dictionary
+                if (fullnames.ContainsKey(objName)){
+                    fullname = fullnames[objName];
+                }
+            }
+
+            //print("=========================================Object FULLNAME = "+ fullname);
+            GameObject go=GameObject.Find(fullname);
+            if (!fullname.Contains("/")){ //get full name with path and add to dictionary
+                fullname = (string.Join("/", go.GetComponentsInParent<Transform>().Select(t => t.name).Reverse().ToArray()));
+                fullnames[objName]= fullname;
+            }
+
             if (!go){
                 print("Object " + objName + " not found.");
                 retval = false;
