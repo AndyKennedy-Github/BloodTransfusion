@@ -626,6 +626,9 @@ public class MyGameManager : MonoBehaviour
                 }
         }else{  //only call for named GameObject
             string fullname = objName;
+
+            //NOTE: if we want to support caching of partial path names, we would use this instead:
+            //if (!objName[0]= '/'){ //doesn't not have full path, so check if in dictionary
             if (!objName.Contains("/")){ //might not have full path, so check if in dictionary
                 if (fullnames.ContainsKey(objName)){
                     fullname = fullnames[objName];
