@@ -1,0 +1,24 @@
+/Canvas/SelectionPanel on
+/Canvas/Table off
+GM If
+/Canvas/SelectionPanel/Panel/BloodBox pressed
+GM Then
+/Canvas/SelectionPanel/Panel/BloodBox reset
+BloodBox/Lid play Open
+ Wait 1
+BloodBox/Divider play Out
+GM ENDIF
+GM If
+/Canvas/SelectionPanel/Panel/Fridge pressed
+GM Then
+/Canvas/SelectionPanel/Panel/Fridge reset
+Refrigerator/RefrigeratorDoor play open
+ Wait 1
+IcePack play Table
+ Wait 1
+Player play Table
+ Wait 1
+Do '03/Table.txt'
+GM ENDIF
+GM Wait 1
+GM Goto 1
