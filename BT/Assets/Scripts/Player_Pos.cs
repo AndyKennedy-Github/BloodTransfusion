@@ -14,9 +14,6 @@ public class Player_Pos : MonoBehaviour
 
     [SerializeField]
     private Material highlightedMaterial;
-
-    
-    
     
     static bool result;
     private GameObject player_obj = null;

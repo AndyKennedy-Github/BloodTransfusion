@@ -6,7 +6,8 @@ public class TextureFix : MonoBehaviour
 {
    // Scroll main texture based on time
 
-    float scrollSpeed = 0.5f;
+    // Commenting out float scrollSpeed that is never used - TAR 1/6/2021
+    //float scrollSpeed = 0.5f;
     Renderer rend;
     public GameObject scaleObject;
 
