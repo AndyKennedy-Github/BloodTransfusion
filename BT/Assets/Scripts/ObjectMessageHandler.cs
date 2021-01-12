@@ -532,9 +532,6 @@ Vector3 oldpos ;
     public string question;
     public string [] choices;
     
-
-    #pragma strict
-    
     private int ringCount;// : int; 
     private Rect centerRect;// : Rect;
     private Rect[] ringRects;// : Rect[];

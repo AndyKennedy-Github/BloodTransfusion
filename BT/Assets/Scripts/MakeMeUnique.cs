@@ -20,9 +20,11 @@ public class MakeMeUnique : MonoBehaviour
       if (rightLeg!=null){
         float scale = Random.Range(0.2f,1.1f);
         rightLeg.GetChild(0).localScale = new Vector3(scale,1f,scale);
-        rightLeg.RotateAroundLocal(Vector3.forward,Random.Range(-1f,1f));
-      }
-      leftLeg = FindDescendant("LLeg");
+            // Replacing deprecated RotateAroundLocal() - TAR 1/6/2021
+            //rightLeg.RotateAroundLocal(Vector3.forward, Random.Range(-1f, 1f));
+            rightLeg.Rotate(Vector3.forward * Random.Range(-1f, 1f), Space.Self);
+        }
+        leftLeg = FindDescendant("LLeg");
 
       //Randomly make some people have only one leg
       int isactive = Random.Range(0,1); 
