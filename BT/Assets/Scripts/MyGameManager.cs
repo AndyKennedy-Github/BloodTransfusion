@@ -371,7 +371,8 @@ public class MyGameManager : MonoBehaviour
                     print("Load "+ sArray[0]);
                     currentNestingLevel++;
                     StartCoroutine(exectueScenarioFiles(sArray));
-                    bool coroutineDone = false;
+                    // coroutineDone is never called
+                    //bool coroutineDone = false;
                     while (currentNestingLevel!=cs.nestingLevel){ //keep doing until coroutine done
                         yield return new WaitForSeconds(1.0f);
                     }
@@ -670,7 +671,8 @@ public class MyGameManager : MonoBehaviour
 
 
         //evaluate expressions
-        ParamData res;
+        //ParamData res;
+        // Commenting out ParamData res as it is never called - TAR 1/6/2021
         if (command!=null && command[0] == '$') 
             command =  ep.EvaluateParam(command);
         if (cparams!=null && cparams[0] == '$') 

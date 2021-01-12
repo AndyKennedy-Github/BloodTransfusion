@@ -7,15 +7,16 @@ public class UITextShower : MonoBehaviour
 {
     public GameObject scoreTracker;
     public TextMeshProUGUI scoreText;
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Total Points " + scoreTracker.GetComponent<ObjectMessageHandler>().pointTotal + "/9";
+        //scoreText.text = "Total Points " + scoreTracker.GetComponent<ObjectMessageHandler>().pointTotal + "/9";
+        // Putting this here until somebody adds the pointTotal back to the ObjectMessageHandler
+        scoreText.text = "Total Points ERROR/9";
     }
 }
