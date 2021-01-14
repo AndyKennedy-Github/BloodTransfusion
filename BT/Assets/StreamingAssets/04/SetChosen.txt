@@ -1,0 +1,21 @@
+ZoomSpot Menu.Question 'Is this correct?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+Do '04/SettoCow.txt'
+Else
+InfusionSet01 moveto Set01Orig
+InfusionSet01 matchrotation Set01Orig
+InfusionSet01 playerreplace
+InfusionSet02 moveto Set02Orig
+InfusionSet02 matchrotation Set02Orig
+InfusionSet02 playerreplace
+InfusionSet03 moveto Set03Orig
+InfusionSet03 matchrotation Set03Orig
+InfusionSet03 playerreplace
+Do '04/SetPicking.txt'
+Endif

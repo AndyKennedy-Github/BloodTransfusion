@@ -1,0 +1,13 @@
+Player lookat DoorLook
+ZoomSpot Menu.Question 'Go to ward?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+SceneManager switchToScene Scenes/MainMenu
+Else
+Do '04/Scene04Start.txt'
+Endif

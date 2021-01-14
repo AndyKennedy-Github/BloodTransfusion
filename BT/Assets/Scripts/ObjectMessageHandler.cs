@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool toMove = false;
     public bool follow = false;
     public bool pressed = false;
+    public bool correctSet = false;
+    public bool chosenSet = false;
     public int pointTotal = 0;
     public string followTarget;
     public float movementSpeed = 1f;
@@ -150,6 +153,55 @@ public class ObjectMessageHandler : MonoBehaviour
             StartCoroutine(RotateMe(duration));
         }
 
+        if(msg == "rotatetoy")
+        {
+            transform.DORotate(new Vector3(transform.rotation.x, float.Parse(param), transform.rotation.z), 1);
+        }
+
+
+        if (msg == "rotatetox")
+        {
+            transform.DORotate(new Vector3(float.Parse(param), transform.rotation.y, transform.rotation.z), 1);
+        }
+
+
+        if (msg == "rotatetoz")
+        {
+            transform.DORotate(new Vector3(transform.position.x, transform.rotation.y, float.Parse(param)), 1);
+        }
+
+        if(msg == "matchrotation")
+        {
+            GameObject go = GameObject.Find(param);
+            transform.rotation = go.transform.rotation;
+            print(transform.rotation);
+        }
+
+        if(msg == "correctset")
+        {
+            correctSet = true;
+        }
+
+        if(msg == "iscorrect")
+        {
+            return correctSet;
+        }
+
+        if(msg == "playerchose")
+        {
+            chosenSet = true;
+        }
+
+        if(msg == "playerreplace")
+        {
+            chosenSet = false;
+        }
+
+        if(msg == "ischosen")
+        {
+            return chosenSet;
+        }
+
         // SCALE
         if (msg == "scale")
         {
@@ -196,9 +248,10 @@ public class ObjectMessageHandler : MonoBehaviour
             print("hello, I am moving");
             toMove = true;
             Vector3 oldpos = transform.position;
+            
             if ((param[0] == '-'  || System.Char.IsDigit (param[0]))){ //moveTo position
                 pos = getVector3(param);
-                transform.position = pos;
+                transform.DOMove(pos, 2);
             }else{
 
                 GameObject go=GameObject.Find(param); //moveTo object's position
@@ -206,7 +259,7 @@ public class ObjectMessageHandler : MonoBehaviour
                 pos= go.transform.position;
                 if (msg=="align")
                     transform.rotation = go.transform.rotation;
-                transform.position = pos;
+                transform.DOMove(pos, 2);
             }
 
             print("The position is " + pos);
