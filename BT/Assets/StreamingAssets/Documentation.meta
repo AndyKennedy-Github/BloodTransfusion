@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:BT/Assets/StreamingAssets/NestingTest.txt.meta
+guid: be968a3b437b12e4e8d5b3bb3b073d28
+=======
 guid: 8c5c8d696f76eb848abb873e81b43e64
 folderAsset: yes
+>>>>>>> Scene04Alpha:BT/Assets/StreamingAssets/Documentation.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
