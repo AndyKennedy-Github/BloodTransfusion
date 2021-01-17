@@ -69,6 +69,7 @@ MonoBehaviour:
     - Cart
     - InfusionBag
     - InfusionBottle
+    - InfusionBottleLiquid
     - Screen
     - Wall
   m_SchemaTemplates: []
