@@ -1,0 +1,11 @@
+Player lookat IDLabel
+/CheckCanvas off
+/LabelCanvas on
+Label 'Loop'
+If
+	/LabelCanvas/ID pressed
+Then
+	/LabelCanvas/ID reset
+	Prompt 'You paste the patient ID label on the blood specimen tube'
+Endif
+Goto 'Loop'

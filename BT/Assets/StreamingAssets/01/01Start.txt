@@ -2,6 +2,9 @@ Label '01Loop'
 /StartCanvas on
 /WardCanvas off
 /NurseCanvas off
+/PatientCanvas off
+/CheckCanvas off
+/LabelCanvas off
 If
 	/StartCanvas/GXM pressed
 Then

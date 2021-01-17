@@ -7,7 +7,7 @@ If
 Nurse Menu.Result YES
 Then
 Nurse align NursePatPos
-Do '01/PatientCheck.txt'
+Do '01/PatientMeet.txt'
 Else
 Do '01/NurseMove.txt'
 Endif
