@@ -42,11 +42,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bedside
-  - m_GUID: 1a02d1fcccb37a747a3565fa5c397374
-    m_Address: InfusionBottleLiquid03
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - InfusionBottleLiquid
   - m_GUID: 1ffb70fcf2c81b14b801e1bcfe54255c
     m_Address: Poster05
     m_ReadOnly: 0
@@ -82,11 +77,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - InfusionBag
-  - m_GUID: 56609cc5199a3f84f81f5f78dc613ee0
-    m_Address: InfusionBottleLiquid01
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - InfusionBottleLiquid
   - m_GUID: 5da255e86649d4a46ab02cf36bd106ba
     m_Address: PatientBed01
     m_ReadOnly: 0
@@ -97,11 +87,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Wall
-  - m_GUID: 6dd9be33e3f56c44eaa0578b97a1c5a7
-    m_Address: InfusionBottleLiquid02
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - InfusionBottleLiquid
   - m_GUID: 8208ee86ee884a54397439247e9646e6
     m_Address: GenAnaesthesiaMachine01
     m_ReadOnly: 0

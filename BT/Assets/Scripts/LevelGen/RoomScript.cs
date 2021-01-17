@@ -15,7 +15,7 @@ public class RoomScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoomGenerator.SetTheScene(this);
+        RoomGenerationTest.SetTheScene(this);
     }
 
     // Update is called once per frame
