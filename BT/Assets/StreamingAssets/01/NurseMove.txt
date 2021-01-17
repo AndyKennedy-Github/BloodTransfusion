@@ -1,0 +1,12 @@
+/WardCanvas off
+/NurseCanvas on
+Player align PlayerPatPos
+Label 'Loop'
+If
+	/NurseCanvas/Nurse pressed
+Then
+	Player lookat Nurse
+	Do '01/NurseCall.txt'
+ENDIF
+Wait 1
+Goto 'Loop'

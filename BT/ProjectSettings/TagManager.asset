@@ -12,6 +12,8 @@ TagManager:
   - GXMForm
   - ConsentForm
   - BloodBox
+  - Enemy
+  - Nurse
   layers:
   - Default
   - TransparentFX

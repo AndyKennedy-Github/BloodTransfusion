@@ -1,0 +1,27 @@
+Label '01Loop'
+/StartCanvas on
+/WardCanvas off
+/NurseCanvas off
+If
+	/StartCanvas/GXM pressed
+Then
+	/StartCanvas/GXM reset
+	GXMForm align GXMDeskPos
+	GXMForm parentto StandingComputerdesk
+ENDIF
+Wait 1
+If
+	/StartCanvas/ID pressed
+Then
+	/StartCanvas/ID reset
+	IDLabel align IDDeskPos
+	IDLabel parentto StandingComputerdesk
+ENDIF
+Wait 1
+If
+	/StartCanvas/MoveToWard pressed
+Then
+	/StartCanvas/MoveToWard reset
+	Do '01/PatientChoice.txt'
+ENDIF
+Goto '01Loop'
