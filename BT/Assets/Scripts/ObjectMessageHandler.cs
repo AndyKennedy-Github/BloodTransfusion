@@ -202,6 +202,20 @@ public class ObjectMessageHandler : MonoBehaviour
             return chosenSet;
         }
 
+        if(msg == "parentto")
+        {
+            GameObject go = GameObject.Find(param);
+            if(transform.parent != null)
+            {
+                transform.parent = null;
+                transform.parent = go.transform;
+            }
+            else
+            {
+                transform.parent = go.transform;
+            }
+        }
+
         // SCALE
         if (msg == "scale")
         {
