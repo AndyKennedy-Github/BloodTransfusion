@@ -1,0 +1,14 @@
+Nurse Menu.Question 'Call Nurse?'
+Nurse Menu.on /Nurse/Head
+WaitFor
+Nurse Menu.Done
+Wait 1
+If
+Nurse Menu.Result YES
+Then
+Nurse align NursePatPos
+Do '05/PatientMeet.txt'
+Else
+Do '05/NurseMove.txt'
+Endif
+Wait 1
