@@ -1,0 +1,15 @@
+WristTag lookatme 0.0,0.5,0.0
+ZoomSpot Menu.Question 'Is the name correct?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+Wait 1
+Do '01/PatientMeet.txt'
+Else
+Do '01/PatientMeet.txt'
+Endif
+Wait 1

@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ScenesRooms/RoomXLGPatient_base.unity
     guid: bafe963876585714da0029989082dcc4
+  - enabled: 1
+    path: Assets/Scenes/04.unity
+    guid: efa2e3bdbb380c1498ed1bbb2fc140bc
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 98a340dadfdec9c45bb81a95b65ffb85,
       type: 2}
