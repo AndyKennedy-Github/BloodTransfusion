@@ -853,8 +853,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -993,8 +991,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -1304,8 +1300,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -1483,10 +1477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CommandFiles:
-  - SpeakerTest.txt
+  - 03/Scene03Start.txt
   Prompt: 
-  Prompt1: 
-  Prompt2: 
 --- !u!4 &815083349
 Transform:
   m_ObjectHideFlags: 0
@@ -1543,8 +1535,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -1870,8 +1860,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -1943,8 +1931,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -2251,8 +2237,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -2458,8 +2442,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -2808,8 +2790,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3136,8 +3116,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3197,8 +3175,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3456,8 +3432,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3529,8 +3503,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3602,8 +3574,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1
@@ -3819,8 +3789,6 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
-  correctSet: 0
-  chosenSet: 0
   pointTotal: 0
   followTarget: 
   movementSpeed: 1

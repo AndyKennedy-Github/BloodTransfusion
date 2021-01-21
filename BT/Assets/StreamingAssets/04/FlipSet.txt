@@ -1,4 +1,0 @@
-If
-InfusionSet01 isChosen
-Then
-InfusionSet01 rotatetoy 0
