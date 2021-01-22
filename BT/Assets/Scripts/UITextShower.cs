@@ -15,7 +15,8 @@ public class UITextShower : MonoBehaviour
 
     void Update()
     {
-        // This should be rewritten to only update the point display when the player's score changes, not on Update()
-        scoreText.text = "Total Points " + scoreTracker.GetComponent<ObjectMessageHandler>().pointTotal + "/9";
+        //scoreText.text = "Total Points " + scoreTracker.GetComponent<ObjectMessageHandler>().pointTotal + "/9";
+        // Putting this here until somebody adds the pointTotal back to the ObjectMessageHandler
+        scoreText.text = "Total Points ERROR/9";
     }
 }

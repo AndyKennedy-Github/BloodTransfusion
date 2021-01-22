@@ -1,0 +1,16 @@
+/StartCanvas off
+/SetCanvas off
+Label 'KidneyLoop'
+Player moveto PlayerCOWLook
+Wait 1
+Player lookat COWFocus
+/KidCanvas on
+If
+	/KidCanvas/Dish pressed
+Then
+	/KidCanvas/Dish reset
+	StandingComputerdesk/KidneyDish moveto KidDishOrig
+	Wait 2
+	Do '04/Door.txt'
+Endif
+Goto 'KidneyLoop'

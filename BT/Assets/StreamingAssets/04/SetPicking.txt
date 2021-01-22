@@ -1,0 +1,35 @@
+Label 'Scene04_SetLoop'
+/StartCanvas off
+/SetCanvas on
+Player moveto SetLook
+Player lookat BinLook
+Wait 1
+If
+	/SetCanvas/SetPanel/Panel/Set01 pressed
+Then
+	/SetCanvas/SetPanel/Panel/Set01 reset
+	InfusionSet01 moveto ZoomSpot
+	InfusionSet01 rotatetoy 90
+	InfusionSet01 playerchose
+	Do '04/SetCheck.txt'
+Endif
+If
+	/SetCanvas/SetPanel/Panel/Set02 pressed
+Then
+	/SetCanvas/SetPanel/Panel/Set02 reset
+	InfusionSet02 moveto ZoomSpot
+	InfusionSet02 rotatetoy 90
+	InfusionSet02 playerchose
+	Do '04/SetCheck.txt'
+Endif
+If
+	/SetCanvas/SetPanel/Panel/Set03 pressed
+Then
+	/SetCanvas/SetPanel/Panel/Set03 reset
+	InfusionSet03 moveto ZoomSpot
+	InfusionSet03 rotatetoy 90
+	InfusionSet03 playerchose
+	Do '04/SetCheck.txt'
+Endif
+Wait 1
+Goto 'Scene04_SetLoop'
