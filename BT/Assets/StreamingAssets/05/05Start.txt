@@ -2,6 +2,7 @@
 /LabelCanvas off
 /CheckCanvas off
 /NurseCanvas off
+/COWCanvas off
 /WardCanvas on
 Label 'Loop'
 If
@@ -9,7 +10,7 @@ If
 Then
 	WardCanvas/Patient reset
 	Player align PlayerPatPos
-	Do '01/NurseMove.txt'
+	Do '05/NurseMove.txt'
 ENDIF
 Wait 1
 Goto 'Loop'

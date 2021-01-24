@@ -1,0 +1,21 @@
+Player lookat DeskLook
+/COWCanvas on
+If
+	/COWCanvas/GXMForm pressed
+Then
+	/COWCanvas/GXMForm reset
+	Do '05/GXMFormCheck.txt'
+Endif
+If
+	/COWCanvas/GXMForm/IDLabel pressed
+Then
+	COWCanvas/GXMForm/IDLabel reset
+	Do '05/IDLabel.txt'
+Endif
+If
+	/COWCanvas/GXMForm/Bag pressed
+Then
+	COWCanvas/GXMForm/Bag reset
+	Do '05/Bag.txt'
+Endif
+Goto 1

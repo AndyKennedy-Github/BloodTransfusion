@@ -1,0 +1,30 @@
+InfusionSet align ZoomSpot
+InfusionSet rotatetoy 90
+ZoomSpot Menu.Question 'Is the Blood Type and number correct?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+	Goto 16
+Else
+	InfusionSet align BagPos
+	Do '05/COWCheck.txt'
+Endif
+InfusionSet rotatetoy 270
+ZoomSpot Menu.Question 'Are there any clots?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+	InfusionSet align BagPos
+	Do '05/COWCheck.txt'
+Else
+	InfusionSet align BagPos
+	Do '05/PatientMeet.txt'
+Endif

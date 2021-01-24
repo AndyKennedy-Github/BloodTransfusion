@@ -1,0 +1,16 @@
+StandingComputerdesk/Label align ZoomSpot
+StandingComputerdesk/Label rotatetoz 90
+ZoomSpot Menu.Question 'Is the Blood Type and number correct?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+	StandingComputerdesk/Label align LabelPos
+	Do '05/COWCheck.txt'
+Else
+	StandingComputerdesk/Label align LabelPos
+	Do '05/COWCheck.txt'
+Endif

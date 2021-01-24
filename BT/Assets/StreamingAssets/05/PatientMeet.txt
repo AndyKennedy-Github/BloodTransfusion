@@ -6,15 +6,16 @@ If
 	/CheckCanvas/Speak pressed
 Then
 	/CheckCanvas/Speak reset
-	Do '01/PatientCheck.txt'
+	Do '05/PatientCheck.txt'
 Endif
 Wait 1
 If
 	/CheckCanvas/Speak/Blood pressed
 Then
 	/CheckCanvas/Speak/Blood reset
-	Prompt 'Blood has been collected.'
-	Do '01/LabelBlood.txt'
+	Prompt 'Beginning Transfusion.'
+Wait 1
+	SceneManager switchToScene Scenes/MainMenu
 Endif
 Wait 1
 Goto 'Loop'
