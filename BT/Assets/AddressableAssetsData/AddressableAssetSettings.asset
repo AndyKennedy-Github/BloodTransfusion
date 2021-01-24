@@ -19,7 +19,10 @@ MonoBehaviour:
   m_RemoteCatalogLoadPath:
     m_Id: 
   m_overridePlayerVersion: 
-  m_GroupAssets: []
+  m_GroupAssets:
+  - {fileID: 11400000, guid: 1638d449b0e908c4a8cc7bdeefb87625, type: 2}
+  - {fileID: 11400000, guid: b2670ff3ee43a404d9d700970b4eea7f, type: 2}
+  - {fileID: 11400000, guid: 8a4c8c60c5110fe4fab27c543e69016e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -66,6 +69,7 @@ MonoBehaviour:
     - Cart
     - InfusionBag
     - InfusionBottle
+    - InfusionBottleLiquid
     - Screen
     - Wall
   m_SchemaTemplates: []
