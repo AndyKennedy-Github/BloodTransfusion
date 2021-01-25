@@ -1,0 +1,16 @@
+/PatientCanvas off
+/LabelCanvas off
+/CheckCanvas off
+/NurseCanvas off
+/COWCanvas off
+/WardCanvas on
+Label 'Loop'
+If
+	WardCanvas/Patient pressed
+Then
+	WardCanvas/Patient reset
+	Player align PlayerPatPos
+	Do '05/NurseMove.txt'
+ENDIF
+Wait 1
+Goto 'Loop'

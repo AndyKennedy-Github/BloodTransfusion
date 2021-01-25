@@ -1,0 +1,17 @@
+/NurseCanvas off
+/CheckCanvas off
+Player align PlayerLookPat
+Prompt 'Hello, did you have something to ask?'
+Wait 1
+Label 'Loop'
+/PatientCanvas on
+If
+	/PatientCanvas/Name pressed
+Then
+Prompt 'My name is Tan Ah Kow. My IC Number is S0011223A'
+Wait 2
+Prompt ' '
+Do '05/CorrectPatient.txt'
+ENDIF
+Wait 1
+Goto 'Loop'

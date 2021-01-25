@@ -1,0 +1,16 @@
+Player align PatLook
+/StartCanvas off
+/PatientCanvas on
+Prompt 'Hello, did you have something to ask?'
+Wait 1
+Label 'Loop'
+/PatientCanvas on
+If
+	/PatientCanvas/Name/Education pressed
+Then
+	/PatientCanvas/Name/Education reset
+/PatientCanvas off
+Do '06/PatientSpeak.txt'
+ENDIF
+Wait 1
+Goto 'Loop'

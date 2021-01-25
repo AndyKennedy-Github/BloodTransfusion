@@ -1,0 +1,21 @@
+Player align PlayerPatPos
+/NurseCanvas off
+/CheckCanvas on
+Label 'Loop'
+If
+	/CheckCanvas/Speak pressed
+Then
+	/CheckCanvas/Speak reset
+	Do '05/PatientCheck.txt'
+Endif
+Wait 1
+If
+	/CheckCanvas/Speak/Blood pressed
+Then
+	/CheckCanvas/Speak/Blood reset
+	Prompt 'Beginning Transfusion.'
+Wait 1
+	SceneManager switchToScene Scenes/MainMenu
+Endif
+Wait 1
+Goto 'Loop'

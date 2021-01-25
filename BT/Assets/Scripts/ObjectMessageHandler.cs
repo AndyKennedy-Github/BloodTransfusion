@@ -14,7 +14,9 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool pressed = false;
     public bool correctSet = false;
     public bool chosenSet = false;
+    public bool isEmpty;
     public int pointTotal = 0;
+    public int salineAmount = 5;
     public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
@@ -106,6 +108,11 @@ public class ObjectMessageHandler : MonoBehaviour
             return pressed;
         }
 
+        if(msg == "isempty")
+        {
+            return isEmpty;
+        }
+
         if (msg == "gain")
         {
             if (param != null)
@@ -115,6 +122,14 @@ public class ObjectMessageHandler : MonoBehaviour
             else
             {
                 pointTotal += 1;
+            }
+        }
+
+        if(msg == "reducesaline")
+        {
+            if(salineAmount > 0)
+            {
+                salineAmount--;
             }
         }
 
@@ -561,6 +576,14 @@ Vector3 oldpos ;
         if (animator)
             animator.SetFloat("Speed",velocity);
         oldpos = this.transform.position;
+        if(salineAmount > 0)
+        {
+            isEmpty = false;
+        }
+        else
+        {
+            isEmpty = true;
+        }
     }
 
     private void FixedUpdate()

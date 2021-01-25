@@ -1,0 +1,50 @@
+/StartCanvas off
+/COWCanvas on
+WipeCanvas off
+/DishCanvas off
+/SyringeCanvas off
+/IVCanvas off
+/DripCanvas off
+Player align DeskStart
+Label 'Loop'
+If
+	COWCanvas/Sanitizer pressed
+Then
+	COWCanvas/Sanitizer reset
+	Do '06/Sanitizer.txt'
+Endif
+If
+	COWCanvas/Sanitizer/Gloves pressed
+Then
+	COWCanvas/Sanitizer/Gloves reset
+	Do '06/Gloves.txt'
+Endif
+If
+	COWCanvas/Sanitizer/Dish pressed
+Then
+	COWCanvas/Sanitizer/Dish reset
+	Do '06/Dish.txt'
+Endif
+If
+	COWCanvas/Sanitizer/BloodBag pressed
+Then
+	COWCanvas/Sanitizer/BloodBag reset
+	BloodBag align BagTableSpot
+Endif
+If
+	COWCanvas/Sanitizer/Set pressed
+Then
+	COWCanvas/Sanitizer/Set reset
+	Set align SetTablePos
+	Do '06/BagCombine.txt'
+Endif
+If
+	COWCanvas/Sanitizer/Cuff pressed
+Then
+	COWCanvas/Sanitizer/Cuff reset
+	PressureCuff align CuffPos
+	Player lookat Patient/Cube
+	Do '06/Connector.txt'
+Endif
+Wait 1
+Goto 'Loop'
