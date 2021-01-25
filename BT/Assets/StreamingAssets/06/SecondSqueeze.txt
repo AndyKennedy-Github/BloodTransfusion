@@ -1,0 +1,10 @@
+Label 'Loop'
+If
+	DripCanvas/Squeeze pressed
+Then
+	DripCanvas/Squeeze reset	
+	Prompt 'The bag has been filled to 75 percent'
+	Wait 1
+	Do '06/InfusionStart.txt'
+Endif
+Goto 'Loop'

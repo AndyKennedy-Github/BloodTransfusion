@@ -1,0 +1,23 @@
+/COWCanvas off
+WipeCanvas off
+DishCanvas off
+SyringeCanvas on
+Label 'Loop'
+If
+	SyringeCanvas/Amount/Aspirate pressed
+Then
+	SyringeCanvas/Amount/Aspirate reset
+Endif
+If
+	SyringeCanvas/Amount/PushandFlush pressed
+Then
+	SyringeCanvas/Amount/PushandFlush reset
+	SalineTracker reducesaline
+Endif
+If
+	SalineTracker isempty
+Then
+	Do '06/Dish.txt'
+Else
+	Goto 'Loop'
+Endif

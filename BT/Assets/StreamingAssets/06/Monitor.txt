@@ -1,0 +1,17 @@
+/StartCanvas off
+/PatientCanvas off
+Player align MonitorLook
+ZoomSpot Menu.Question 'Turn on to show vital signs?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+Wait 1
+If
+ZoomSpot Menu.Result YES
+Then
+	/Monitor on
+Wait 1
+	Do '06/06Start.txt'
+Else
+	Do '06/06Start.txt'
+Endif

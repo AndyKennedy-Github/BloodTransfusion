@@ -1,0 +1,29 @@
+/COWCanvas off
+WipeCanvas off
+SyringeCanvas off
+Prompt ''
+StandingComputerdesk/KidneyDish align DishPos
+Wait 1
+Player lookat StandingComputerdesk/KidneyDish
+Wait 1
+Label 'Loop'
+DishCanvas on
+If
+	DishCanvas/Wipe pressed
+Then 
+	DishCanvas/Wipe reset
+	Do '06/WipeCheck.txt'
+Endif
+If
+	DishCanvas/Wipe/Syringe pressed
+Then
+	DishCanvas/Wipe/Syringe reset
+	Do '06/SyringeCheck.txt'
+Endif
+If
+	DishCanvas/Wipe/Trash pressed
+Then
+	DishCanvas/Wipe/Trash reset
+	Do '06/Garbage.txt'
+Endif
+Goto 'Loop'

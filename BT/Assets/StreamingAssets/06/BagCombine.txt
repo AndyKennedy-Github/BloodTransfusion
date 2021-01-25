@@ -1,0 +1,12 @@
+Player lookat BloodBag
+/COWCanvas off
+/BloodCanvas on
+Label 'Loop'
+If
+	BloodCanvas/Blood pressed
+Then
+	BloodBag moveto BagTableEnd
+	Wait 1
+	Do '06/PoleSetup.txt'
+Endif
+Goto 'Loop'
