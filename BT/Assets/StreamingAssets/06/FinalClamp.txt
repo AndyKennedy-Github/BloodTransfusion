@@ -1,0 +1,12 @@
+Player lookat ClampLook
+ClampCanvas on
+Label 'Loop'
+If
+	ClampCanvas/Release pressed
+Then
+	ClampCanvas/Release reset
+	Prompt 'The Clamp has been released.'
+	Wait 2
+	SceneManager switchtoscene Scenes/MainMenu
+Endif
+Goto 'Loop'

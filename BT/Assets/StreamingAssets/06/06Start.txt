@@ -7,6 +7,7 @@ SyringeCanvas off
 InfusionStand off
 BloodCanvas  off
 DripCanvas off
+ClampCanvas off
 Prompt ''
 /Player align PlayerStart
 Label 'Loop'

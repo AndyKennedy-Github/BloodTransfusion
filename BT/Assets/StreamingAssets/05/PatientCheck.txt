@@ -8,10 +8,25 @@ Label 'Loop'
 If
 	/PatientCanvas/Name pressed
 Then
+/PatientCanvas/Name pressed reset
 Prompt 'My name is Tan Ah Kow. My IC Number is S0011223A'
 Wait 2
 Prompt ' '
 Do '05/CorrectPatient.txt'
 ENDIF
+If /PatientCanvas/Name/Blood pressed
+Then
+/PatientCanvas/Name/Blood reset
+Speaker1 'Hello'
+Wait 2
+Speaker1 'I need to do some verification before I'
+Wait 2
+Speaker1 'conduct the blood transfusion.'
+Wait 2
+Speaker 1 'May I have your blood type?'
+Wait 2
+Prompt 'A+'
+Wait 2
+Do '05/CorrectBlood.txt'
 Wait 1
 Goto 'Loop'
