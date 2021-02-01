@@ -17,6 +17,14 @@ public class SalineDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        saline.text = tracker.salineAmount.ToString();
+        if(!tracker.trackTime)
+        {
+            saline.text = tracker.salineAmount.ToString();
+        }
+        else
+        {
+            saline.text = tracker.time.ToString();
+        }
+
     }
 }

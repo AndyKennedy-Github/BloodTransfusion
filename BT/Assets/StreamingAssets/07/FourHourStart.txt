@@ -1,0 +1,48 @@
+/FourStartCanvas on
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeChamber off
+/HourCanvas off
+/StartCanvas off
+ClampCanvas off
+/Player align PlayerStart
+Speaker1 ''
+Prompt 'After 4 hours of starting Blood Transfusion'
+Wait 2
+Prompt ''
+Label 'Loop'
+If
+	FourStartCanvas/Monitor pressed
+Then
+	FourStartCanvas/Monitor reset
+	Do '07/Vitals.txt'
+Endif
+If
+	FourStartCanvas/Monitor/Cannula pressed
+Then
+	FourStartCanvas/Monitor/Cannula reset
+	Do '07/FinalCannulaCanvas.txt'
+Endif
+If
+	FourStartCanvas/Monitor/Patient pressed
+Then
+	FourStartCanvas/Monitor/Patient reset
+	Do '07/Patient03.txt'
+Endif
+If
+	FourStartCanvas/Monitor/Clamp pressed
+Then
+	FourStartCanvas/Monitor/Clamp reset
+	Do '07/Clamp.txt'
+Endif
+If
+	FourStartCanvas/Monitor/COW pressed
+Then
+	FourStartCanvas/Monitor/COW reset
+	Do '07/COWStart.txt'
+Endif
+Goto 'Loop'

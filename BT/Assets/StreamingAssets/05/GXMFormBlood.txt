@@ -1,0 +1,19 @@
+Player lookAt GXM/BloodLine 0.0,0.4,-0.05
+GM Wait 2
+   GXM Menu.Question Is this the correct blood type?
+   GXM Menu.on GXM/BloodLine
+GM WaitFor 
+   GXM Menu.Done 
+GM Wait 1
+GM If
+    GXM Menu.Result YES
+GM Then
+	Player align PlayerLookPat
+Wait 1
+	Do '05/COWStart.txt'
+GM Else
+	Player align PlayerLookPat
+Wait 1
+	Do '05/COWStart.txt'
+GM Endif
+

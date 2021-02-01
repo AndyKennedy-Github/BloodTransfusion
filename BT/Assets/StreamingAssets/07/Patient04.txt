@@ -1,0 +1,20 @@
+/FourHourCanvas off
+/PatientCanvas on
+SyringeCanvas off
+Player align PlayerPatLook
+Prompt ''
+Label 'Loop'
+If
+	PatientCanvas/Speak/Leave pressed
+Then
+	PatientCanvas/Speak/Leave reset
+Speaker1 'Thank you for your cooperation, Mr. Tan.'
+Wait 2
+Speaker1 'I am now going to leave you resting.'
+Wait 2
+Prompt 'Thank you Nurse. Goodbye.'
+Wait 2
+SceneManager switchtoscene Scenes/MainMenu
+Endif
+Wait 1
+Goto 'Loop'

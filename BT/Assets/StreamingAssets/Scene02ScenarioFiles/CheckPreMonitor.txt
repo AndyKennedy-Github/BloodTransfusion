@@ -7,14 +7,14 @@ GM Wait 1
 GM If
     Monitor Menu.Result YES
 GM Then
-GM  Create CheckMark NameMark
+#GM  Create CheckMark 
+  # CheckMark MoveTo Monitor/PrescriptionCheck
 	ScoreTracker gain 1
 GM Else
-GM   Create XMark NameMark
+ScoreTracker gain 0
+#GM   Create XMark
 GM Endif
-   NameMark MoveTo Monitor/PrescriptionCheck
 GM Wait 1
-Player moveto DefCamPos
-Player lookAt DefLook
+Player align DefLook
 GM Wait 1
-GM Do Scene02ScenarioFiles/Scene02Test.txt
+GM Do 'Scene02ScenarioFiles/Scene02Test.txt'

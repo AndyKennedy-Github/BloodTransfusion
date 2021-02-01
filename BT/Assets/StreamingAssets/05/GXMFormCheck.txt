@@ -1,6 +1,6 @@
 Player lookAt GXM/BloodLine 0.0,0.4,-0.05
 GM Wait 2
-   GXM Menu.Question Is this the correct blood type?
+   GXM Menu.Question Is this the correct name and IC Number?
    GXM Menu.on GXM/BloodLine
 GM WaitFor 
    GXM Menu.Done 
@@ -10,10 +10,10 @@ GM If
 GM Then
 	Player align PlayerLookPat
 Wait 1
-	Do '05/COWCheck.txt'
+	Do '05/PatientMeet.txt'
 GM Else
 	Player align PlayerLookPat
 Wait 1
-	Do '05/COWCheck.txt'
+	Do '05/PatientMeet.txt'
 GM Endif
 

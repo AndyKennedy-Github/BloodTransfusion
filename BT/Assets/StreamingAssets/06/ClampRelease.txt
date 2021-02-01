@@ -9,7 +9,7 @@ ZoomSpot Menu.Result YES
 Then
 	Prompt 'The Clamp has been released.'
 	Wait 1
-	Do '06/Monitor.txt'
+	Do '06/ClampClose.txt'
 Else
 	Do '06/InfusionStart.txt'
 Endif

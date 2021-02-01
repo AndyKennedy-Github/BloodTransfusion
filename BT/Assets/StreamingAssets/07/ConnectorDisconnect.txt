@@ -1,0 +1,14 @@
+Player align ConnectorLook
+ZoomSpot Menu.Question 'Disconnect Connector?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+ZoomSpot Menu.Done
+If
+ZoomSpot Menu.Result YES
+Then
+Prompt 'You disconnect the connector.'
+Wait 1
+Do '07/Dish.txt'
+Else
+Do '07/Dish.txt'
+Endif

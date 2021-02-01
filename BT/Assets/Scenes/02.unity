@@ -290,12 +290,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -344,12 +356,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1041,12 +1065,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1462,12 +1498,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2148,12 +2196,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2327,12 +2387,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3015,12 +3087,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3895,12 +3979,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3941,12 +4037,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3975,12 +4083,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4015,12 +4135,24 @@ MonoBehaviour:
   toMove: 0
   follow: 0
   pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4060,6 +4192,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304299874284400081, guid: a59d0d1308c3aed4cb15563a42129963,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304299874284400081, guid: a59d0d1308c3aed4cb15563a42129963,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304299874284400081, guid: a59d0d1308c3aed4cb15563a42129963,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304299874284400081, guid: a59d0d1308c3aed4cb15563a42129963,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3304299874284400094, guid: a59d0d1308c3aed4cb15563a42129963,
         type: 3}

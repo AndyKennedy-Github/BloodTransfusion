@@ -14,15 +14,23 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool pressed = false;
     public bool correctSet = false;
     public bool chosenSet = false;
+    public bool trackTime = false;
     public bool isEmpty;
+    public bool playSound;
+    public float timertrack = 0;
+    public float interval;
     public int pointTotal = 0;
     public int salineAmount = 5;
+    public int time = 0;
+    public string inputText;
     public string followTarget;
     public float movementSpeed = 1f;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
     public Vector3 pos = new Vector3(5, 5, 5);
     public Vector3 offset = new Vector3(0.0f,0.2f,-0.10f);
+    public AudioSource aSource;
+    public AudioClip clip;
     string radialMenuResult;
 
     private Rigidbody rb; //This object's ridid body
@@ -133,6 +141,50 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        if(msg == "raiseinterval")
+        {
+            interval--;
+        }
+
+        if(msg == "playsound")
+        {
+            playSound = true;
+            interval = float.Parse(param);
+        }
+
+        if(msg == "stopsound")
+        {
+            playSound = false;
+            aSource.Stop();
+            timertrack = 0.0f;
+        }
+
+        if (msg == "raisesaline")
+        {
+                salineAmount++;
+        }
+
+        if (msg == "setsaline")
+        {
+            salineAmount = int.Parse(param);
+            if(salineAmount < 0)
+            {
+                salineAmount = 0;
+            }
+        }
+
+        if(msg == "salineamount")
+        {
+            if(salineAmount == int.Parse(param))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         if(msg == "play")
         {
             animator.SetTrigger(param);
@@ -146,6 +198,42 @@ public class ObjectMessageHandler : MonoBehaviour
             print("imma jump");
         }
 
+        if(msg == "increasetime")
+        {
+            time += 15;
+        }
+
+        if(msg == "decreasetime")
+        {
+            if(time > 0)
+            {
+                time -= 15;
+            }
+        }
+
+        if(msg == "timeequals")
+        {
+            if(int.Parse(param) == time)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if(msg == "says")
+        {
+            if(param == inputText)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         /////////////////////////////////////////////////////////////////////
 
         // ON
@@ -583,6 +671,17 @@ Vector3 oldpos ;
         else
         {
             isEmpty = true;
+        }
+
+        if(playSound)
+        {
+            timertrack += Time.deltaTime;
+
+            if(timertrack >= interval)
+            {
+                aSource.PlayOneShot(clip);
+                timertrack = 0;
+            }
         }
     }
 

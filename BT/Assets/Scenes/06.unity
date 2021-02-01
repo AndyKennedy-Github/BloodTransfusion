@@ -347,14 +347,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -578,14 +586,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -628,14 +644,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -815,6 +839,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105086433}
   m_CullTransparentMesh: 0
+--- !u!1 &106660483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106660484}
+  - component: {fileID: 106660485}
+  m_Layer: 5
+  m_Name: Close
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &106660484
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106660483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1224821998}
+  m_Father: {fileID: 1098537135}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -109.9, y: 22.8}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &106660485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106660483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  toScale: 0
+  toMove: 0
+  follow: 0
+  pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
+  pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
+  followTarget: 
+  movementSpeed: 1
+  scale: {x: 5, y: 5, z: 5}
+  pos: {x: 5, y: 5, z: 5}
+  offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
+  jumpVelocity: 8.5
+  fallMult: 2.5
+  lowJumpMult: 2
+  gravity: {x: 0, y: -10, z: 0}
+  center: {x: 500, y: 500}
+  radius: 125
+  centerButton: {fileID: 0}
+  question: 
+  choices: []
+  menuSizeFraction: 0.5
+  radialMenuActive: 0
 --- !u!1 &119761149
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +952,152 @@ Transform:
   m_Father: {fileID: 1156296454}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &121424376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121424381}
+  - component: {fileID: 121424380}
+  - component: {fileID: 121424379}
+  - component: {fileID: 121424378}
+  - component: {fileID: 121424377}
+  m_Layer: 5
+  m_Name: ClampCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &121424377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121424376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  toScale: 0
+  toMove: 0
+  follow: 0
+  pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
+  pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
+  followTarget: 
+  movementSpeed: 1
+  scale: {x: 5, y: 5, z: 5}
+  pos: {x: 5, y: 5, z: 5}
+  offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
+  jumpVelocity: 8.5
+  fallMult: 2.5
+  lowJumpMult: 2
+  gravity: {x: 0, y: -10, z: 0}
+  center: {x: 500, y: 500}
+  radius: 125
+  centerButton: {fileID: 0}
+  question: 
+  choices: []
+  menuSizeFraction: 0.5
+  radialMenuActive: 0
+--- !u!114 &121424378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121424376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &121424379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121424376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &121424380
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121424376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &121424381
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121424376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1098537135}
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &129163226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,14 +1418,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1240,14 +1501,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1627,14 +1896,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1699,14 +1976,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -1865,14 +2150,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2173,56 +2466,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347178550}
   m_CullTransparentMesh: 0
---- !u!1 &364826981 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3287258805945632790, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &364826982 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2001262548518500869, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &364826985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364826981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &367110176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,14 +2654,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2549,14 +2800,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2624,14 +2883,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -2643,6 +2910,83 @@ MonoBehaviour:
   choices: []
   menuSizeFraction: 0.5
   radialMenuActive: 0
+--- !u!1 &395684719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395684721}
+  - component: {fileID: 395684720}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &395684720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395684719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  toScale: 0
+  toMove: 0
+  follow: 0
+  pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
+  pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
+  followTarget: 
+  movementSpeed: 1
+  scale: {x: 5, y: 5, z: 5}
+  pos: {x: 5, y: 5, z: 5}
+  offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
+  jumpVelocity: 8.5
+  fallMult: 2.5
+  lowJumpMult: 2
+  gravity: {x: 0, y: -10, z: 0}
+  center: {x: 500, y: 500}
+  radius: 125
+  centerButton: {fileID: 0}
+  question: 
+  choices: []
+  menuSizeFraction: 0.5
+  radialMenuActive: 0
+--- !u!4 &395684721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395684719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 613.2875, y: 380.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404829683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,14 +3073,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3090,14 +3442,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3228,14 +3588,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3366,14 +3734,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3539,14 +3915,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -3907,14 +4291,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4025,40 +4417,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 841937454068458758, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2001262548518500869, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.265
-      objectReference: {fileID: 0}
-    - target: {fileID: 2001262548518500869, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.363
-      objectReference: {fileID: 0}
-    - target: {fileID: 2001262548518500869, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.909
-      objectReference: {fileID: 0}
     - target: {fileID: 5944246490801782533, guid: b94176c89ae64334cae97abbb7e5c8db,
         type: 3}
       propertyPath: m_Name
       value: StandingComputerdesk
-      objectReference: {fileID: 0}
-    - target: {fileID: 6428294855347377630, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.318
-      objectReference: {fileID: 0}
-    - target: {fileID: 6428294855347377630, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.339
       objectReference: {fileID: 0}
     - target: {fileID: 6428294855929783743, guid: b94176c89ae64334cae97abbb7e5c8db,
         type: 3}
@@ -4115,18 +4477,138 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6827278234152075624, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.073
-      objectReference: {fileID: 0}
-    - target: {fileID: 6827278234152075624, guid: b94176c89ae64334cae97abbb7e5c8db,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.356
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b94176c89ae64334cae97abbb7e5c8db, type: 3}
+--- !u!1 &680998726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680998727}
+  - component: {fileID: 680998730}
+  - component: {fileID: 680998729}
+  - component: {fileID: 680998728}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &680998727
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680998726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1959009953}
+  m_Father: {fileID: 1098537135}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -124.5}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &680998728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680998726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 680998729}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1098537136}
+        m_MethodName: Pressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &680998729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680998726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &680998730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680998726}
+  m_CullTransparentMesh: 0
 --- !u!1 &712996767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3099689528105046113, guid: 469570465400f4948b476f7c3a2e4f5e,
@@ -4152,14 +4634,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4232,14 +4722,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4276,14 +4774,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4302,6 +4808,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 597256666958981041, guid: afceda933afc3ae41ae1db2c537781e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7829958140144591420, guid: afceda933afc3ae41ae1db2c537781e7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4681,14 +5192,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -4772,7 +5291,7 @@ Transform:
   m_LocalScale: {x: 0.4792536, y: 0.4792536, z: 0.4056949}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: -17.117, z: 0}
 --- !u!1 &883378641
 GameObject:
@@ -4903,50 +5422,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883378641}
   m_CullTransparentMesh: 0
---- !u!1 &883863361 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6827278234396668840, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &883863363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883863361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &887904685
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,14 +5458,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5014,7 +5497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &899137488
 PrefabInstance:
@@ -5141,14 +5624,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5199,14 +5690,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5488,7 +5987,7 @@ Transform:
   m_LocalScale: {x: 0.74, y: 0.74, z: 1.185998}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: -2.913, z: 0}
 --- !u!1 &996309618
 GameObject:
@@ -5546,14 +6045,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5621,14 +6128,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5665,14 +6180,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -5894,14 +6417,106 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
+  jumpVelocity: 8.5
+  fallMult: 2.5
+  lowJumpMult: 2
+  gravity: {x: 0, y: -10, z: 0}
+  center: {x: 500, y: 500}
+  radius: 125
+  centerButton: {fileID: 0}
+  question: 
+  choices: []
+  menuSizeFraction: 0.5
+  radialMenuActive: 0
+--- !u!1 &1098537134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1098537135}
+  - component: {fileID: 1098537136}
+  m_Layer: 5
+  m_Name: Release
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1098537135
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098537134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 680998727}
+  - {fileID: 106660484}
+  m_Father: {fileID: 121424381}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 56.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1098537136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098537134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  toScale: 0
+  toMove: 0
+  follow: 0
+  pressed: 0
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
+  pointTotal: 0
+  salineAmount: 5
+  time: 0
+  inputText: 
+  followTarget: 
+  movementSpeed: 1
+  scale: {x: 5, y: 5, z: 5}
+  pos: {x: 5, y: 5, z: 5}
+  offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -6105,14 +6720,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -6625,14 +7248,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -6737,57 +7368,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175760565}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1205701015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5944246490801782533, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1205701016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205701015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
---- !u!4 &1205701017 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6428294855929783743, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1228795535
+--- !u!1 &1224821997
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6795,130 +7376,128 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1228795536}
-  - component: {fileID: 1228795539}
-  - component: {fileID: 1228795538}
-  - component: {fileID: 1228795537}
-  - component: {fileID: 1228795540}
-  m_Layer: 0
-  m_Name: Wipe1
+  - component: {fileID: 1224821998}
+  - component: {fileID: 1224822001}
+  - component: {fileID: 1224822000}
+  - component: {fileID: 1224821999}
+  m_Layer: 5
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1228795536
-Transform:
+--- !u!224 &1224821998
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228795535}
-  m_LocalRotation: {x: 0.5429223, y: 0.45302916, z: 0.45302904, w: 0.5429224}
-  m_LocalPosition: {x: -0.09486362, y: 0.01409436, z: 0.036000025}
-  m_LocalScale: {x: 0.03698021, y: 0.036980208, z: 0.0031861775}
-  m_Children: []
-  m_Father: {fileID: 364826982}
+  m_GameObject: {fileID: 1224821997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1584081647}
+  m_Father: {fileID: 106660484}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 100.72301, z: 0}
---- !u!65 &1228795537
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228795535}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1228795538
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228795535}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1228795539
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228795535}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1228795540
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 110.9, y: -180.9}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1224821999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228795535}
+  m_GameObject: {fileID: 1224821997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1224822000}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 106660485}
+        m_MethodName: Pressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1224822000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224821997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1224822001
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224821997}
+  m_CullTransparentMesh: 0
 --- !u!1 &1235753512
 GameObject:
   m_ObjectHideFlags: 0
@@ -7500,14 +8079,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -8100,14 +8687,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -8415,14 +9010,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -8564,139 +9167,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445169557}
   m_CullTransparentMesh: 0
---- !u!1 &1447166786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1447166787}
-  - component: {fileID: 1447166790}
-  - component: {fileID: 1447166789}
-  - component: {fileID: 1447166788}
-  - component: {fileID: 1447166791}
-  m_Layer: 0
-  m_Name: PressureCuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1447166787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447166786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.033, y: 0.927, z: 0.134}
-  m_LocalScale: {x: 0.19793467, y: 0.025533572, z: 0.19793467}
-  m_Children: []
-  m_Father: {fileID: 1205701017}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1447166788
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447166786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!23 &1447166789
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447166786}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a1c0cb343e700b745909eefd0217f078, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1447166790
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447166786}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1447166791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447166786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &1455576257
 GameObject:
   m_ObjectHideFlags: 0
@@ -8878,14 +9348,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -8954,14 +9432,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -9102,138 +9588,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487212865}
   m_CullTransparentMesh: 0
---- !u!1 &1508253753
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1508253754}
-  - component: {fileID: 1508253758}
-  - component: {fileID: 1508253757}
-  - component: {fileID: 1508253756}
-  - component: {fileID: 1508253755}
-  m_Layer: 0
-  m_Name: Wipe2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1508253754
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508253753}
-  m_LocalRotation: {x: 0.5429223, y: 0.45302916, z: 0.45302904, w: 0.5429224}
-  m_LocalPosition: {x: -0.094, y: -0.015, z: 0.036}
-  m_LocalScale: {x: 0.03698021, y: 0.036980208, z: 0.0031861775}
-  m_Children: []
-  m_Father: {fileID: 364826982}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 100.72301, z: 0}
---- !u!114 &1508253755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508253753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
---- !u!65 &1508253756
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508253753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1508253757
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508253753}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1508253758
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508253753}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1521557269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9359,14 +9713,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -9736,6 +10098,164 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570658695}
   m_CullTransparentMesh: 0
+--- !u!1 &1584081646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1584081647}
+  - component: {fileID: 1584081649}
+  - component: {fileID: 1584081648}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1584081647
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584081646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1224821998}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1584081648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584081646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Close
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1584081648}
+    characterCount: 6
+    spriteCount: 0
+    spaceCount: 1
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1584081649
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584081646}
+  m_CullTransparentMesh: 0
 --- !u!1 &1590729425
 GameObject:
   m_ObjectHideFlags: 0
@@ -9792,14 +10312,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10034,14 +10562,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10620,14 +11156,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10786,14 +11330,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10861,14 +11413,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10905,14 +11465,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -10974,14 +11542,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -11241,14 +11817,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -11550,14 +12134,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -11788,14 +12380,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -11863,127 +12463,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
---- !u!1001 &1945618554
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 364826982}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_Name
-      value: Syringe
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0457
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0039
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0328
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.55221
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.55221
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.55221
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 75b75af72b1069941be242cf4e29de26, type: 3}
---- !u!1 &1945618555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 75b75af72b1069941be242cf4e29de26,
-    type: 3}
-  m_PrefabInstance: {fileID: 1945618554}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1945618556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945618555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -12064,6 +12559,162 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089faad4c0afeb04988faeee29564e6b, type: 3}
+--- !u!1 &1959009952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959009953}
+  - component: {fileID: 1959009955}
+  - component: {fileID: 1959009954}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1959009953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959009952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 680998727}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1959009954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959009952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Release
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1959009954}
+    characterCount: 7
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1959009955
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959009952}
+  m_CullTransparentMesh: 0
 --- !u!1001 &2009440294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12133,50 +12784,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089faad4c0afeb04988faeee29564e6b, type: 3}
---- !u!1 &2028807378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6827278234152075631, guid: b94176c89ae64334cae97abbb7e5c8db,
-    type: 3}
-  m_PrefabInstance: {fileID: 672877072}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2028807383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028807378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  isEmpty: 0
-  pointTotal: 0
-  salineAmount: 5
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &2030589550
 GameObject:
   m_ObjectHideFlags: 0
@@ -12522,14 +13129,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -12728,7 +13343,7 @@ Transform:
   - {fileID: 1895817873}
   - {fileID: 852088423}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2138946945
 MonoBehaviour:
@@ -12749,14 +13364,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2
@@ -12826,14 +13449,22 @@ MonoBehaviour:
   pressed: 0
   correctSet: 0
   chosenSet: 0
+  trackTime: 0
   isEmpty: 0
+  playSound: 0
+  timertrack: 0
+  interval: 0
   pointTotal: 0
   salineAmount: 5
+  time: 0
+  inputText: 
   followTarget: 
   movementSpeed: 1
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
+  aSource: {fileID: 0}
+  clip: {fileID: 0}
   jumpVelocity: 8.5
   fallMult: 2.5
   lowJumpMult: 2

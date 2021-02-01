@@ -1,0 +1,13 @@
+Player align ClampPos
+FourStartCanvas off
+ClampCanvas on
+Label 'Loop'
+If
+	ClampCanvas/Close pressed
+Then
+	ClampCanvas/Close reset
+Prompt 'You close the clamp.'
+Wait 2
+	Do '07/FourHourStart.txt'
+Endif
+Goto 'Loop'

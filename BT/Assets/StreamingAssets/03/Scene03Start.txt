@@ -2,6 +2,12 @@ Label 'Scene3_MainLoop'
 /Canvas/SelectionPanel on
 /Canvas/Table off
 If
+	/Canvas/MainMenu pressed
+Then
+	/Canvas/MainMenu reset
+	SceneManager switchtoScene Scenes/MainMenu
+Endif
+If
     /Canvas/SelectionPanel/Panel/BloodBox pressed
 Then
     /Canvas/SelectionPanel/Panel/BloodBox reset
