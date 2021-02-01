@@ -6,6 +6,12 @@ GM Then
 /Canvas/Table/Panel/Ice reset
 IcePack play In
 GM ENDIF
+If
+	/Canvas/MainMenu pressed
+Then
+	/Canvas/MainMenu reset
+	SceneManager switchtoScene Scenes/MainMenu
+Endif
 GM If
 /Canvas/Table/Panel/Divider pressed
 GM Then

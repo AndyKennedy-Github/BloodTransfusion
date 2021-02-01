@@ -8,12 +8,12 @@ GM Wait 1
 GM If
     ConsentForm Menu.Result YES
 GM Then
-GM  Create CheckMark PatiMark
+#GM  Create CheckMark PatiMark
 ScoreTracker gain 1
 GM Else
-GM   Create XMark PatiMark
+#GM   Create XMark PatiMark
 GM Endif
-   PatiMark MoveTo ConsentForm/PatientLine
+#   PatiMark MoveTo ConsentForm/PatientLine
 GM Wait 2
    ConsentForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1

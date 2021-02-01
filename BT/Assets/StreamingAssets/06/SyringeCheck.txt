@@ -15,7 +15,7 @@ Then
 	SalineTracker reducesaline
 Endif
 If
-	SalineTracker isempty
+	SalineTracker salineamount 1
 Then
 	Do '06/Dish.txt'
 Else

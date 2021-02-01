@@ -3,5 +3,5 @@ Player lookAt GXMForm
 Player follow GXMForm
 GM Wait 1
 Player follow false
-GM Do Scene02ScenarioFiles/GXMForm.txt
+GM Do 'Scene02ScenarioFiles/GXMForm.txt'
 

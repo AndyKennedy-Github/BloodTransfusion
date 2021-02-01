@@ -8,16 +8,15 @@ GM Wait 1
 GM If
     ConsentForm Menu.Result YES
 GM Then
-GM  Create CheckMark ConMark
+#GM  Create CheckMark ConMark
 ScoreTracker gain 1
 GM Else
-GM   Create XMark ConMark
+#GM   Create XMark ConMark
 GM Endif
-   ConMark MoveTo ConsentForm/ValidLine
+ #  ConMark MoveTo ConsentForm/ValidLine
 GM Wait 2
    ConsentForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1
-Player moveto DefCamPos
-Player lookAt DefLook
+Player align DefLook
 GM Wait 1
-GM Do Scene02ScenarioFiles/Scene02Test.txt
+GM Do 'Scene02ScenarioFiles/Scene02Test.txt'

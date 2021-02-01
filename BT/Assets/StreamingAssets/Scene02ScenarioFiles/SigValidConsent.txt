@@ -8,12 +8,12 @@ GM Wait 1
 GM If
     ConsentForm Menu.Result YES
 GM Then
-GM  Create CheckMark SigMark
+#GM  Create CheckMark SigMark
 ScoreTracker gain 1
 GM Else
-GM   Create XMark SigMark
+#GM   Create XMark SigMark
 GM Endif
-   SigMark MoveTo ConsentForm/SignatureLine
+#   SigMark MoveTo ConsentForm/SignatureLine
 GM Wait 2
    ConsentForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1
