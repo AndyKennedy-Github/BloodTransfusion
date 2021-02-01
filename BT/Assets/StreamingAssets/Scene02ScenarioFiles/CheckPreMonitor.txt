@@ -7,12 +7,12 @@ GM Wait 1
 GM If
     Monitor Menu.Result YES
 GM Then
-#GM  Create CheckMark 
-  # CheckMark MoveTo Monitor/PrescriptionCheck
+GM  Create CheckMark 'Mark'
+   Mark MoveTo Monitor/PrescriptionCheck
 	ScoreTracker gain 1
 GM Else
 ScoreTracker gain 0
-#GM   Create XMark
+GM   Create XMark 'Mark'
 GM Endif
 GM Wait 1
 Player align DefLook

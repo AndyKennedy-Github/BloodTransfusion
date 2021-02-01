@@ -7,12 +7,12 @@ GM Wait 1
 GM If
     Phone Menu.Result YES
 GM Then
-#GM  Create CheckMark NameMark
+GM  Create CheckMark 'NameMark'
 ScoreTracker gain 1
 GM Else
-#GM   Create XMark NameMark
+GM   Create XMark 'NameMark'
 GM Endif
-#   NameMark MoveTo Phone/Phone
+   NameMark MoveTo Phone/Phone
 GM Wait 1
 Player align DefLook
 GM Wait 1

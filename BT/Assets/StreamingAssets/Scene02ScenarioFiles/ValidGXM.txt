@@ -8,12 +8,12 @@ GM Wait 1
 GM If
     GXMForm Menu.Result YES
 GM Then
-#GM  Create CheckMark ValMark
+GM  Create CheckMark 'ValMark'
 ScoreTracker gain 1
 GM Else
-#GM   Create XMark ValMark
+GM   Create XMark 'ValMark'
 GM Endif
-#   ValMark MoveTo GXMForm/ValidLine
+   ValMark MoveTo GXMForm/ValidLine
 GM Wait 2
    GXMForm lookAtMe 0.0,0.5,-0.05
 GM Do 'Scene02ScenarioFiles/ConsentForm.txt'
