@@ -378,64 +378,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a1c0cb343e700b745909eefd0217f078, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 197243f558a56d842b4be88dab35997b, type: 3}
---- !u!1 &4263945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 197243f558a56d842b4be88dab35997b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4263944}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4263946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4263945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
---- !u!4 &4263947 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 197243f558a56d842b4be88dab35997b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4263944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &32207050
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +457,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -754,6 +702,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1458,6 +1412,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1781,7 +1741,7 @@ Transform:
   m_LocalScale: {x: 0.13811527, y: 0.001668604, z: 0.03296766}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 31.876001, z: 0}
 --- !u!65 &254032981
 BoxCollider:
@@ -1885,6 +1845,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2031,6 +1997,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2174,6 +2146,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2777,6 +2755,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2940,6 +2924,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -3464,7 +3454,7 @@ Transform:
   - {fileID: 1310710665}
   - {fileID: 717237039}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &523155300
 GameObject:
@@ -3545,6 +3535,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -3784,6 +3780,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -3836,6 +3838,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -4183,6 +4191,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -4746,6 +4760,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -5240,6 +5260,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -5403,6 +5429,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -5580,6 +5612,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -5717,9 +5755,15 @@ MonoBehaviour:
   fallMult: 2.5
   lowJumpMult: 2
   gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
+  center: {x: 500, y: 300}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 50
+    m_Right: 50
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -5961,6 +6005,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -6321,7 +6371,7 @@ Transform:
   - {fileID: 313388096}
   - {fileID: 1621749380}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128461966
 GameObject:
@@ -6402,6 +6452,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -6735,6 +6791,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -7051,7 +7113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1279867594
 GameObject:
@@ -7355,6 +7417,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -7624,6 +7692,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -7929,6 +8003,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -8990,6 +9070,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -9393,7 +9479,7 @@ Transform:
   - {fileID: 1131498050}
   - {fileID: 125225737}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1845853121
 GameObject:
@@ -10265,6 +10351,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -10354,6 +10446,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -10544,75 +10642,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114517434}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2128752853
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4263947}
-    m_Modifications:
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.3037386
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.906
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.068498865
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000015196436
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7187128
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.000000015707975
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6953071
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 56.098003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907208617959, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085628907209044935, guid: 83fe48b8f919ea141a2a7b56fd1c1873,
-        type: 3}
-      propertyPath: m_Name
-      value: monitor
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 83fe48b8f919ea141a2a7b56fd1c1873, type: 3}
 --- !u!1001 &817375661141641352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10949,6 +10978,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -11075,6 +11110,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
