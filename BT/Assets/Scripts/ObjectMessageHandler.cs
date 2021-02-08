@@ -56,7 +56,11 @@ public class ObjectMessageHandler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         if (centerButton==null){
-            centerButton = Resources.Load<Texture2D>("radialSelect");              
+            centerButton = Resources.Load<Texture2D>("RadialMenu_center_01");              
+        }
+        if (answerButton == null)
+        {
+            answerButton = Resources.Load<Texture2D>("RadialMenu_Response_01");
         }
 
         //MenuStart();
@@ -715,7 +719,9 @@ Vector3 oldpos ;
 
     public  Vector2 center = new Vector2(500,500); // position of center button
     public int radius = 125;  // pixels radius to center of button;
-    public Texture centerButton;  
+    public Texture centerButton;
+    public Texture answerButton;
+    public RectOffset rectOff;
     // public Texture [] normalButtons;// : Texture[];
     // public Texture [] selectedButtons;// : Texture[];
     public string question;
@@ -747,9 +753,9 @@ Vector3 oldpos ;
         
         var w = menusize;//normalButtons[0].width;
         var h = menusize;//normalButtons[0].height;
-        var rect = new Rect(0,0,w, h);
+        var rect = new Rect(0, 0, w, h);
         
-        var v = new Vector2(radius,0);
+        var v = new Vector2(radius * 1.5f,0);
         
         for (var i = 0; i < ringCount; i++) {
             rect.x = center.x + v.x - w * 0.5f;
@@ -795,23 +801,27 @@ Vector3 oldpos ;
 
         //    GUIContent content;
         //       content = new GUIContent(question, centerButton, "This is a tooltip");
+        rectOff.left = 50;
+        rectOff.right = 50;
         GUIStyle style = new GUIStyle();
-
+        style.normal.textColor = Color.white;
+        style.wordWrap = true;
         style.fontSize = menusize/4; //change the font size        
         style.alignment = TextAnchor.MiddleCenter;
+        style.padding = rectOff;
         GUI.DrawTexture(centerRect, centerButton);
-        GUI.Label(centerRect, question,style);
+        GUI.Label(centerRect, question, style);
         //print(this.name + "'s question is "+ question);
 
         if (showButtons) {
             for (var i = 0; i < choices.Length; i++) {
                 if (i != index){ 
-                    GUI.DrawTexture(ringRects[i], centerButton);
-                    GUI.Label(ringRects[i], choices[i],style);
+                    GUI.DrawTexture(ringRects[i], answerButton);
+                    GUI.Label(ringRects[i], choices[i], style);
                     //GUI.DrawTexture(ringRects[i], normalButtons[i]);
                 }else{
-                    GUI.DrawTexture(ringRects[i], centerButton);
-                    GUI.Box(ringRects[i], choices[i],style);
+                    GUI.DrawTexture(ringRects[i], answerButton);
+                    GUI.Box(ringRects[i], choices[i], style);
                 }
             }
         }
