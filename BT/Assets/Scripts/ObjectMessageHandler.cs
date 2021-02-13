@@ -801,8 +801,8 @@ Vector3 oldpos ;
 
         //    GUIContent content;
         //       content = new GUIContent(question, centerButton, "This is a tooltip");
-        rectOff.left = 50;
-        rectOff.right = 50;
+        rectOff.left = 100;
+        rectOff.right = 100;
         GUIStyle style = new GUIStyle();
         style.normal.textColor = Color.white;
         style.wordWrap = true;
