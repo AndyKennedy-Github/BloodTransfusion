@@ -8,3 +8,4 @@ wait 1
 Player align MonitorLook
 Wait 1
  Do 'Scene02ScenarioFiles/CheckPreMonitor.txt'
+Endif
