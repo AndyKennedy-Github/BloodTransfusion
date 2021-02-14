@@ -301,6 +301,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -877,12 +883,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &489006019 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 3af8a6bfdc00f9341b907c7294def62a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1207158668}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499289103
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +962,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1112,6 +1118,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1433,6 +1445,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1615,77 +1633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &840146430 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4b14e6d5b7a633a41ac32c13752ef621,
-    type: 3}
-  m_PrefabInstance: {fileID: 2144922091}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &840146431
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840146430}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8a1c7004a3a38bf4fa8b6358d7a0eca1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &840146432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840146430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1001 &855091892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1938,7 +1885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &950740664
 GameObject:
@@ -2019,6 +1966,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2102,6 +2055,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2141,7 +2100,7 @@ Transform:
   - {fileID: 1916647625}
   - {fileID: 855091893}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1069724792
 PrefabInstance:
@@ -2150,6 +2109,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.1148632
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7189838
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6950268
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.054684747
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -91.941
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0341e5968b50c0945924572b75ed5ae6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0341e5968b50c0945924572b75ed5ae6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2271,6 +2270,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2497,6 +2502,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2508,6 +2519,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3af8a6bfdc00f9341b907c7294def62a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3af8a6bfdc00f9341b907c7294def62a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.838
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3af8a6bfdc00f9341b907c7294def62a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2714,6 +2735,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2918,166 +2945,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1430534008}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1452681099
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1452681100}
-  - component: {fileID: 1452681103}
-  - component: {fileID: 1452681102}
-  - component: {fileID: 1452681101}
-  - component: {fileID: 1452681104}
-  - component: {fileID: 1452681105}
-  m_Layer: 0
-  m_Name: Divider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1452681100
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1468, z: -0.003}
-  m_LocalScale: {x: 0.44030055, y: 0.0047037285, z: 0.2971661}
-  m_Children: []
-  m_Father: {fileID: 489006019}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1452681101
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1452681102
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1452681103
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &1452681104
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5d9a21d5009db54abf8276fbbbebe4d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1452681105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452681099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &1507746735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,129 +3231,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517730376}
   m_CullTransparentMesh: 0
---- !u!1 &1548965980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 3af8a6bfdc00f9341b907c7294def62a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1207158668}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1548965981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548965980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
---- !u!1 &1569806703 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3456528008182656330, guid: 3af8a6bfdc00f9341b907c7294def62a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1207158668}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1569806707
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569806703}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c1ae8cb3fe82de14f8cf18a1423fd39b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1569806708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569806703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &1627121609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,6 +3626,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -3965,6 +3715,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -4048,6 +3804,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -4208,77 +3970,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752831897}
   m_CullTransparentMesh: 0
---- !u!1 &1755845400 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3798593989268518046, guid: 0341e5968b50c0945924572b75ed5ae6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1069724792}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1755845404
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755845400}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 270eedc369bdbf740aedbeae0336953e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1755845405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755845400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  toScale: 0
-  toMove: 0
-  follow: 0
-  pressed: 0
-  correctSet: 0
-  chosenSet: 0
-  trackTime: 0
-  isEmpty: 0
-  playSound: 0
-  timertrack: 0
-  interval: 0
-  pointTotal: 0
-  salineAmount: 5
-  time: 0
-  inputText: 
-  followTarget: 
-  movementSpeed: 1
-  scale: {x: 5, y: 5, z: 5}
-  pos: {x: 5, y: 5, z: 5}
-  offset: {x: 0, y: 0.2, z: -0.1}
-  aSource: {fileID: 0}
-  clip: {fileID: 0}
-  jumpVelocity: 8.5
-  fallMult: 2.5
-  lowJumpMult: 2
-  gravity: {x: 0, y: -10, z: 0}
-  center: {x: 500, y: 500}
-  radius: 125
-  centerButton: {fileID: 0}
-  question: 
-  choices: []
-  menuSizeFraction: 0.5
-  radialMenuActive: 0
 --- !u!1 &1768755186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4657,36 +4348,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853295913}
   m_CullTransparentMesh: 0
---- !u!1 &1903147894
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1903147895}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: BloodBox
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1903147895
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903147894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.378, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 489006019}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1916647624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5051,7 +4712,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4b14e6d5b7a633a41ac32c13752ef621,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b14e6d5b7a633a41ac32c13752ef621,
         type: 3}

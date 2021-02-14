@@ -1,18 +1,15 @@
 GM Wait 1
-   Phone Menu.Question Call Blood Bank?
-   Phone Menu.on Phone/Phone
+   ZoomSpot Menu.Question Call Blood Bank?
+   ZoomSpot Menu.on ZoomSpot
 GM WaitFor 
-   Phone Menu.Done 
+   ZoomSpot Menu.Done 
 GM Wait 1
 GM If
-    Phone Menu.Result YES
+    ZoomSpot Menu.Result YES
 GM Then
-GM  Create CheckMark 'NameMark'
 ScoreTracker gain 1
 GM Else
-GM   Create XMark 'NameMark'
 GM Endif
-   NameMark MoveTo Phone/Phone
 GM Wait 1
 Player align DefLook
 GM Wait 1

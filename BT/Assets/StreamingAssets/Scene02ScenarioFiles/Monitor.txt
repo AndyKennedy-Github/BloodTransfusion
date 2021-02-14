@@ -1,6 +1,4 @@
 /Canvas/SelectionPanel off
-Player lookAt Monitor
-Player follow Monitor
+Player align MonitorLook
 GM Wait 1
-Player follow false
 GM Do 'Scene02ScenarioFiles/CheckPreMonitor.txt'
