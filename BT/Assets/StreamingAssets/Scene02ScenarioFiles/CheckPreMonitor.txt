@@ -1,17 +1,21 @@
-GM Wait 1
+Wait 1
    ZoomSpot Menu.Question Is there a valid prescription?
    ZoomSpot Menu.on ZoomSpot
-GM WaitFor 
+WaitFor 
    ZoomSpot Menu.Done 
-GM Wait 1
-GM If
-    ZoomSpot Menu.Result YES
-GM Then
-    ScoreTracker gain 1
-GM Else
+Wait 1
+If
+    ZoomSpot Menu.Result Y
+Then
+wait 1
+create checkmark mark
+wait 1
+mark align monitor
+ScoreTracker gain 1
+Else
 ScoreTracker gain 0
-GM Endif
-GM Wait 1
+Endif
+Wait 1
 Player align DefLook
-GM Wait 1
-GM Do 'Scene02ScenarioFiles/Scene02Test.txt'
+Wait 1
+Do 'Scene02ScenarioFiles/Scene02Test.txt'

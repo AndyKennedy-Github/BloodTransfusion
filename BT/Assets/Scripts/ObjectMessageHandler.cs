@@ -69,8 +69,8 @@ public class ObjectMessageHandler : MonoBehaviour
         question = "Your Answer?";
         //print(this.name + ": Start: Setting Question: "+ question);
 
-        choices[0] = "YES";
-        choices[1] = "NO";
+        choices[0] = "Y";
+        choices[1] = "N";
         radialMenuActive = false;
         GameObject go=this.gameObject;
         Vector3 mpos= go.transform.position;

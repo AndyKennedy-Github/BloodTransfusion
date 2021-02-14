@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Data;
 using System.Collections;
 using System.Collections.Generic;
@@ -166,7 +166,6 @@ public class CommandSequence{
     public enum IFState {False, Condition, Then, Else};
     public enum WAITState {False,Condition,ConditionAny,ConditionAll};
     public enum CHOICEState {False,Choice,NotChoice};
-
     public IFState IFstate = IFState.False;
     public WAITState WAITstate = WAITState.False;
     public CHOICEState CHOICEstate = CHOICEState.False;
@@ -179,7 +178,7 @@ public class MyGameManager : MonoBehaviour
 {
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
-    public string Prompt;
+    public string Prompt, Prompt1, Prompt2;
     Dictionary<string, string> fullnames = new Dictionary<string, string>();
     Dictionary<string, int> label = new Dictionary<string, int>();
     Dictionary<string, float> variables = new Dictionary<string, float>();
@@ -201,6 +200,8 @@ public class MyGameManager : MonoBehaviour
         "create",
         "goto",
         "prompt",
+        "speaker1",
+        "speaker2",
         "label"
     };
 
@@ -268,15 +269,12 @@ public class MyGameManager : MonoBehaviour
 
 
     //Executes array of commands
-    IEnumerator ExecuteCommands(string [] commands,int startnum = 0 )
+    IEnumerator ExecuteCommands(string [] commands)
     {
         CommandSequence cs = new CommandSequence();
-        Stack<CommandSequence> css = new Stack<CommandSequence>();
-        css.Push(cs);
         cs.nestingLevel = currentNestingLevel;
         for (int i = 0; i < commands.Length; i++)
         {
-
             string objName="",command="",cparams="";
             cs.commandNum=i;
             if (!GetCommandParts(cs, ref commands, ref objName,ref command, ref cparams))
@@ -288,15 +286,13 @@ public class MyGameManager : MonoBehaviour
 
 
             //First check IF states and DoChoice blocks
-            if (IFstateSwitch(command,ref css)){ //handle IF-THEN-ELSE-ENDIF commands
-                cs = css.Peek();
+            if (IFstateSwitch(command,cs)){ //handle IF-THEN-ELSE-ENDIF commands
                 print("cs.IFstate after stateswitch = "+ cs.IFstate);
-
                 continue;
             }
 
             //Check if Game Manager commands or expressions (begin with $)
-            if (objName=="GM" || (objName[0] == '$'  && (command==null || command[0]=='=' || command[0]=='#'))  || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            if (objName=="GM" || (objName[0] == '$'  && (command==null || command[0]=='='))  || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
             {
                 //execute GameManager commands
                 print("GM command : "+ command + " for object "+ objName);
@@ -377,7 +373,8 @@ public class MyGameManager : MonoBehaviour
                     print("Load "+ sArray[0]);
                     currentNestingLevel++;
                     StartCoroutine(exectueScenarioFiles(sArray));
-                    bool coroutineDone = false;
+                    // coroutineDone is never called
+                    //bool coroutineDone = false;
                     while (currentNestingLevel!=cs.nestingLevel){ //keep doing until coroutine done
                         yield return new WaitForSeconds(1.0f);
                     }
@@ -421,6 +418,21 @@ public class MyGameManager : MonoBehaviour
                     string paramStr = cparams;
                     label.AddSafe(paramStr,i);
                 }
+                if (command == "prompt")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt = (string)ep.EvaluateParam(cparams);
+                }
+                if (command == "speaker1")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt1 = (string)ep.EvaluateParam(cparams);
+                }
+                if (command == "speaker2")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt2 = (string)ep.EvaluateParam(cparams);
+                }
                 continue;
 
 
@@ -456,61 +468,40 @@ public class MyGameManager : MonoBehaviour
         currentNestingLevel--;
     }
 
-    void CommandSequencePush()
-    {
-
-    }
     //Handles states for If-Then-Else-Endif and DoChoice blocks
-    bool IFstateSwitch(string command,ref Stack<CommandSequence> css)
-    {                 
-        CommandSequence cs = css.Peek();   
-print("IFstateSwitch: command="+ command + ", cs.IFstate=" + cs.IFstate);
-        //Handle DoChoice choices 
-
-        if (command == "]"){  //end of choices, so exit choice mode
+    bool IFstateSwitch(string command,CommandSequence cs)
+    {                    
+        if (command == "]"){  //endo of choices
             cs.CHOICEstate = CommandSequence.CHOICEState.False;
             return true;
         }
-        if (cs.CHOICEstate== CommandSequence.CHOICEState.NotChoice)  //skip wrong choices
+        if (cs.CHOICEstate== CommandSequence.CHOICEState.NotChoice)
             return true;
-        if (cs.CHOICEstate== CommandSequence.CHOICEState.Choice)  //if currently on choice line, all remaining ones are wrong
+        if (cs.CHOICEstate== CommandSequence.CHOICEState.Choice)
             cs.CHOICEstate = CommandSequence.CHOICEState.NotChoice;
 
         //Handle IF-THEN-ELSE-ENDIF statements
         //cs.IFstate keeps track of where we are in the IF statement
-//        if (cs.IFstate == CommandSequence.IFState.Condition){  //If we are in conditional part (IF)
+        if (cs.IFstate == CommandSequence.IFState.Condition){  //If we are in conditional part (IF)
             if (command == "then"){         //IF switches us to next state
                 cs.IFstate = CommandSequence.IFState.Then;
-//                css.PushCS(cs);
-
                 return true;
             }
-//        }
-        if (command == "else"){         //switch state when ELSE statement
-//            css.Pop();
-//            cs= css.Peek();
-//            if (cs.IFstate == CommandSequence.IFState.Then){       //If we are in THEN statements
+        }
+        if (cs.IFstate == CommandSequence.IFState.Then){       //If we are in THEN statements
+            if (command == "else"){         //switch state when ELSE statement
                 cs.IFstate = CommandSequence.IFState.Else;
-//                css.PushCS(cs);
                 return true;
-//            }
+            }
         }
         if (command == "endif"){            //Leave cs.IFstate when ENDIF is reached
-                cs = css.Pop();
-                CommandSequence cst ;
-                if (css.Count() ==0)
-                    css.PushCS(cs);
                 cs.IFstate = CommandSequence.IFState.False;
                 return true;
         }
         if (command == "if"){       //IF command
-            if (css.Peek().IFstate!= CommandSequence.IFState.False)
-                css.PushCS(cs);
             cs.IFstate = CommandSequence.IFState.Condition;
                 return true;
         }
-        
-print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
         
         if (cs.IFstate== CommandSequence.IFState.Then && !cs.IFresult)  //skip THEN if conditiional is false
                 return true;
@@ -561,7 +552,7 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
 
             //Trim off end comments like this  #this is a comment
             //print("cs.commandLine cparams starts at "+ start);
-            string ptmp = cs.commandLine.Substring(start);*/
+            string ptmp = cs.commandLine.Substring(start);
             string ptmp = cs.commandLine.StringAfter(command);
             //print("ptmp="+ptmp);
             string [] tmp = ptmp.Split('#');
@@ -586,7 +577,7 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
         //print("cs.commandLine cparams starts at "+ start);
         return all.Substring(start);
     }
-*/
+
     private GameObject[] m_gameObjects;
 
     //Find children objects of objName for commands meant for multiple objects
@@ -697,7 +688,8 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
 
 
         //evaluate expressions
-        ParamData res;
+        //ParamData res;
+        // Commenting out ParamData res as it is never called - TAR 1/6/2021
         if (command!=null && command[0] == '$') 
             command =  ep.EvaluateParam(command);
         if (cparams!=null && cparams[0] == '$') 
@@ -712,28 +704,45 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
 
     }
 
-    void OnGUI() {
-        GUI.contentColor = new Color(1.0f,1.0f,1f);
+    void OnGUI()
+    {
+        GUI.contentColor = new Color(1.0f, 1.0f, 1f);
 
         GUIStyle style = new GUIStyle(GUI.skin.textArea);
 
-        style.fontSize = Screen.height/40; //change the font size 
-        if (GUIcommandLine!=null){
+        style.fontSize = Screen.height / 40; //change the font size 
+        if (GUIcommandLine != null)
+        {
 
-           GUI.TextArea(new Rect(10, 10, Screen.width/2, Screen.height/5), GUIlastcommandLine + "\n" + GUIcommandLine,style);
-//           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
- 
+            GUI.TextArea(new Rect(10, 10, Screen.width / 2, Screen.height / 5), GUIlastcommandLine + "\n" + GUIcommandLine, style);
+            //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
+
         }
-        GUI.contentColor = new Color(1.0f,1.0f,0f);
+        GUI.contentColor = new Color(1.0f, 1.0f, 0f);
 
         //GUIStyle style = new GUIStyle(GUI.skin.textArea);
 
-        style.fontSize = Screen.height/10; //change the font size 
-        if (Prompt!=null && Prompt != ""){
+        int border = 10;
+        float dialogWidth = 0.8f;
+        style.fontSize = Screen.height / 10; //change the font size 
+        if (Prompt1 != null && Prompt1 != "")
+        {
+            GUI.TextArea(new Rect(border, Screen.height * .4f, Screen.width * dialogWidth, Screen.height / 5), Prompt1, style);
+        }
+        style.fontSize = Screen.height / 10; //change the font size 
+        if (Prompt2 != null && Prompt2 != "")
+        {
+            GUI.TextArea(new Rect(Screen.width * (1 - dialogWidth) - border, Screen.height * .6f, Screen.width * dialogWidth - border, Screen.height / 5), Prompt2, style);
+            //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine ); 
+        }
 
-           GUI.TextArea(new Rect(0, Screen.height*.8f, Screen.width, Screen.height/5), Prompt,style);
-//           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
- 
+
+
+        style.fontSize = Screen.height / 10; //change the font size 
+        if (Prompt != null && Prompt != "")
+        {
+            GUI.TextArea(new Rect(0, Screen.height * .8f, Screen.width, Screen.height / 5), Prompt, style);
+            //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
         }
     }
 
@@ -747,20 +756,6 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
 //AddSafe is a dictionary helper class to add extension that overrides duplcate entries
 static class Extensions
 {
-
-    public static void PushCS(this Stack<CommandSequence> css, CommandSequence cs)
-    {
-        CommandSequence ncs = new CommandSequence();
-        ncs.commandNum = cs.commandNum;
-        ncs.nestingLevel = cs.nestingLevel;
-        css.Push(ncs);
-    }
-
-    public static CommandSequence PopCS(this Stack<CommandSequence> css)
-    {
-        return css.Pop();
-    }
-
     //gets the rest of "all" after location of "match" in all.
     public static string StringAfter(this string all,string match)
     {
@@ -795,3 +790,4 @@ static class Extensions
         }
     }
 }
+*/
