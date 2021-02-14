@@ -1,4 +1,10 @@
+If
+ ScoreTracker iscomplete 0
+Then
+ Do 'Scene02ScenarioFiles/Scene02Test.txt'
+Else
 /Canvas/SelectionPanel off
+wait 1
 Player align MonitorLook
-GM Wait 1
-GM Do 'Scene02ScenarioFiles/CheckPreMonitor.txt'
+Wait 1
+ Do 'Scene02ScenarioFiles/CheckPreMonitor.txt'

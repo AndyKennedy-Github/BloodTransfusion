@@ -1,0 +1,21 @@
+If
+ScoreTracker iscomplete 2
+Then 
+Goto 8
+Else
+GM Do 'Scene02ScenarioFiles/PatientCheckGXM.txt'
+Endif
+If
+ScoreTracker iscomplete 3
+Then 
+Goto 15
+Else 
+GM Do 'Scene02ScenarioFiles/BloodOrderGXM.txt'
+Endif
+If
+ScoreTracker iscomplete 4
+Then
+Do 'Scene02ScenarioFiles/ConsentFormSkips.txt'
+Else
+ Do 'Scene02ScenarioFiles/ValidGXM.txt'
+Endif

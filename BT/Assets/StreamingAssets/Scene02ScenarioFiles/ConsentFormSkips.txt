@@ -1,0 +1,11 @@
+If
+ScoreTracker rangecomplete 2-4
+Then
+GXMForm/FormGeom changeshader good
+Else
+GXMForm/FormGeom changeshader bad
+Endif
+ Do 'Scene02ScenarioFiles/DateCheckConsent.txt'
+ Do 'Scene02ScenarioFiles/SigValidConsent.txt'
+ Do 'Scene02ScenarioFiles/PatientCheckConsent.txt'
+ Do 'Scene02ScenarioFiles/ValidConsent.txt'

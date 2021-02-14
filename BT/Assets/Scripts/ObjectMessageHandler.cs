@@ -17,14 +17,18 @@ public class ObjectMessageHandler : MonoBehaviour
     public bool trackTime = false;
     public bool isEmpty;
     public bool playSound;
+    public List<bool> stages = new List<bool>();
+    public bool stageset;
     public float timertrack = 0;
     public float interval;
-    public int pointTotal = 0;
+    public float pointTotal = 0;
     public int salineAmount = 5;
     public int time = 0;
+    public float percentComplete = 0.0f;
     public string inputText;
     public string followTarget;
     public float movementSpeed = 1f;
+    public Material normal, good, bad;
     private Vector3 movement;
     public Vector3 scale = new Vector3(5, 5, 5);
     public Vector3 pos = new Vector3(5, 5, 5);
@@ -36,6 +40,7 @@ public class ObjectMessageHandler : MonoBehaviour
     private Rigidbody rb; //This object's ridid body
     Animator animator;
     IKController ikcontroller;
+    MeshRenderer mr;
     // Start is called before the first frame update
 
     //instance of expression parser to handle number, string, and bool expressions
@@ -49,6 +54,7 @@ public class ObjectMessageHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         oldpos = this.transform.position;
         ikcontroller = GetComponent<IKController>();
+        mr = GetComponent<MeshRenderer>();
     }
 
 
@@ -238,6 +244,118 @@ public class ObjectMessageHandler : MonoBehaviour
                 return false;
             }
         }
+
+        if(msg == "setstages")
+        {
+            if(param == "2")
+            {
+                bool compDone = false;
+                bool phoneDone = false;
+                bool GXMpatient = false;
+                bool GXMblood = false;
+                bool GXMvalid = false;
+                bool consentDates = false;
+                bool consentSignature = false;
+                bool consentPatient = false;
+                bool consentIC = false;
+
+                stages.Add(compDone);
+                stages.Add(phoneDone);
+                stages.Add(GXMpatient);
+                stages.Add(GXMblood);
+                stages.Add(GXMvalid);
+                stages.Add(consentDates);
+                stages.Add(consentSignature);
+                stages.Add(consentPatient);
+                stages.Add(consentIC);
+
+                stageset = true;
+            }
+        }
+
+        if(msg == "complete")
+        {
+            stages[int.Parse(param)] = true;
+        }
+
+        if(msg == "iscomplete")
+        {
+            return stages[int.Parse(param)];
+        }
+
+        if(msg == "rangecomplete")
+        {
+            char[] separators = new char[] { ' ', ',', '-' };
+
+            string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            int start = int.Parse(temp[0]);
+            int stop = int.Parse(temp[1]);
+            int totalComplete = 0;
+
+            for(int i = start; i < stop +1; i++)
+            {
+                if(stages[i])
+                {
+                    totalComplete++;
+                }
+            }
+
+            Debug.LogWarning("Total: " + totalComplete);
+            if(totalComplete == stop - start + 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if(msg == "getcompletepercent")
+        {
+            Debug.LogWarning(pointTotal);
+            percentComplete = (pointTotal/stages.Count) * 100;
+            Debug.LogWarning(percentComplete);
+        }
+
+        if(msg == "allcomplete")
+        {
+            
+            if (percentComplete == 100)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }    
+        }
+
+        if(msg == "percentachieved")
+        {
+            if(percentComplete > int.Parse(param))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if(msg == "showtext")
+        {
+            if(GetComponent<UITextShower>() != null)
+            {
+                GetComponent<UITextShower>().DisplayText();
+            }
+        }
+
+        if(msg == "stageset")
+        {
+            return stageset;
+        }
         /////////////////////////////////////////////////////////////////////
 
         // ON
@@ -249,6 +367,10 @@ public class ObjectMessageHandler : MonoBehaviour
         if (msg == "off")
         {
             this.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if(msg == "delete")
+        {
+            Destroy(this.gameObject);
         }
 
         // ROTATEY
@@ -323,6 +445,72 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        if(msg == "changeshader")
+        {
+            Material[] mats = mr.materials;
+            if(param == "normal")
+            {
+                mats[1] = normal;
+                mr.materials = mats;
+            }
+            else if(param == "good")
+            {
+                mats[1] = good;
+                mr.materials = mats;
+            }
+            else if (param == "bad")
+            {
+                mats[1] = bad;
+                mr.materials = mats;
+            }
+            else if(param == "off")
+            {
+                Array.Resize(ref mats, mats.Length - 1);
+            }
+        }
+
+        if(msg == "shadercheck")
+        {
+            Material[] mats = mr.materials;
+            if (param == "good")
+            {
+                if (mats[1].name == good.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
+            }
+            else if(param == "bad")
+            {
+                
+                if (mats[1].name == bad.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
+            }
+            else if(param == "normal")
+            {
+                if (mats[1].name == normal.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
+            }
+        }
+
         // SCALE
         if (msg == "scale")
         {
@@ -372,15 +560,18 @@ public class ObjectMessageHandler : MonoBehaviour
             
             if ((param[0] == '-'  || System.Char.IsDigit (param[0]))){ //moveTo position
                 pos = getVector3(param);
-                transform.DOMove(pos, 2);
-            }else{
+                //transform.DOMove(pos, 2);
+                transform.DOMove(pos, 2).SetEase(Ease.Linear);
+            }
+            else{
 
                 GameObject go=GameObject.Find(param); //moveTo object's position
                 print("moving to position of game object "+ go.name);
                 pos= go.transform.position;
                 if (msg=="align")
                     transform.rotation = go.transform.rotation;
-                transform.DOMove(pos, 2);
+                //transform.DOMove(pos, 2);
+                transform.DOMove(pos, 2).SetEase(Ease.Linear);
             }
 
             print("The position is " + pos);

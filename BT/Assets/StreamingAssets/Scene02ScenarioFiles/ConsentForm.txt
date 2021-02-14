@@ -1,4 +1,35 @@
-GM Do 'Scene02ScenarioFiles/DateCheckConsent.txt'
-GM Do 'Scene02ScenarioFiles/SigValidConsent.txt'
-GM Do 'Scene02ScenarioFiles/PatientCheckConsent.txt'
-GM Do 'Scene02ScenarioFiles/ValidConsent.txt'
+If
+ScoreTracker rangecomplete 2-4
+Then
+GXMForm/FormGeom changeshader good
+Else
+GXMForm/FormGeom changeshader bad
+Endif
+If
+ScoreTracker iscomplete 5
+Then 
+Goto 15
+Else
+ Do 'Scene02ScenarioFiles/DateCheckConsent.txt'
+Endif
+If
+ScoreTracker iscomplete 6
+Then 
+Goto 22
+Else
+ Do 'Scene02ScenarioFiles/SigValidConsent.txt'
+Endif
+If
+ScoreTracker iscomplete 7
+Then 
+Goto 29
+Else
+ Do 'Scene02ScenarioFiles/PatientCheckConsent.txt'
+Endif
+If
+ScoreTracker iscomplete 8
+Then 
+Do 'Scene02ScenarioFiles/Scene02Test.txt'
+Else
+ Do 'Scene02ScenarioFiles/ValidConsent.txt'
+Endif

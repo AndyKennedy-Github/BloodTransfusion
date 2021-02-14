@@ -7,11 +7,10 @@ Wait 1
 If
     ZoomSpot Menu.Result Y
 Then
+Monitor changeshader good
 wait 1
-create checkmark mark
-wait 1
-mark align monitor
 ScoreTracker gain 1
+ScoreTracker complete 0
 Else
 ScoreTracker gain 0
 Endif

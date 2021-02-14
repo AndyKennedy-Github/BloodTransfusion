@@ -5,12 +5,15 @@ GM WaitFor
    ZoomSpot Menu.Done 
 GM Wait 1
 GM If
-    ZoomSpot Menu.Result YES
+    ZoomSpot Menu.Result Y
 GM Then
 ScoreTracker gain 1
+ScoreTracker complete 1
+wait 1
+Phone changeshader good
 GM Else
 GM Endif
-GM Wait 1
+Wait 1
 Player align DefLook
-GM Wait 1
+Wait 1
 GM Do 'Scene02ScenarioFiles/Scene02Test.txt'

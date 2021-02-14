@@ -1,27 +1,27 @@
 /Canvas/SelectionPanel on
-GM If
-/Canvas/SelectionPanel/SelectionPanel/Monitor pressed
-GM Then
-/Canvas/SelectionPanel/SelectionPanel/Monitor reset
-GM Do 'Scene02ScenarioFiles/Monitor.txt'
-GM ENDIF
-GM If
+If
+ SelectionPanel/Monitor pressed
+Then
+  SelectionPanel/Monitor reset
+  Do 'Scene02ScenarioFiles/Monitor.txt'
+Endif
+ If
 /Canvas/SelectionPanel/SelectionPanel/Papers pressed
-GM Then
+ Then
 /Canvas/SelectionPanel/SelectionPanel/Papers reset
-GM Do 'Scene02ScenarioFiles/Papers.txt'
-GM ENDIF
-GM If
+ Do 'Scene02ScenarioFiles/Papers.txt'
+ ENDIF
+ If
 /Canvas/SelectionPanel/SelectionPanel/Phone pressed
-GM Then
+ Then
 /Canvas/SelectionPanel/SelectionPanel/Phone reset
-GM Do 'Scene02ScenarioFiles/Phone.txt'
-GM ENDIF
-GM If
+ Do 'Scene02ScenarioFiles/Phone.txt'
+ ENDIF
+ If
 /Canvas/SelectionPanel/SelectionPanel/MainMenu pressed
-GM Then
+ Then
 /Canvas/SelectionPanel/SelectionPanel/MainMenu reset
-/SceneManager switchToScene Scenes/MainMenu
-GM ENDIF
-GM Wait 1
-GM Goto 1
+Do 'Scene02ScenarioFiles/EndCheck.txt'
+ ENDIF
+ Wait 1
+ Goto 1
