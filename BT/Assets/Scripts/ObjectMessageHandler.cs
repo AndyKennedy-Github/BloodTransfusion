@@ -271,6 +271,31 @@ public class ObjectMessageHandler : MonoBehaviour
 
                 stageset = true;
             }
+            if(param == "3")
+            {
+                bool boxFridge = false;
+                bool openBox = false;
+                bool removeSelector = false;
+                bool openFridge = false;
+                bool iceTable = false;
+                bool iceBox = false;
+                bool selectorBox = false;
+                bool GXMbox = false;
+                bool closeBox = false;
+                bool coverBox = false;
+
+                stages.Add(boxFridge);
+                stages.Add(openBox);
+                stages.Add(removeSelector);
+                stages.Add(openFridge);
+                stages.Add(iceTable);
+                stages.Add(iceBox);
+                stages.Add(selectorBox);
+                stages.Add(GXMbox);
+                stages.Add(closeBox);
+                stages.Add(coverBox);
+
+            }
         }
 
         if(msg == "complete")

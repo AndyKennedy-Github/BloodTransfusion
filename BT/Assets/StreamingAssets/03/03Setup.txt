@@ -1,0 +1,2 @@
+ScoreTracker setstages 3
+Do '03/Scene03Start.txt'

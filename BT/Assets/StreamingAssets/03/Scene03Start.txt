@@ -1,6 +1,6 @@
-Label 'Scene3_MainLoop'
 /Canvas/SelectionPanel on
 /Canvas/Table off
+Label 'Scene3_MainLoop'
 If
 	/Canvas/MainMenu pressed
 Then
@@ -11,21 +11,21 @@ If
     /Canvas/SelectionPanel/Panel/BloodBox pressed
 Then
     /Canvas/SelectionPanel/Panel/BloodBox reset
-    BloodBox/Lid play Open
+    ScoreTracker gain 1
+    ScoreTracker complete 0
     Wait 1
-    BloodBox/Divider play Out
+    BloodBox align BoxTable
+    wait 1
 Endif
 If
     /Canvas/SelectionPanel/Panel/Fridge pressed
 Then
     /Canvas/SelectionPanel/Panel/Fridge reset
     Refrigerator/RefrigeratorDoor play open
-    Wait 1
-    IcePack play Table
-    Wait 1
-    Player play Table
-    Wait 1
-    Do '03/Table.txt'
+    #Wait 1
+    #Player play Table
+    #Wait 1
+    #Do '03/Table.txt'
 ENDIF
 Wait 1
 Goto 'Scene3_MainLoop'
