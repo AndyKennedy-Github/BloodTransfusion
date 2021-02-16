@@ -9,14 +9,11 @@ Then
 wait 1
 IcePack align IceBox
 wait 1
-Goto 8
+Goto 16
 Else
-wait 1
-IcePack align IceBox
-wait 1
-Goto 14
+Goto 23
 Endif
-If 
+If
 ScoreTracker iscomplete 1
 Then
 ScoreTracker gain 1
