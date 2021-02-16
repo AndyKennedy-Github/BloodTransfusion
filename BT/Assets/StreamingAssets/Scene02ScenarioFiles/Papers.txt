@@ -1,5 +1,5 @@
 If
-ScoreTracker rangcomplete 2-8
+ScoreTracker rangecomplete 2-8
 Then
 Do 'Scene02ScenarioFiles/Scene02Test.txt'
 Else
