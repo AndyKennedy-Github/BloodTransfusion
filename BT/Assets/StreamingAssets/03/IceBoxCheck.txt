@@ -1,4 +1,9 @@
 If
+ScoreTracker iscomplete 5
+Then
+Goto 26
+Endif
+If
 ScoreTracker iscomplete 4
 Then
 wait 1
@@ -17,6 +22,5 @@ Then
 ScoreTracker gain 1
 ScoreTracker complete 5
 Else
-
 wait 1
 Endif

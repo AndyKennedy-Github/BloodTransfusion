@@ -1,4 +1,9 @@
 If
+ScoreTracker iscomplete 6
+Then
+Goto 20
+Endif
+If
 ScoreTracker iscomplete 1
 Then
 BloodBox/Divider play In

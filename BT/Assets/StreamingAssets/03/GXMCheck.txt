@@ -1,4 +1,8 @@
 If
+ScoreTracker iscomplete 7
+Goto 28
+Endif
+If
 ScoreTracker iscomplete 1
 Then
 Paper align PaperBox
