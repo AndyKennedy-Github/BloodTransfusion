@@ -1,5 +1,5 @@
 If
-ScoreTracker iscomplete 8
+ScoreTracker iscomplete 7
 Then
 Goto 27
 Endif
@@ -23,6 +23,6 @@ If
 ScoreTracker iscomplete 6
 Then
 ScoreTracker gain 1
-ScoreTracker complete 8
+ScoreTracker complete 7
 wait 1
 Endif
