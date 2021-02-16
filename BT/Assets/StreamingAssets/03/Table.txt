@@ -16,7 +16,7 @@ Then
 /Canvas/Table/Panel/LidOpen reset
 Do '03/LidOpen.txt'
 ENDIF
-wait 2
+wait 1
 If
 /Canvas/Table/Panel/LidClose pressed
  Then
