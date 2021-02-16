@@ -1,0 +1,5 @@
+Canvas off
+ScoreTracker getcompletepercent
+Do 'Scene02ScenarioFiles/Perfect.txt'
+Do 'Scene02ScenarioFiles/Success.txt'
+Do 'Scene02ScenarioFiles/Failure.txt'

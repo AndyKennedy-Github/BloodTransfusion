@@ -755,14 +755,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -775,6 +781,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -930,14 +942,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -950,6 +968,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -1169,14 +1193,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -1189,6 +1219,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2500,14 +2536,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -2520,6 +2562,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2583,14 +2631,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -2603,6 +2657,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -2684,8 +2744,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4732855561549989715, guid: a4a7e2295e08a5d4da5a240430f5a42c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a4a7e2295e08a5d4da5a240430f5a42c, type: 3}
+--- !u!1 &1486904755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8211080305873289071, guid: a4a7e2295e08a5d4da5a240430f5a42c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1486904754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486904756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486904755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f0149cfe76dcc4c82a5d5a3cb44cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CommandFiles:
+  - MainMenu.txt
+  Prompt: 
 --- !u!1 &1517525697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,14 +2827,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -2765,6 +2853,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5
@@ -3394,14 +3488,20 @@ MonoBehaviour:
   trackTime: 0
   isEmpty: 0
   playSound: 0
+  stages: 
+  stageset: 0
   timertrack: 0
   interval: 0
   pointTotal: 0
   salineAmount: 5
   time: 0
+  percentComplete: 0
   inputText: 
   followTarget: 
   movementSpeed: 1
+  normal: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
   scale: {x: 5, y: 5, z: 5}
   pos: {x: 5, y: 5, z: 5}
   offset: {x: 0, y: 0.2, z: -0.1}
@@ -3414,6 +3514,12 @@ MonoBehaviour:
   center: {x: 500, y: 500}
   radius: 125
   centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   question: 
   choices: []
   menuSizeFraction: 0.5

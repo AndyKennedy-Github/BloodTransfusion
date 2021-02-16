@@ -1,6 +1,10 @@
+If
+ ScoreTracker iscomplete 1
+Then
+ Do 'Scene02ScenarioFiles/Scene02Test.txt'
+Else
 /Canvas/SelectionPanel off
-Player lookAt Phone
-Player follow Phone
-GM Wait 1
-Player follow false
+Wait 1
+Player align PhoneLook
+Wait 1
 GM Do 'Scene02ScenarioFiles/CallBloodBank.txt'

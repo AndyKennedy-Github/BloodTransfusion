@@ -1,19 +1,20 @@
-Player lookAt GXMForm/BloodLine 0.0,0.4,-0.05
-GM Wait 2
-   GXMForm Menu.Question Is the blood ordered correct?
-   GXMForm Menu.on GXMForm/BloodLine
+Player lookAt GXMForm/BloodLine 0.0,0.2,-0.05
+GM Wait 1
+   ZoomSpot Menu.Question Is the blood ordered correct?
+   ZoomSpot Menu.on ZoomSpot
 GM WaitFor 
-   GXMForm Menu.Done 
+   ZoomSpot Menu.Done 
 GM Wait 1
 GM If
-    GXMForm Menu.Result YES
+    ZoomSpot Menu.Result Y
 GM Then
-GM  Create CheckMark 'BloodMark'
+Create checkmark 'BloodMark'
 ScoreTracker gain 1
+ScoreTracker complete 3
 GM Else
-GM   Create XMark 'BloodMark'
+   Create XMark 'BloodMark'
 GM Endif
    BloodMark MoveTo GXMForm/BloodLine
-GM Wait 2
+GM Wait 1
    GXMForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1

@@ -1,20 +1,20 @@
-GM Wait 1
-   Monitor Menu.Question Is there a valid prescription?
-   Monitor Menu.on Monitor/PrescriptionCheck
-GM WaitFor 
-   Monitor Menu.Done 
-GM Wait 1
-GM If
-    Monitor Menu.Result YES
-GM Then
-GM  Create CheckMark 'Mark'
-   Mark MoveTo Monitor/PrescriptionCheck
-	ScoreTracker gain 1
-GM Else
+Wait 1
+   ZoomSpot Menu.Question Is there a valid prescription?
+   ZoomSpot Menu.on ZoomSpot
+WaitFor 
+   ZoomSpot Menu.Done 
+Wait 1
+If
+    ZoomSpot Menu.Result Y
+Then
+Monitor changeshader good
+wait 1
+ScoreTracker gain 1
+ScoreTracker complete 0
+Else
 ScoreTracker gain 0
-GM   Create XMark 'Mark'
-GM Endif
-GM Wait 1
+Endif
+Wait 1
 Player align DefLook
-GM Wait 1
-GM Do 'Scene02ScenarioFiles/Scene02Test.txt'
+Wait 1
+Do 'Scene02ScenarioFiles/Scene02Test.txt'

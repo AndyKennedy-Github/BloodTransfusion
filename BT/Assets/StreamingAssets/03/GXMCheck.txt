@@ -1,0 +1,28 @@
+If
+ScoreTracker iscomplete 7
+Then
+Goto 27
+Endif
+If
+ScoreTracker iscomplete 1
+Then
+Paper align PaperBox
+Goto 14 
+Else
+Paper align PaperBox
+Goto 27
+Endif
+If
+ScoreTracker iscomplete 5
+Then
+Goto 21
+Else
+Goto 27
+Endif
+If
+ScoreTracker iscomplete 6
+Then
+ScoreTracker gain 1
+ScoreTracker complete 7
+wait 1
+Endif

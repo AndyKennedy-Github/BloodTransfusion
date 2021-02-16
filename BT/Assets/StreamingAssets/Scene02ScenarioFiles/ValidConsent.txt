@@ -1,22 +1,30 @@
-Player lookAt ConsentForm/ValidLine 0.0,0.4,-0.05
-GM Wait 2
-   ConsentForm Menu.Question Is the IC valid?
-   ConsentForm Menu.on ConsentForm/ValidLine
+Player lookAt ConsentForm/ValidLine 0.0,0.2,-0.05
+GM Wait 1
+   ZoomSpot Menu.Question Is the IC valid?
+   ZoomSpot Menu.on ZoomSpot
 GM WaitFor 
-   ConsentForm Menu.Done 
+   ZoomSpot Menu.Done 
 GM Wait 1
 GM If
-    ConsentForm Menu.Result YES
+    ZoomSpot Menu.Result Y
 GM Then
 GM  Create CheckMark 'ConMark'
 ScoreTracker gain 1
+ScoreTracker complete 8
 GM Else
 GM   Create XMark 'ConMark'
 GM Endif
    ConMark MoveTo ConsentForm/ValidLine
-GM Wait 2
+GM Wait 1
    ConsentForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1
 Player align DefLook
 GM Wait 1
+If
+ScoreTracker rangecomplete 5-8
+Then
+ConsentForm/FormGeom changeshader good
+Else
+ConsentForm/FormGeom changeshader bad
+Endif
 GM Do 'Scene02ScenarioFiles/Scene02Test.txt'

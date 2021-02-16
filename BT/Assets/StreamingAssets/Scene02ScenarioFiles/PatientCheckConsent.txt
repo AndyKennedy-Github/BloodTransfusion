@@ -1,19 +1,20 @@
-Player lookAt ConsentForm/PatientLine 0.0,0.4,-0.05
-GM Wait 2
-   ConsentForm Menu.Question Is this the correct patient?
-   ConsentForm Menu.on ConsentForm/PatientLine
+Player lookAt ConsentForm/PatientLine 0.0,0.2,-0.05
+GM Wait 1
+   ZoomSpot Menu.Question Is this the correct patient?
+   ZoomSpot Menu.on ZoomSpot
 GM WaitFor 
-   ConsentForm Menu.Done 
+   ZoomSpot Menu.Done 
 GM Wait 1
 GM If
-    ConsentForm Menu.Result YES
+    ZoomSpot Menu.Result Y
 GM Then
 GM  Create CheckMark 'PatiMark'
 ScoreTracker gain 1
+ScoreTracker complete 7
 GM Else
 GM   Create XMark 'PatiMark'
 GM Endif
    PatiMark MoveTo ConsentForm/PatientLine
-GM Wait 2
+GM Wait 1
    ConsentForm lookAtMe 0.0,0.5,-0.05
 GM Wait 1

@@ -1,0 +1,9 @@
+If
+ScoreTracker iscomplete 8
+Then
+Goto 9
+Else
+BloodBox/Lid play Close
+ScoreTracker gain 1
+ScoreTracker complete 8
+Endif

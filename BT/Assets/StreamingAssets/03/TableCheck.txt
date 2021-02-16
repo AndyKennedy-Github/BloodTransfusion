@@ -1,0 +1,13 @@
+If
+ScoreTracker iscomplete 0
+Then
+Do '03/Table.txt'
+Endif
+If
+ScoreTracker iscomplete 4
+Then
+Do '03/Table.txt'
+Else
+Goto 13
+Endif
+Do '03/Scene03Start.txt'
