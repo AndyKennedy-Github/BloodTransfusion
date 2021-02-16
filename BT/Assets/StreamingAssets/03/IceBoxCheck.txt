@@ -1,0 +1,22 @@
+If
+ScoreTracker iscomplete 4
+Then
+wait 1
+IcePack align IceBox
+wait 1
+Goto 8
+Else
+wait 1
+IcePack align IceBox
+wait 1
+Goto 14
+Endif
+If 
+ScoreTracker iscomplete 1
+Then
+ScoreTracker gain 1
+ScoreTracker complete 5
+Else
+
+wait 1
+Endif

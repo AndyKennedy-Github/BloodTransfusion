@@ -1,0 +1,15 @@
+If
+ScoreTracker iscomplete 1
+Then
+BloodBox/Divider play In
+Goto 9 
+Else
+Goto 15
+Endif
+If
+ScoreTracker iscomplete 5
+Then
+ScoreTracker gain 1
+ScoreTracker complete 6
+wait 1
+Endif

@@ -1,33 +1,57 @@
+wait 1
+Player align PlayerTable
+wait 1
+Table outlineoff
+GXMForm/FormGeom outlineon
+BloodBox/Divider outlineon
+wait 1
 /Canvas/SelectionPanel off
 /Canvas/Table on
-GM If
+/Canvas/Table/Panel/LidClose off
+Label 'Loop'
+wait 1
+If
+/Canvas/Table/Panel/LidOpen pressed
+Then
+/Canvas/Table/Panel/LidOpen reset
+Do '03/LidOpen.txt'
+ENDIF
+wait 2
+If
+/Canvas/Table/Panel/LidClose pressed
+ Then
+/Canvas/Table/Panel/LidClose reset
+Do '03/LidClose.txt'
+ENDIF
+ If
 /Canvas/Table/Panel/Ice pressed
-GM Then
+ Then
 /Canvas/Table/Panel/Ice reset
 IcePack play In
-GM ENDIF
+Do '03/IceBoxCheck.txt'
+ENDIF
+ If
+/Canvas/Table/Panel/Divider pressed
+ Then
+/Canvas/Table/Panel/Divider reset
+Do '03/DividerCheck.txt'
+ ENDIF
+ If
+/Canvas/Table/Panel/Paper pressed
+ Then
+/Canvas/Table/Panel/Paper reset
+Do '03/GXMCheck.txt'
+ENDIF
+If
+/Canvas/Table/Panel/Back pressed
+ Then
+/Canvas/Table/Panel/Back reset
+Do '03/Scene03Start.txt'
+ENDIF
 If
 	/Canvas/MainMenu pressed
 Then
 	/Canvas/MainMenu reset
-	SceneManager switchtoScene Scenes/MainMenu
+	Do '03/EndCheck.txt'
 Endif
-GM If
-/Canvas/Table/Panel/Divider pressed
-GM Then
-/Canvas/Table/Panel/Divider reset
-BloodBox/Divider play In
-GM ENDIF
-GM If
-/Canvas/Table/Panel/Lid pressed
-GM Then
-/Canvas/Table/Panel/Lid reset
-BloodBox/Lid play Close
-GM ENDIF
-GM If
-/Canvas/Table/Panel/Paper pressed
-GM Then
-/Canvas/Table/Panel/Paper reset
-Paper play On
-GM ENDIF
-GM Goto 2
+Goto 'Loop'

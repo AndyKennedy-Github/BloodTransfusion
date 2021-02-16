@@ -1,2 +1,5 @@
 ScoreTracker setstages 3
+PerfectEnd off
+GoodEnd off
+BadEnd off
 Do '03/Scene03Start.txt'

@@ -1,0 +1,4 @@
+BloodBox/Lid play Close
+ScoreTracker gain 1
+ScoreTracker complete 8
+Endif

@@ -282,7 +282,6 @@ public class ObjectMessageHandler : MonoBehaviour
                 bool selectorBox = false;
                 bool GXMbox = false;
                 bool closeBox = false;
-                bool coverBox = false;
 
                 stages.Add(boxFridge);
                 stages.Add(openBox);
@@ -293,7 +292,6 @@ public class ObjectMessageHandler : MonoBehaviour
                 stages.Add(selectorBox);
                 stages.Add(GXMbox);
                 stages.Add(closeBox);
-                stages.Add(coverBox);
 
             }
         }
@@ -355,6 +353,28 @@ public class ObjectMessageHandler : MonoBehaviour
             {
                 return false;
             }    
+        }
+
+        if(msg == "outlineon")
+        {
+            Material[] mats = mr.materials;
+            if (mats.Length == 1)
+            {
+                System.Array.Resize(ref mats, mats.Length + 1);
+                mats[1] = normal;
+            }
+            mr.materials = mats;
+        }
+
+        if(msg == "outlineoff")
+        {
+            Material[] mats = mr.materials;
+            if (mats.Length == 2)
+            {
+                System.Array.Resize(ref mats, mats.Length - 1);
+                
+            }
+            mr.materials = mats;
         }
 
         if(msg == "percentachieved")
@@ -881,8 +901,9 @@ Vector3 oldpos ;
         Vector3 pos = this.transform.position;
         float velocity = ((oldpos - pos)/Time.deltaTime).magnitude;
         //print("Velocity = "+ velocity);
-        if (animator)
+        /*if (animator)
             animator.SetFloat("Speed",velocity);
+        */
         oldpos = this.transform.position;
         if(salineAmount > 0)
         {
