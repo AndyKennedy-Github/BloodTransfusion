@@ -1,5 +1,6 @@
 If
 ScoreTracker iscomplete 8
+Then
 Goto 27
 Endif
 If
