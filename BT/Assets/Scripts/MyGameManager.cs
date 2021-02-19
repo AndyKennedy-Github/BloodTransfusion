@@ -5,6 +5,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
 using System.Linq;
+//using UnityEngine.AddressableAssets;
+//using UnityEngine.ResourceManagement;
+//using UnityEditor.Build.Pipeline;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+//using UnityEngine.AddressableAssets.InstantiateAsync;
+using UnityEngine;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Parameter expressions routines
@@ -197,6 +206,7 @@ public class MyGameManager : MonoBehaviour
         "]",
         "load",
         "waitfor",
+        "pause",
         "wait",
         "create",
         "goto",
@@ -221,19 +231,26 @@ public class MyGameManager : MonoBehaviour
     //instance of expression parser to handle number, string, and bool expressions
     public ExpressionParser ep;
 
+    bool started = false;
     // Start is called before the first frame update
     // This starts the 
     void Start()
     {
+        Addressables.InitializeAsync();//.Completed += InitDone;
         ep = new ExpressionParser();
+                                        FixedUpdate1();
+                            FixedUpdate1();
 
-        StartCoroutine(exectueScenarioFiles(CommandFiles));
+        //StartCoroutine(executeScenarioFiles(CommandFiles));
         //StartCoroutine(ExecuteCommands(commands));
     }
 
     //loads local or remote file
-    IEnumerator exectueScenarioFiles(string [] fileNames)
+    IEnumerator executeScenarioFiles(string [] fileNames)
     {
+//                                                FixedUpdate1();
+//                            FixedUpdate1();
+
         foreach (string fileName in fileNames){
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
 
@@ -260,6 +277,7 @@ public class MyGameManager : MonoBehaviour
             }
 
             Debug.Log("Loaded file: " + fileNames);
+
                    
             string[] linesInFile = result.Split('\n');
             yield return StartCoroutine(ExecuteCommands(linesInFile));
@@ -270,6 +288,7 @@ public class MyGameManager : MonoBehaviour
     //Executes array of commands
     IEnumerator ExecuteCommands(string [] commands,int startnum = 0 )
     {
+
         CommandSequence cs = new CommandSequence();
         Stack<CommandSequence> css = new Stack<CommandSequence>();
         css.Push(cs);
@@ -358,8 +377,49 @@ public class MyGameManager : MonoBehaviour
                     string objPrefabName = splitArray[0];
                     if (objPrefabName[0] == '$')
                         objPrefabName = ep.EvaluateParam(objPrefabName);
+                //objPrefabName = "Cube";
                     print("Create "+ objPrefabName);
-                    GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
+//                    FixedUpdate1();
+//continue;
+                    GameObject obj;
+//                    GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
+                    //AssetRefMember.LoadAssetAsync<GameObject>(objPrefabName);
+                    
+                    print("LoadAssetAsync1 "+ objPrefabName);
+//                    AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(objPrefabName);
+                    AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(objPrefabName);
+                    print("LoadAssetAsync2 "+ objPrefabName);
+                        yield return handle;
+                    print("LoadAssetAsync3 "+ objPrefabName);
+                    if (handle.Status == AsyncOperationStatus.Succeeded) {
+                    print("LoadAssetAsync4 "+ objPrefabName);
+                        obj = handle.Result;
+                    print("LoadAssetAsync4.1 "+ obj.name);
+                    }else
+                    {
+                    print("LoadAssetAsync5 "+ objPrefabName);
+                            print("Can't create object "+ objPrefabName);
+                            continue;
+                    }
+//                            if (!SyncAddressables.Ready)
+ //           continue;
+/*
+                    obj = SyncAddressables.Instantiate(objPrefabName);
+
+        if (!SyncAddressables.Ready)
+            continue;
+
+            var go = SyncAddressables.Instantiate("telephone");
+*/
+//FixedUpdate1();
+/*   if (!SyncAddressables.Ready)
+            continue;
+            var go = SyncAddressables.Instantiate("Cube");
+            go.transform.forward = new Vector3(UnityEngine.Random.Range(0, 180), UnityEngine.Random.Range(0, 180), UnityEngine.Random.Range(0, 180));
+            m_instances.Add(go);
+obj=go;
+*/
+//continue;
                     ObjectMessageHandler omh;
                     if (!obj.GetComponent<ObjectMessageHandler>())
                         omh = obj.AddComponent<ObjectMessageHandler>() as ObjectMessageHandler;
@@ -376,7 +436,7 @@ public class MyGameManager : MonoBehaviour
 //                        sArray[0] = cparams;  //convert to string array for loadStreamingAsset
                     print("Load "+ sArray[0]);
                     currentNestingLevel++;
-                    StartCoroutine(exectueScenarioFiles(sArray));
+                    StartCoroutine(executeScenarioFiles(sArray));
                     bool coroutineDone = false;
                     while (currentNestingLevel!=cs.nestingLevel){ //keep doing until coroutine done
                         yield return new WaitForSeconds(1.0f);
@@ -394,7 +454,7 @@ public class MyGameManager : MonoBehaviour
                 }
          
 
-                if (command == "wait"){    //Sleep for a given time in seconds
+                if (command == "wait" || command == "pause"){    //Sleep for a given time in seconds
                     string paramStr = cparams;
                     print("Sleep for "+ paramStr);
                     float delay = ep.EvaluateParam(cparams);//float.Parse(paramStr);
@@ -706,12 +766,74 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
         bool result = mhand.HandleMessage(command,cparams); //commands return BOOL for IF statements
         return result;
     }
-
+/*
     void Update()
     {
 
     }
+    */
+   int m_Counter = 0;
+    List<GameObject> m_instances = new List<GameObject>();
 
+    private void Update()
+    {
+        if (!SyncAddressables.Ready)
+            return;
+        if (!started){
+            started=true;
+                StartCoroutine(executeScenarioFiles(CommandFiles));
+//        Debug.Log("creating phone1");
+//FixedUpdate1();
+//FixedUpdate1();
+//        Debug.Log("created phone1");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)){
+        Debug.Log("creating phone");
+        FixedUpdate1();
+        Debug.Log("created phone");
+        }
+        return;
+        if (Input.GetKeyDown("space"))
+        {
+            if (m_instances.Count == 0)
+                return;
+            Debug.Log($"Release {m_instances.Count} instances");
+            foreach (var oldGo in m_instances)
+            {
+                Addressables.ReleaseInstance(oldGo);
+            }
+            m_instances.Clear();
+        }
+    }
+    void FixedUpdate()
+    {
+//        FixedUpdate1();
+    }
+
+    private void FixedUpdate1()
+    {
+print("FU0");
+        if (!SyncAddressables.Ready)
+            return;
+print("FU1.1");
+        m_Counter++;
+
+        if (m_Counter >= 1)
+        {
+print("FU1.2");
+            var go = SyncAddressables.Instantiate("telephone");
+print("FU1.3");
+            if (go==null)
+                return;
+            go.transform.forward = new Vector3(UnityEngine.Random.Range(0, 180), UnityEngine.Random.Range(0, 180), UnityEngine.Random.Range(0, 180));
+            m_instances.Add(go);
+        }
+print("FU1.4");
+
+        if (m_Counter >= 60)
+            m_Counter = 0;
+    }
     void OnGUI() {
         GUI.contentColor = new Color(1.0f,1.0f,1f);
 

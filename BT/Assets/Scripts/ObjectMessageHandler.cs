@@ -56,7 +56,12 @@ public class ObjectMessageHandler : MonoBehaviour
         ikcontroller = GetComponent<IKController>();
         mr = GetComponent<MeshRenderer>();
     }
-
+    void OnMouseDown()
+    {
+        // Destroy the gameObject after clicking on it
+        print("Clicked on :" + this.name);
+        Pressed();
+    }
 
     void Awake()
     {
