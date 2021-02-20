@@ -16,7 +16,27 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7f990e151a3d7f648b7d53b278834051
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: da83fee8760c1c042941412b29f5ed17
+    m_Address: telephone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1307229414604918297, guid: da83fee8760c1c042941412b29f5ed17,
+      type: 3}
+    m_TargetAsset: {fileID: 1307229414604918297, guid: da83fee8760c1c042941412b29f5ed17,
+      type: 3}
+  - m_GUID: c5d5ca6524eea74479b510c3dd325e0a
+    m_Address: Assets/Models/Unity store assets/Meshlab models/general props/telephone.FBX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 86ae800bbd5694220b15d486209de349
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3132ff6bffb476e40ac16e9a1fcb5174, type: 2}
   m_SchemaSet:

@@ -11,10 +11,10 @@ Then
 	Do '03/EndCheck.txt'
 Endif
 If
-    /Canvas/SelectionPanel/Panel/BloodBox pressed
+    BloodBox pressed
 Then
-    /Canvas/SelectionPanel/Panel/BloodBox reset
-    /Canvas/SelectionPanel/Panel/BloodBox off
+#    /Canvas/SelectionPanel/Panel/BloodBox reset
+#    /Canvas/SelectionPanel/Panel/BloodBox off
     ScoreTracker gain 1
     ScoreTracker complete 0
     Wait 1
@@ -22,13 +22,15 @@ Then
     wait 1
 Endif
 If
-    /Canvas/SelectionPanel/Panel/Table pressed	
+    Table pressed	
+#    /Canvas/SelectionPanel/Panel/Table pressed	
 Then
-    /Canvas/SelectionPanel/Panel/Table reset
+#    /Canvas/SelectionPanel/Panel/Table reset
     Do '03/Table.txt'
 Endif
 If
-    /Canvas/SelectionPanel/Panel/Fridge pressed
+    RefrigeratorDoor pressed
+#    /Canvas/SelectionPanel/Panel/Fridge pressed
 Then
     /Canvas/SelectionPanel/Panel/Fridge reset
     Do '03/IceFridge.txt'
