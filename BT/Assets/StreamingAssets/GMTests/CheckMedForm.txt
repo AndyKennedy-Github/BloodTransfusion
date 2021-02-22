@@ -1,5 +1,6 @@
 Create Form 'MedForm' 
 MedForm moveTo /ExamRoom1/Desk/Left
+Wait 1
 MedForm lookAtMe
 Wait 2
 #GM Do 'Form/CheckSignature.txt'

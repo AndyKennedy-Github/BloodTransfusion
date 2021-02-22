@@ -906,9 +906,9 @@ Vector3 oldpos ;
         Vector3 pos = this.transform.position;
         float velocity = ((oldpos - pos)/Time.deltaTime).magnitude;
         //print("Velocity = "+ velocity);
-        /*if (animator)
+        if (animator)
             animator.SetFloat("Speed",velocity);
-        */
+        
         oldpos = this.transform.position;
         if(salineAmount > 0)
         {

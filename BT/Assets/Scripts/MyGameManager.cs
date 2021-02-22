@@ -11,7 +11,7 @@ using System.Linq;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
-
+ 
 //using UnityEngine.AddressableAssets.InstantiateAsync;
 using UnityEngine;
 
@@ -385,19 +385,14 @@ public class MyGameManager : MonoBehaviour
 //                    GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
                     //AssetRefMember.LoadAssetAsync<GameObject>(objPrefabName);
                     
-                    print("LoadAssetAsync1 "+ objPrefabName);
-//                    AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(objPrefabName);
+//                    print("LoadAssetAsync1 "+ objPrefabName);
+//                    GameObject obj = (GameObject)Instantiate(Resources.Load(objPrefabName));
                     AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(objPrefabName);
-                    print("LoadAssetAsync2 "+ objPrefabName);
                         yield return handle;
-                    print("LoadAssetAsync3 "+ objPrefabName);
                     if (handle.Status == AsyncOperationStatus.Succeeded) {
-                    print("LoadAssetAsync4 "+ objPrefabName);
                         obj = handle.Result;
-                    print("LoadAssetAsync4.1 "+ obj.name);
                     }else
                     {
-                    print("LoadAssetAsync5 "+ objPrefabName);
                             print("Can't create object "+ objPrefabName);
                             continue;
                     }
@@ -722,7 +717,7 @@ print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
                 }
             }
 
-            //print("=========================================Object FULLNAME = "+ fullname);
+            print("=========================================Object FULLNAME = "+ fullname);
             GameObject go=GameObject.Find(fullname);
             if (!fullname.Contains("/")){ //get full name with path and add to dictionary
                 fullname = (string.Join("/", go.GetComponentsInParent<Transform>().Select(t => t.name).Reverse().ToArray()));

@@ -1,10 +1,10 @@
 /Patient on
 ExamRoom1/ER1Door rotateY 10.2
-GM Wait 3
-/Patient follow true
-GM Wait 3
+GM Wait 2
+/Patient follow Player
+GM Wait 6
 /Patient follow false
-GM Wait 3
+GM Wait 2
 GM If
 /RoomLight isOn
 GM Then
