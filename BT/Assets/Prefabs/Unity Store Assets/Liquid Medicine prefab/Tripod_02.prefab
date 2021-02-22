@@ -451,11 +451,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010894022844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c532e4c9dd047a44a8e72e9c9844a897, type: 3}
+  m_Script: {fileID: 11500000, guid: 621fbfd6046f9824b9ec093a09487645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infusionBagLocs: []
-  infusionBottleLocs:
+  subObjectLocs:
   - {fileID: 4003165164801312825}
   - {fileID: 1674394690216875335}
 --- !u!1 &1000012024637836

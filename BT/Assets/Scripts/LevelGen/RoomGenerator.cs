@@ -89,7 +89,7 @@ public class RoomObject
     }
 
     /** <summary>
-     * Spawn is used to handle instantiation of this object.
+     * Spawn is used to handle instantiation of the object.
      * </summary>
      * <param name="refTransform">Reference to existing transform with same position/rotation where new object should instantiate.</param>
      * <param name="myParent">(optional) Parent object that spawning object should be made a child of. Default is null.</param>
@@ -138,9 +138,22 @@ public class RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(executeSceneSetupFiles(setupFiles));
+        foreach(string fileName in setupFiles) {
+            LoadMyRoomFile(fileName);
+        }
     }
 
+    public static void LoadARoomFile(string newRoomFileName)
+    {
+        RoomGenerator.instance.LoadMyRoomFile(newRoomFileName);
+    }
+
+    private void LoadMyRoomFile(string roomFileName)
+    {
+        StartCoroutine(executeSceneSetupFile(roomFileName));
+    }
+
+    /** <summary>Press X for debug list of objects</summary>*/
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
@@ -165,42 +178,39 @@ public class RoomGenerator : MonoBehaviour
     }
 
     //loads local or remote file
-    IEnumerator executeSceneSetupFiles(string[] fileNames)
+    IEnumerator executeSceneSetupFile(string fileName)
     {
-        foreach (string fileName in fileNames)
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
+
+        string result;
+
+        if (filePath.Contains("://") || filePath.Contains(":///"))
         {
-            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
-
-            string result;
-
-            if (filePath.Contains("://") || filePath.Contains(":///"))
+            //WWW www = new WWW(filePath);
+            //yield return www;
+            //result = www.text;
+            UnityWebRequest webRequest = UnityWebRequest.Get(filePath); //use this if WWW is obsolete
+            yield return webRequest.SendWebRequest();
+            if (webRequest.isNetworkError)
             {
-                //WWW www = new WWW(filePath);
-                //yield return www;
-                //result = www.text;
-                UnityWebRequest webRequest = UnityWebRequest.Get(filePath); //use this if WWW is obsolete
-                yield return webRequest.SendWebRequest();
-                if (webRequest.isNetworkError)
-                {
-                    print("Web request error:" + webRequest.error + " for " + filePath);
-                    continue;
-                }
-                else
-                {
-                    result = webRequest.downloadHandler.text;
-                }
-
+                print("Web request error:" + webRequest.error + " for " + filePath);
+                result = "";
             }
             else
             {
-                result = System.IO.File.ReadAllText(filePath);
+                result = webRequest.downloadHandler.text;
             }
 
-            Debug.Log("Loaded file: " + fileNames);
-
-            string[] linesInFile = result.Split('\n');
-            yield return StartCoroutine(ParseCommands(linesInFile));
         }
+        else
+        {
+            result = System.IO.File.ReadAllText(filePath);
+        }
+
+        Debug.Log("Loaded file: " + fileName);
+
+        string[] linesInFile = result.Split('\n');
+        yield return StartCoroutine(ParseCommands(linesInFile));
     }
 
     private IEnumerator ParseCommands(string[] commands)
@@ -319,6 +329,12 @@ public class RoomGenerator : MonoBehaviour
                     break;
                 case "Screen":
                     entry.Value.Spawn(roomScript.screenLocs[entry.Value.locNum - 1]);
+                    break;
+                case "Desk":
+                    entry.Value.Spawn(roomScript.deskLocs[entry.Value.locNum - 1]);
+                    break;
+                case "Chair":
+                    entry.Value.Spawn(roomScript.chairLocs[entry.Value.locNum - 1]);
                     break;
                 default:
                     // Find an object in the world with the given name as spawn location
