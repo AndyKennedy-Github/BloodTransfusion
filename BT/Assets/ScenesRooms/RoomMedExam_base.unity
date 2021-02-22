@@ -129,6 +129,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6073855816030470280, guid: a719383ced65ea84e8707bcc0c8c15b2,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6231327274653408248, guid: a719383ced65ea84e8707bcc0c8c15b2,
         type: 3}
       propertyPath: m_Name

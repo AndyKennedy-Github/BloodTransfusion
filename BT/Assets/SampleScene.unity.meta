@@ -1,5 +1,10 @@
 fileFormatVersion: 2
-guid: 0ea571f47c9c5465cb0dc2e823a6bcbb
+<<<<<<< Updated upstream:BT/Assets/SampleScene.unity.meta
+guid: 2e82524d35008a342a97e16a831bdf58
+=======
+guid: d92df98ced6c0e54eaa57802a5c8540c
+folderAsset: yes
+>>>>>>> Stashed changes:BT/Assets/ScenesRooms/RoomXLGWaiting_base.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

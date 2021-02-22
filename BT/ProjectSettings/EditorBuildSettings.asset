@@ -9,29 +9,41 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1be2101ac0d5c644387839028d57b036
   - enabled: 1
-    path: Assets/Scenes/02.unity
-    guid: 1d543b60293d0b5418c40f3f7f71bfd7
-  - enabled: 0
     path: Assets/Scenes/RoomGenerationTest.unity
     guid: a82fc469666768041806f1c66eff6c47
-  - enabled: 0
+  - enabled: 1
     path: Assets/ScenesRooms/RoomLrgPatient_base.unity
     guid: 2a3a749804737b74f9f9277a43e34918
-  - enabled: 0
+  - enabled: 1
     path: Assets/ScenesRooms/RoomMedBreak_3couch.unity
     guid: f45218dd9c1340f4597551ba28514e1c
-  - enabled: 0
+  - enabled: 1
     path: Assets/ScenesRooms/RoomMedExam_3bed.unity
     guid: b3a3514ca5e649d48af5bf1c6b5d22b6
-  - enabled: 0
+  - enabled: 1
     path: Assets/ScenesRooms/RoomMedExam_base.unity
     guid: 27fda95552348c3488eb12e89ee9dea6
-  - enabled: 0
+  - enabled: 1
     path: Assets/ScenesRooms/RoomMedPatient_3bed.unity
     guid: 670dbdd8d0f573340b8e59b714e1a8cb
-  - enabled: 0
+  - enabled: 1
+    path: Assets/ScenesRooms/RoomMedOffice_base.unity
+    guid: afcd6c36afa98534ba5b8e8156fe9d50
+  - enabled: 1
     path: Assets/ScenesRooms/RoomXLGPatient_base.unity
     guid: bafe963876585714da0029989082dcc4
+  - enabled: 1
+    path: Assets/ScenesRooms/RoomXLGWaiting_base.unity
+    guid: 80913abc23fc1554ca27b5e50e3f93fc
+  - enabled: 1
+    path: Assets/Scenes/01.unity
+    guid: c5645d60735f77d4a9f7253d40a23347
+  - enabled: 1
+    path: Assets/Scenes/02.unity
+    guid: 1d543b60293d0b5418c40f3f7f71bfd7
+  - enabled: 1
+    path: Assets/Scenes/03.unity
+    guid: 96d0f8fe175a14f46b895b6dc85bba1e
   - enabled: 1
     path: Assets/Scenes/04.unity
     guid: efa2e3bdbb380c1498ed1bbb2fc140bc
@@ -39,17 +51,11 @@ EditorBuildSettings:
     path: Assets/Scenes/05.unity
     guid: c6dc0091b388ef74f8d5762000043172
   - enabled: 1
-    path: Assets/Scenes/07.unity
-    guid: 60e00b0bc40819c41a83c131573a048a
-  - enabled: 1
-    path: Assets/Scenes/03.unity
-    guid: 96d0f8fe175a14f46b895b6dc85bba1e
-  - enabled: 1
     path: Assets/Scenes/06.unity
     guid: 9065e6317ca6aa4408ee976e1dc96447
   - enabled: 1
-    path: Assets/Scenes/01.unity
-    guid: c5645d60735f77d4a9f7253d40a23347
+    path: Assets/Scenes/07.unity
+    guid: 60e00b0bc40819c41a83c131573a048a
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 98a340dadfdec9c45bb81a95b65ffb85,
       type: 2}

@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setupFiles:
-  - LevelGen\LevelGenTestExport.txt
+  - LevelGen\Office.txt
 --- !u!4 &1486499230
 Transform:
   m_ObjectHideFlags: 0
