@@ -299,6 +299,10 @@ public class ObjectMessageHandler : MonoBehaviour
                 stages.Add(closeBox);
 
             }
+            if(param == "1")
+            {
+
+            }
         }
 
         if(msg == "complete")
@@ -481,7 +485,7 @@ public class ObjectMessageHandler : MonoBehaviour
             return chosenSet;
         }
 
-        if(msg == "parentto")
+        if(msg == "parentto" || msg == "attachto")
         {
             GameObject go = GameObject.Find(param);
             if(transform.parent != null)
