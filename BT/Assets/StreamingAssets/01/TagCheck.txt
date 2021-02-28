@@ -5,7 +5,7 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 Wait 1
 Do '01/PatientMeet.txt'

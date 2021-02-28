@@ -1,11 +1,11 @@
 Player lookat IDLabel
 /CheckCanvas off
-/LabelCanvas on
+/PatientCanvas off
 Label 'Loop'
 If
-	/LabelCanvas/ID pressed
+	IDLabel pressed
 Then
-	/LabelCanvas/ID reset
+	IDLabel reset
 	Prompt 'You paste the patient ID label on the blood specimen tube'
 	SceneManager switchtoscene Scenes/MainMenu
 Endif

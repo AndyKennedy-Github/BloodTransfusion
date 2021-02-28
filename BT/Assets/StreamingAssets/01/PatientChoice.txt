@@ -1,16 +1,4 @@
-/StartCanvas/GXM off
-/StartCanvas/ID off
-/StartCanvas/MoveToWard off
-/WardCanvas on
-Player align WardView
-Label 'Loop'
-If
-	WardCanvas/Patient pressed
-Then
-	WardCanvas/Patient reset
-	Player align PlayerPatPos
-	StandingComputerdesk align COWPatientPos
-	Do '01/NurseMove.txt'
-ENDIF
-Wait 1
-Goto 'Loop'
+Player align PlayerPatPos
+COW moveto COWPatientPos
+wait 1
+Do '01/NurseMove.txt'

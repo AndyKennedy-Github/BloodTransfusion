@@ -1,10 +1,11 @@
+/JoystickCanvas off
 Nurse Menu.Question 'Call Nurse?'
-Nurse Menu.on /Nurse/Head
+Nurse Menu.on ZoomSpot
 WaitFor
 Nurse Menu.Done
 Wait 1
 If
-Nurse Menu.Result YES
+Nurse Menu.Result Y
 Then
 Nurse align NursePatPos
 Do '01/PatientMeet.txt'
