@@ -4,7 +4,7 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 InfusionSet01 rotatetoy 270
 Do '04/SetChosen.txt'

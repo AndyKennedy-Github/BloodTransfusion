@@ -3,10 +3,28 @@ Player lookat PlayerLook
 Label 'Scene4_StartLoop'
 InfusionSet01 correctset
 If
-	/StartCanvas/StartPanel/Panel/Shelves pressed
+	room/Shelf pressed
 Then
-	/StartCanvas/StartPanel/Panel/Shelves reset
+	room/Shelf reset
 	Do '04/SetPicking.txt'
+ENDIF
+If
+	InfusionSet01 pressed
+Then
+InfusionSet01 reset
+Do '04/SetPicking.txt'
+ENDIF
+If
+	InfusionSet02 pressed
+Then
+InfusionSet01 reset
+Do '04/SetPicking.txt'
+ENDIF
+If
+	InfusionSet03 pressed
+Then
+InfusionSet01 reset
+Do '04/SetPicking.txt'
 ENDIF
 Wait 1
 Goto 'Scene4_StartLoop'

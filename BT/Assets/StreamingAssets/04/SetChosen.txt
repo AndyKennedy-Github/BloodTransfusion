@@ -4,7 +4,7 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 Do '04/SettoCow.txt'
 Else

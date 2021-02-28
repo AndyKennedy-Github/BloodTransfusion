@@ -319,6 +319,15 @@ public class ObjectMessageHandler : MonoBehaviour
                 stages.Add(Blood);
                 stages.Add(IDBlood);
          }
+            if (param == "4")
+            {
+                bool RightSet = false;
+                bool DishAdded = false;
+
+                stages.Add(RightSet);
+                stages.Add(DishAdded);
+
+            }
         }
 
         if(msg == "complete")
