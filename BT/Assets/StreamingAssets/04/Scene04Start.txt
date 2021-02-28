@@ -1,7 +1,6 @@
-Label 'Scene4_StartLoop'
-/StartCanvas on
 Player moveto PlayerOrig
 Player lookat PlayerLook
+Label 'Scene4_StartLoop'
 InfusionSet01 correctset
 If
 	/StartCanvas/StartPanel/Panel/Shelves pressed
