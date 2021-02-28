@@ -1,3 +1,4 @@
+/JoystickCanvas off
 ZoomSpot Menu.Question 'Go to ward?'
 ZoomSpot Menu.on ZoomSpot
 WaitFor
@@ -8,5 +9,6 @@ ZoomSpot Menu.Result Y
 Then
 Do 'EndCheck.txt'
 Else
+/JoystickCanvas on
 Do '04/DoorCheck.txt'
 Endif

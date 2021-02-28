@@ -1,3 +1,4 @@
+/JoystickCanvas off
 ZoomSpot Menu.Question 'Is this correct?'
 ZoomSpot Menu.on ZoomSpot
 WaitFor
@@ -6,8 +7,15 @@ Wait 1
 If
 ZoomSpot Menu.Result Y
 Then
+InfusionSet01 reset
+InfusionSet02 reset
+InfusionSet03 reset
+/JoystickCanvas on
 Do '04/SettoCow.txt'
 Else
+InfusionSet01 reset
+InfusionSet02 reset
+InfusionSet03 reset
 InfusionSet01 moveto Set01Orig
 InfusionSet01 matchrotation Set01Orig
 InfusionSet01 playerreplace
@@ -17,5 +25,6 @@ InfusionSet02 playerreplace
 InfusionSet03 moveto Set03Orig
 InfusionSet03 matchrotation Set03Orig
 InfusionSet03 playerreplace
+/JoystickCanvas on
 Do '04/SetPicking.txt'
 Endif
