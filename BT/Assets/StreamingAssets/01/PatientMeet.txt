@@ -1,4 +1,5 @@
 Player align PlayerLookPat
+/JoystickCanvas on
 /NurseCanvas off
 /CheckCanvas on
 Label 'Loop'
@@ -14,6 +15,8 @@ If
 Then
 	/CheckCanvas/Speak/Blood reset
 	Prompt 'Blood has been collected.'
+	ScoreTracker gain 1
+	ScoreTracker complete 6
 	Do '01/LabelBlood.txt'
 Endif
 Wait 1

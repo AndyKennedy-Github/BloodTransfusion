@@ -1,9 +1,6 @@
-/WardCanvas off
-/NurseCanvas on
-Player align PlayerPatPos
 Label 'Loop'
 If
-	/NurseCanvas/Nurse pressed
+	Nurse pressed
 Then
 	Player lookat Nurse
 	Do '01/NurseCall.txt'

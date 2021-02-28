@@ -1,0 +1,5 @@
+ScoreTracker setstages 4
+PerfectEnd off
+GoodEnd off
+BadEnd off
+Do '04/Scene04Start.txt'

@@ -301,6 +301,31 @@ public class ObjectMessageHandler : MonoBehaviour
             }
             if(param == "1")
             {
+                bool IDDesk = false;
+                bool FormDesk = false;
+                bool PatientMove = false;
+                bool NurseCall = false;
+                bool PatName = false;
+                bool PatID = false;
+                bool Blood = false;
+                bool IDBlood = false;
+
+                stages.Add(IDDesk);
+                stages.Add(FormDesk);
+                stages.Add(PatientMove);
+                stages.Add(NurseCall);
+                stages.Add(PatName);
+                stages.Add(PatID);
+                stages.Add(Blood);
+                stages.Add(IDBlood);
+         }
+            if (param == "4")
+            {
+                bool RightSet = false;
+                bool DishAdded = false;
+
+                stages.Add(RightSet);
+                stages.Add(DishAdded);
 
             }
         }

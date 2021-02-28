@@ -1787,7 +1787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Congratulations! You missed only one check:
+  m_Text: 'You missed only one check:
 
     - '
 --- !u!222 &1238365758
