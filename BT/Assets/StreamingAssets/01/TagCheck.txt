@@ -8,6 +8,8 @@ If
 ZoomSpot Menu.Result Y
 Then
 Wait 1
+	ScoreTracker gain 1
+	ScoreTracker complete 5
 Do '01/PatientMeet.txt'
 Else
 Do '01/PatientMeet.txt'

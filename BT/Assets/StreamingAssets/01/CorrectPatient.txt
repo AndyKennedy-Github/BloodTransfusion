@@ -7,6 +7,8 @@ Wait 1
 If
 ZoomSpot Menu.Result Y
 Then
+	ScoreTracker gain 1
+	ScoreTracker complete 4
 Do '01/TagCheck.txt'
 Else
 Do '01/PatientCheck.txt'

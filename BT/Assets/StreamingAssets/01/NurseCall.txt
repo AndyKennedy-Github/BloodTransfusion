@@ -8,6 +8,8 @@ If
 Nurse Menu.Result Y
 Then
 Nurse align NursePatPos
+ScoreTracker gain 1
+ScoreTracker complete 3
 Do '01/PatientMeet.txt'
 Else
 Do '01/NurseMove.txt'
