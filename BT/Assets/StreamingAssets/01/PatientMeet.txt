@@ -1,6 +1,5 @@
 Player align PlayerLookPat
-/JoystickCanvas on
-/NurseCanvas off
+/JoystickCanvas off
 /CheckCanvas on
 Label 'Loop'
 If

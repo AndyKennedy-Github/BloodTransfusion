@@ -1,6 +1,7 @@
 Player lookat IDLabel
-/CheckCanvas off
+/JoystickCanvas on
 /PatientCanvas off
+/CheckCanvas off
 Label 'Loop'
 If
 	IDLabel pressed
@@ -9,6 +10,8 @@ Then
 	Prompt 'You paste the patient ID label on the blood specimen tube'
 	ScoreTracker gain 1
 	ScoreTracker complete 7
+	Wait 2
+	Prompt ''
 	Do 'EndCheck.txt'
 Endif
 Goto 'Loop'
