@@ -1,19 +1,19 @@
 Player lookAt GXM/BloodLine 0.0,0.4,-0.05
-GM Wait 2
+ Wait 2
    GXM Menu.Question Is this the correct name and IC Number?
    GXM Menu.on GXM/BloodLine
-GM WaitFor 
+ WaitFor 
    GXM Menu.Done 
-GM Wait 1
-GM If
-    GXM Menu.Result YES
-GM Then
-	Player align PlayerLookPat
+ Wait 1
+ If
+    GXM Menu.Result Y
+ Then
+	ScoreTracker gain 1
+	ScoreTracker complete 3
 Wait 1
-	Do '05/PatientMeet.txt'
-GM Else
-	Player align PlayerLookPat
+	Do '05/GXMFormBlood.txt'
+Else
 Wait 1
-	Do '05/PatientMeet.txt'
-GM Endif
+	Do '05/GXMFormBlood.txt'
+ Endif
 

@@ -7,6 +7,7 @@ Label 'Loop'
 If
 	/PatientCanvas/Name pressed
 Then
+/PatientCanvas/Name reset
 Prompt 'My name is Tan Ah Kow. My IC Number is S0011223A'
 Wait 2
 Prompt ''

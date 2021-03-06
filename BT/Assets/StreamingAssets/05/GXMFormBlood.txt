@@ -6,14 +6,16 @@ GM WaitFor
    GXM Menu.Done 
 GM Wait 1
 GM If
-    GXM Menu.Result YES
+    GXM Menu.Result Y
 GM Then
+ScoreTracker gain 1
+ScoreTracker complete 7
 	Player align PlayerLookPat
 Wait 1
-	Do '05/COWStart.txt'
+	Do '05/PatientMeet.txt'
 GM Else
 	Player align PlayerLookPat
 Wait 1
-	Do '05/COWStart.txt'
+	Do '05/PatientMeet.txt'
 GM Endif
 

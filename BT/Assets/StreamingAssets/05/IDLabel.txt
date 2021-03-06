@@ -1,16 +1,20 @@
-StandingComputerdesk/Label align ZoomSpot
-StandingComputerdesk/Label rotatetoz 90
+StandingComputerdesk/IDLabel align ZoomSpot
+StandingComputerdesk/IDLabel rotatetoz 90
 ZoomSpot Menu.Question 'Is the Blood Type and number correct?'
 ZoomSpot Menu.on ZoomSpot
 WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
-	StandingComputerdesk/Label align LabelPos
+IDLabel reset
+	StandingComputerdesk/IDLabel align LabelPos
+	ScoreTracker gain 1
+	ScoreTracker complete 4
 	Do '05/COWCheck.txt'
 Else
-	StandingComputerdesk/Label align LabelPos
+IDLabel reset
+	StandingComputerdesk/IDLabel align LabelPos
 	Do '05/COWCheck.txt'
 Endif

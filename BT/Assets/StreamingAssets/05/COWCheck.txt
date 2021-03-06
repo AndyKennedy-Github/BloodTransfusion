@@ -1,21 +1,24 @@
 Player lookat DeskLook
-/COWCanvas on
+Patient reset
+/JoystickCanvas on
+Label 'Loop'
 If
-	/COWCanvas/GXMForm pressed
+	GXM pressed
 Then
-	/COWCanvas/GXMForm reset
+	GXM reset
 	Do '05/GXMFormCheck.txt'
 Endif
 If
-	/COWCanvas/GXMForm/IDLabel pressed
+	IDLabel pressed
 Then
-	COWCanvas/GXMForm/IDLabel reset
+	IDLabel reset
 	Do '05/IDLabel.txt'
 Endif
 If
-	/COWCanvas/GXMForm/Bag pressed
+	InfusionSet pressed
 Then
-	COWCanvas/GXMForm/Bag reset
+	InfusionSet reset
 	Do '05/Bag.txt'
 Endif
-Goto 1
+Wait 1
+Goto 'Loop'

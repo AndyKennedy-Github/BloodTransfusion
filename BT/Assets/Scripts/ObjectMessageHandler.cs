@@ -326,7 +326,26 @@ public class ObjectMessageHandler : MonoBehaviour
 
                 stages.Add(RightSet);
                 stages.Add(DishAdded);
+            }
+            if(param == "5")
+            {
+                bool PatientClick = false;
+                bool NurseClick = false;
+                bool CorrectName = false;
+                bool GXMCorrect = false;
+                bool LabelCorrect = false;
+                bool BloodBagCorrect = false;
+                bool TransfusionStart = false;
+                bool GXMBlood = false;
 
+                stages.Add(PatientClick);
+                stages.Add(NurseClick);
+                stages.Add(CorrectName);
+                stages.Add(GXMCorrect);
+                stages.Add(LabelCorrect);
+                stages.Add(BloodBagCorrect);
+                stages.Add(TransfusionStart);
+                stages.Add(GXMBlood);
             }
         }
 
