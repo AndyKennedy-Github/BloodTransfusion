@@ -11951,7 +11951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CommandFiles:
-  - 07/ChamberCanvas.txt
+  - 07/07Setup.txt
   Prompt: 
   Prompt1: 
   Prompt2: 
@@ -16453,7 +16453,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1363747024
 RectTransform:
