@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreTracker: {fileID: 0}
-  scoreText1: {fileID: 0}
-  scoreText2: {fileID: 0}
-  missedText1: {fileID: 0}
-  missedText2: {fileID: 0}
+  scoreText: {fileID: 0}
+  missedText: {fileID: 0}
+  CompleteorFail: {fileID: 0}
   totalMissed: 0
+  perfect: 0
+  good: 0
+  bad: 0
 --- !u!114 &3832005852355996327
 MonoBehaviour:
   m_ObjectHideFlags: 0

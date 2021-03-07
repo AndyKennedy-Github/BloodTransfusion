@@ -1,16 +1,15 @@
 If
 ScoreTracker allcomplete
 Then
-PerfectEnd on
+UICompletion perfect
 Else
-Goto 16
+Do 'Success.txt'
 Endif
 Label 'Loop'
 If
-End pressed
+Leave pressed
 Then
-End reset
+Leave reset
 SceneManager switchtoscene Scenes/MainMenu
 Endif
 Goto 'Loop'
-Wait 1

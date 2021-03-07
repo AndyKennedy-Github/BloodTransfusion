@@ -21,7 +21,7 @@ Endif
 /Canvas/SelectionPanel/SelectionPanel/MainMenu pressed
  Then
 /Canvas/SelectionPanel/SelectionPanel/MainMenu reset
-Do 'Scene02ScenarioFiles/EndCheck.txt'
+Do 'EndCheck.txt'
  ENDIF
  Wait 1
  Goto 1

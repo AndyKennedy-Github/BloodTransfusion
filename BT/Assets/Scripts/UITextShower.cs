@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class UITextShower : MonoBehaviour
 {
     public GameObject scoreTracker;
-    public Text scoreText1, scoreText2;
-    public Text missedText1, missedText2;
+    public Text scoreText/*, scoreText2*/;
+    public Text missedText/*, missedText2*/;
+    public Text CompleteorFail;
     public int totalMissed;
+    public bool perfect, good, bad;
+   
     void Start()
     {
         
@@ -17,8 +20,22 @@ public class UITextShower : MonoBehaviour
 
     void Update()
     {
-        scoreText1.text = "ACCURACY: " + (int)scoreTracker.GetComponent<ObjectMessageHandler>().percentComplete + "%";
-        scoreText2.text = "ACCURACY: " + (int)scoreTracker.GetComponent<ObjectMessageHandler>().percentComplete + "%";
+        if(perfect)
+        {
+            PerfectEnd();
+        }
+        else if(good)
+        {
+            GoodEnd();
+        }
+        else if(bad)
+        {
+            BadEnd();
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void DisplayText()
@@ -30,7 +47,30 @@ public class UITextShower : MonoBehaviour
                 totalMissed++;
             }
         }
-        missedText1.text += "You missed " + totalMissed + " possible check(s)!";
-        missedText2.text += "You missed " + totalMissed + " possible check(s)!";
-    }    
+        missedText.text += "You missed " + totalMissed + " possible check(s)!";
+    }  
+    
+    public void PerfectEnd()
+    {  
+        scoreText.text = "ACCURACY: " + (int)scoreTracker.GetComponent<ObjectMessageHandler>().percentComplete + "%";
+        missedText.text = "You missed 0 possible check(s)!";
+        CompleteorFail.text = "SUCCESS";
+        CompleteorFail.color = Color.green;
+    }
+
+    public void GoodEnd()
+    {
+        scoreText.text = "ACCURACY: " + (int)scoreTracker.GetComponent<ObjectMessageHandler>().percentComplete + "%";
+        missedText.text = "You missed " + totalMissed + " possible check(s)!";
+        CompleteorFail.text = "SUCCESS";
+        CompleteorFail.color = Color.green;
+    }
+
+    public void BadEnd()
+    {
+        scoreText.text = "ACCURACY: " + (int)scoreTracker.GetComponent<ObjectMessageHandler>().percentComplete + "%";
+        missedText.text = "You missed " + totalMissed + " possible check(s)!";
+        CompleteorFail.text = "FAILURE";
+        CompleteorFail.color = Color.red;
+    }
 }

@@ -1,6 +1,4 @@
-PerfectEnd off
-GoodEnd off
-BadEnd off
+End off
 ScoreTracker setstages 2
 wait 1
 Do 'Scene02ScenarioFiles/Scene02Test.txt'
