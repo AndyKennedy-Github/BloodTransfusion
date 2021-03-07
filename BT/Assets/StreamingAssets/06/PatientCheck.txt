@@ -1,6 +1,6 @@
 Player align PatLook
-/StartCanvas off
 /PatientCanvas on
+JoystickCanvas off
 Prompt 'Hello, did you have something to ask?'
 Wait 1
 Label 'Loop'
@@ -9,6 +9,8 @@ If
 	/PatientCanvas/Name/Education pressed
 Then
 	/PatientCanvas/Name/Education reset
+ScoreTracker gain 1
+ScoreTracker complete 0
 /PatientCanvas off
 Do '06/PatientSpeak.txt'
 ENDIF

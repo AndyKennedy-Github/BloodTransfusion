@@ -347,6 +347,42 @@ public class ObjectMessageHandler : MonoBehaviour
                 stages.Add(TransfusionStart);
                 stages.Add(GXMBlood);
             }
+            if (param == "6")
+            {
+                bool Educate = false;
+                bool VitalsOn = false;
+                bool Sanitizer = false;
+                bool Gloves = false;
+                bool AlcoholFirst = false;
+                bool Syringe = false;
+                bool Trash = false;
+                bool InfusionCombination = false;
+                bool BloodPole = false;
+                bool Squeeze = false;
+                bool Clamp = false;
+                bool CuffOn = false;
+                bool Disinfect = false;
+                bool Release = false;
+
+                stages.Add(Educate);
+                stages.Add(VitalsOn);
+                stages.Add(Sanitizer);
+                stages.Add(Gloves);
+                stages.Add(AlcoholFirst);
+                stages.Add(Syringe);
+                stages.Add(Trash);
+                stages.Add(InfusionCombination);
+                stages.Add(BloodPole);
+                stages.Add(Squeeze);
+                stages.Add(Clamp);
+                stages.Add(CuffOn);
+                stages.Add(Disinfect);
+                stages.Add(Release);
+            }
+            if(param == "7")
+            {
+
+            }
         }
 
         if(msg == "complete")

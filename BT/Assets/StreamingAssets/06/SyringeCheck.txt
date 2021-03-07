@@ -1,8 +1,6 @@
-/COWCanvas off
-WipeCanvas off
-DishCanvas off
 SyringeCanvas on
 Label 'Loop'
+Wait 1
 If
 	SyringeCanvas/Amount/Aspirate pressed
 Then
@@ -17,7 +15,9 @@ Endif
 If
 	SalineTracker salineamount 1
 Then
+Wait 1
+	ScoreTracker gain 1
+	ScoreTracker complete 5
 	Do '06/Dish.txt'
-Else
-	Goto 'Loop'
 Endif
+Goto 'Loop'
