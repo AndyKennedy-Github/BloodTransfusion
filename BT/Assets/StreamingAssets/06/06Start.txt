@@ -1,7 +1,5 @@
-/StartCanvas on
 /PatientCanvas off
-/COWCanvas off
-DishCanvas off
+JoystickCanvas on
 WipeCanvas off
 SyringeCanvas off
 InfusionStand off
@@ -12,21 +10,21 @@ Prompt ''
 /Player align PlayerStart
 Label 'Loop'
 If
-	StartCanvas/Patient pressed
+	Patient pressed
 Then
-	StartCanvas/Patient reset
+	Patient reset
 	Do '06/PatientCheck.txt'
 Endif
 If
-	StartCanvas/Patient/COW pressed
+	Monitor pressed
 Then
-	StartCanvas/Patient/COW reset
+	Monitor reset
 	Do '06/Monitor.txt'
 Endif
 If
-	StartCanvas/Patient/Desk pressed
+	StandingComputerdesk pressed
 Then
-	StartCanvas/Patient/Desk reset
+	StandingComputerdesk reset
 	Do '06/COWStart.txt'
 Endif
 Wait 1

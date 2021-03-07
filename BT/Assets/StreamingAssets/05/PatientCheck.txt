@@ -1,32 +1,31 @@
-/NurseCanvas off
 /CheckCanvas off
-Player align PlayerLookPat
-Prompt 'Hello, did you have something to ask?'
-Wait 1
-Label 'Loop'
+/JoystickCanvas off
 /PatientCanvas on
+Player align PlayerLookPat
+Wait 1
+Prompt 'Hello, did you have something to ask?'
+Label 'Loop'
+Wait 1
 If
 	/PatientCanvas/Name pressed
 Then
-/PatientCanvas/Name pressed reset
+/PatientCanvas/Name reset
 Prompt 'My name is Tan Ah Kow. My IC Number is S0011223A'
 Wait 2
-Prompt ' '
+Prompt ''
 Do '05/CorrectPatient.txt'
 ENDIF
-If /PatientCanvas/Name/Blood pressed
+If
+	/PatientCanvas/Name/Blood pressed
 Then
-/PatientCanvas/Name/Blood reset
-Speaker1 'Hello'
-Wait 2
-Speaker1 'I need to do some verification before I'
-Wait 2
-Speaker1 'conduct the blood transfusion.'
-Wait 2
-Speaker 1 'May I have your blood type?'
-Wait 2
-Prompt 'A+'
-Wait 2
-Do '05/CorrectBlood.txt'
+	/PatientCanvas/Name/Blood reset
+	Speaker1 'Hello.  I need to do some verification before I conduct the blood transfuion.  May I have your blood type?'
+	Wait 2
+	Prompt 'A+'
+	Wait 2
+	Speaker1 ''
+	Prompt ''
+	Do '05/CorrectBlood.txt'
+ENDIF
 Wait 1
 Goto 'Loop'

@@ -4,8 +4,10 @@ WaitFor
 Nurse Menu.Done
 Wait 1
 If
-Nurse Menu.Result YES
+Nurse Menu.Result Y
 Then
+ScoreTracker gain 1
+ScoreTracker complete 1
 Nurse align NursePatPos
 Do '05/PatientMeet.txt'
 Else

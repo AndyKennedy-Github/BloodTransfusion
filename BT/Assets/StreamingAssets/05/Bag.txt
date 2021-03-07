@@ -6,7 +6,7 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 	Goto 16
 Else
@@ -20,11 +20,15 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
+InfusionSet reset
+	ScoreTracker gain 1
+	ScoreTracker complete 5
 	InfusionSet align BagPos
 	Do '05/COWCheck.txt'
 Else
+InfusionSet reset
 	InfusionSet align BagPos
 	Do '05/PatientMeet.txt'
 Endif

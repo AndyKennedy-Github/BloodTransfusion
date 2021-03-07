@@ -1,14 +1,14 @@
 /PatientCanvas off
 /LabelCanvas off
 /CheckCanvas off
-/NurseCanvas off
 /COWCanvas off
-/WardCanvas on
 Label 'Loop'
 If
-	WardCanvas/Patient pressed
+	Patient pressed
 Then
-	WardCanvas/Patient reset
+	Patient reset
+	ScoreTracker gain 1
+	ScoreTracker complete 0
 	Player align PlayerPatPos
 	Do '05/NurseMove.txt'
 ENDIF

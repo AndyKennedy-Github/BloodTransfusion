@@ -6,13 +6,17 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
+ScoreTracker gain 1
+ScoreTracker complete 3
 	Gloves align GlovesSpot
 Wait 1
+Gloves reset
 	Do '06/COWStart.txt'
 Else
 	Gloves align GlovesSpot
 Wait 1
+Gloves reset
 	Do '06/COWStart.txt'
 Endif

@@ -1,4 +1,3 @@
-/StartCanvas off
 /PatientCanvas on
 Player align PlayerPatLook
 Label 'Loop'

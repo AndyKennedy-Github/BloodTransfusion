@@ -1,5 +1,4 @@
 Player align PlayerPatPos
-/NurseCanvas off
 /CheckCanvas on
 Label 'Loop'
 If
@@ -13,9 +12,12 @@ If
 	/CheckCanvas/Speak/Blood pressed
 Then
 	/CheckCanvas/Speak/Blood reset
+	ScoreTracker gain 1
+	ScoreTracker complete 6
 	Prompt 'Beginning Transfusion.'
 Wait 1
-	SceneManager switchToScene Scenes/MainMenu
+	Prompt ''
+	Do 'EndCheck.txt'
 Endif
 Wait 1
 Goto 'Loop'

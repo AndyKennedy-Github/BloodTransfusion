@@ -4,10 +4,12 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 	Prompt 'You disinfect and remove the connector'
 	Wait 1
+	ScoreTracker gain 1
+	ScoreTracker complete 12
 	InfusionStand off
 	Player align PlayerStart
 	Wait 1

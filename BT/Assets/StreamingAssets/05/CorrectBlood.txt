@@ -5,9 +5,9 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
-Do '05/GXMFormBlood.txt'
+Do '05/COWCheck.txt'
 Else
 Do '05/PatientCheck.txt'
 Endif

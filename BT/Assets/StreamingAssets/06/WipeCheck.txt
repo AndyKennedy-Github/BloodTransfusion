@@ -1,4 +1,3 @@
-/DishCanvas off
 /WipeCanvas on
 Prompt 'Clean the needleless connector?'
 Label 'Loop'
@@ -6,15 +5,19 @@ If
 	WipeCanvas/One pressed
 Then 
 	WipeCanvas/One reset
+	Do '06/Dish.txt'
 Endif
 If
 	WipeCanvas/One/Five pressed
 Then
 	WipeCanvas/One/Five reset
+	Do '06/Dish.txt'
 Endif
 If	
 	WipeCanvas/One/Ten pressed
 Then
+	ScoreTracker gain 1
+	ScoreTracker complete 4
 	WipeCanvas/One/Ten reset
 	Do '06/Dish.txt'
 Endif

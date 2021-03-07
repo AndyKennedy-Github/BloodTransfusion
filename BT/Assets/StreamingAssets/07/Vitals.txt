@@ -6,9 +6,11 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 Wait 1
+ScoreTracker gain 1
+ScoreTracker complete 6
 	Do '07/FourHourStart.txt'
 Else
 	Do '07/FourHourStart.txt'

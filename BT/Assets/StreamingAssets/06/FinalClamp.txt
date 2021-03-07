@@ -6,7 +6,9 @@ If
 Then
 	ClampCanvas/Release reset
 	Prompt 'The Clamp has been released.'
+	ScoreTracker gain 1
+	ScoreTracker complete 13
 	Wait 2
-	SceneManager switchtoscene Scenes/MainMenu
+	Do 'EndCheck.txt'
 Endif
 Goto 'Loop'
