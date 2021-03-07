@@ -1,4 +1,3 @@
-/StartCanvas on
 /PatientCanvas off
 /CannulaCanvas off
 /ComplaintCanvas off
@@ -22,27 +21,27 @@ Wait 2
 Prompt ''
 Label 'Loop'
 If
-	StartCanvas/Monitor pressed
+	Vitalsmonitor pressed
 Then
-	StartCanvas/Monitor reset
+	Vitalsmonitor reset
 	Do '07/Monitor.txt'
 Endif
 If
-	StartCanvas/Monitor/Cannula pressed
+	Cannula pressed
 Then
-	StartCanvas/Monitor/Cannula reset
+	Cannula reset
 	Do '07/CannulaCanvas.txt'
 Endif
 If
-	StartCanvas/Monitor/Patient pressed
+	Patient pressed
 Then
-	StartCanvas/Monitor/Patient reset
+	Patient reset
 	Do '07/Patient01.txt'
 Endif
 If
-	StartCanvas/Monitor/Later pressed
+	StartCanvas/Later pressed
 Then
-	StartCanvas/Monitor/Later reset
+	StartCanvas/Later reset
 	Do '07/TimeSkip.txt'
 Endif
 Wait 1

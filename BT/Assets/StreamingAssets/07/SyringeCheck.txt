@@ -17,6 +17,8 @@ Endif
 If
 	SalineTracker salineamount 1
 Then
+	ScoreTracker gain 1
+	ScoreTracker complete 13
 	Do '07/Patient04.txt'
 Else
 	Goto 'Loop'

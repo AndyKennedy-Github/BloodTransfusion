@@ -148,6 +148,21 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        if(msg == "lose")
+        {
+            if(pointTotal > 0)
+            {
+                if (param != null)
+                {
+                    pointTotal += int.Parse(param);
+                }
+                else
+                {
+                    pointTotal += 1;
+                }
+            }
+        }
+
         if(msg == "reducesaline")
         {
             if(salineAmount > 0)
@@ -242,6 +257,7 @@ public class ObjectMessageHandler : MonoBehaviour
         {
             if(param == inputText)
             {
+                Debug.Log("My name is " + gameObject.name + " my input text equals " + inputText);
                 return true;
             }
             else
@@ -381,7 +397,37 @@ public class ObjectMessageHandler : MonoBehaviour
             }
             if(param == "7")
             {
+                bool MonitorFirst = false;
+                bool CannulaFirst = false;
+                bool PatientSymptomFirst = false;
+                bool CannulaSecond = false;
+                bool PatientSymptomSecond = false;
+                bool Chamber = false;
+                bool MonitorSecond = false;
+                bool CannulaThird = false;
+                bool PatientSymptomThird = false;
+                bool Clamp = false;
+                bool Soap = false;
+                bool Gloves = false;
+                bool Wipe = false;
+                bool Syringe = false;
+                bool Leave = false;
 
+                stages.Add(MonitorFirst);
+                stages.Add(CannulaFirst);
+                stages.Add(PatientSymptomFirst);
+                stages.Add(CannulaSecond);
+                stages.Add(PatientSymptomSecond);
+                stages.Add(Chamber);
+                stages.Add(MonitorSecond);
+                stages.Add(CannulaThird);
+                stages.Add(PatientSymptomThird);
+                stages.Add(Clamp);
+                stages.Add(Soap);
+                stages.Add(Gloves);
+                stages.Add(Wipe);
+                stages.Add(Syringe);
+                stages.Add(Leave);
             }
         }
 

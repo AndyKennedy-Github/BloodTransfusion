@@ -1,5 +1,4 @@
 ChamberCanvas on
-HourCanvas off
 Player align ChamberLook
 Label 'Loop' 
 If

@@ -14,6 +14,8 @@ Endif
 If	
 	WipeCanvas/One/Ten pressed
 Then
+	ScoreTracker gain 1
+	ScoreTracker complete 13
 	WipeCanvas/One/Ten reset
 	Do '07/Dish.txt'
 Endif
