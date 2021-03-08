@@ -148,6 +148,21 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
+        if(msg == "lose")
+        {
+            if(pointTotal > 0)
+            {
+                if (param != null)
+                {
+                    pointTotal += int.Parse(param);
+                }
+                else
+                {
+                    pointTotal += 1;
+                }
+            }
+        }
+
         if(msg == "reducesaline")
         {
             if(salineAmount > 0)
@@ -242,6 +257,7 @@ public class ObjectMessageHandler : MonoBehaviour
         {
             if(param == inputText)
             {
+                Debug.Log("My name is " + gameObject.name + " my input text equals " + inputText);
                 return true;
             }
             else
@@ -301,7 +317,117 @@ public class ObjectMessageHandler : MonoBehaviour
             }
             if(param == "1")
             {
+                bool IDDesk = false;
+                bool FormDesk = false;
+                bool PatientMove = false;
+                bool NurseCall = false;
+                bool PatName = false;
+                bool PatID = false;
+                bool Blood = false;
+                bool IDBlood = false;
 
+                stages.Add(IDDesk);
+                stages.Add(FormDesk);
+                stages.Add(PatientMove);
+                stages.Add(NurseCall);
+                stages.Add(PatName);
+                stages.Add(PatID);
+                stages.Add(Blood);
+                stages.Add(IDBlood);
+         }
+            if (param == "4")
+            {
+                bool RightSet = false;
+                bool DishAdded = false;
+
+                stages.Add(RightSet);
+                stages.Add(DishAdded);
+            }
+            if(param == "5")
+            {
+                bool PatientClick = false;
+                bool NurseClick = false;
+                bool CorrectName = false;
+                bool GXMCorrect = false;
+                bool LabelCorrect = false;
+                bool BloodBagCorrect = false;
+                bool TransfusionStart = false;
+                bool GXMBlood = false;
+
+                stages.Add(PatientClick);
+                stages.Add(NurseClick);
+                stages.Add(CorrectName);
+                stages.Add(GXMCorrect);
+                stages.Add(LabelCorrect);
+                stages.Add(BloodBagCorrect);
+                stages.Add(TransfusionStart);
+                stages.Add(GXMBlood);
+            }
+            if (param == "6")
+            {
+                bool Educate = false;
+                bool VitalsOn = false;
+                bool Sanitizer = false;
+                bool Gloves = false;
+                bool AlcoholFirst = false;
+                bool Syringe = false;
+                bool Trash = false;
+                bool InfusionCombination = false;
+                bool BloodPole = false;
+                bool Squeeze = false;
+                bool Clamp = false;
+                bool CuffOn = false;
+                bool Disinfect = false;
+                bool Release = false;
+
+                stages.Add(Educate);
+                stages.Add(VitalsOn);
+                stages.Add(Sanitizer);
+                stages.Add(Gloves);
+                stages.Add(AlcoholFirst);
+                stages.Add(Syringe);
+                stages.Add(Trash);
+                stages.Add(InfusionCombination);
+                stages.Add(BloodPole);
+                stages.Add(Squeeze);
+                stages.Add(Clamp);
+                stages.Add(CuffOn);
+                stages.Add(Disinfect);
+                stages.Add(Release);
+            }
+            if(param == "7")
+            {
+                bool MonitorFirst = false;
+                bool CannulaFirst = false;
+                bool PatientSymptomFirst = false;
+                bool CannulaSecond = false;
+                bool PatientSymptomSecond = false;
+                bool Chamber = false;
+                bool MonitorSecond = false;
+                bool CannulaThird = false;
+                bool PatientSymptomThird = false;
+                bool Clamp = false;
+                bool Soap = false;
+                bool Gloves = false;
+                bool Wipe = false;
+                bool Syringe = false;
+                bool Leave = false;
+
+                stages.Add(MonitorFirst);
+                stages.Add(CannulaFirst);
+                stages.Add(PatientSymptomFirst);
+                stages.Add(CannulaSecond);
+                stages.Add(PatientSymptomSecond);
+                stages.Add(Chamber);
+                stages.Add(MonitorSecond);
+                stages.Add(CannulaThird);
+                stages.Add(PatientSymptomThird);
+                stages.Add(Clamp);
+                stages.Add(Soap);
+                stages.Add(Gloves);
+                stages.Add(Wipe);
+                stages.Add(Syringe);
+                stages.Add(Leave);
             }
         }
 

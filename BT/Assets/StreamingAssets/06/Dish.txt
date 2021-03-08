@@ -1,29 +1,29 @@
-/COWCanvas off
 WipeCanvas off
 SyringeCanvas off
+KidneyDish reset
 Prompt ''
 StandingComputerdesk/KidneyDish align DishPos
 Wait 1
 Player lookat StandingComputerdesk/KidneyDish
 Wait 1
 Label 'Loop'
-DishCanvas on
 If
-	DishCanvas/Wipe pressed
+	Wipe1 pressed
 Then 
-	DishCanvas/Wipe reset
+	Wipe1 reset
 	Do '06/WipeCheck.txt'
 Endif
 If
-	DishCanvas/Wipe/Syringe pressed
+	Syringe pressed
 Then
-	DishCanvas/Wipe/Syringe reset
+	Syringe reset
 	Do '06/SyringeCheck.txt'
 Endif
 If
-	DishCanvas/Wipe/Trash pressed
+	Wastebin pressed
 Then
-	DishCanvas/Wipe/Trash reset
+	Wastebin reset
 	Do '06/Garbage.txt'
 Endif
+Wait 1
 Goto 'Loop'

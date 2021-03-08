@@ -1,13 +1,14 @@
-Player lookat DoorLook
+/JoystickCanvas off
 ZoomSpot Menu.Question 'Go to ward?'
 ZoomSpot Menu.on ZoomSpot
 WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
-SceneManager switchToScene Scenes/MainMenu
+Do 'EndCheck.txt'
 Else
-Do '04/Scene04Start.txt'
+/JoystickCanvas on
+Do '04/DoorCheck.txt'
 Endif

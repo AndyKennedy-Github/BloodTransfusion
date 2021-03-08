@@ -5,6 +5,8 @@ Label 'Loop'
 If
 	ClampCanvas/Close pressed
 Then
+	ScoreTracker gain 1
+	ScoreTracker complete 9
 	ClampCanvas/Close reset
 Prompt 'You close the clamp.'
 Wait 2

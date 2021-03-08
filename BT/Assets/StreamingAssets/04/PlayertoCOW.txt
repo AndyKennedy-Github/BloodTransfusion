@@ -1,16 +1,19 @@
-/StartCanvas off
-/SetCanvas off
-Label 'KidneyLoop'
 Player moveto PlayerCOWLook
 Wait 1
 Player lookat COWFocus
-/KidCanvas on
+Label 'KidneyLoop'
 If
-	/KidCanvas/Dish pressed
+	StandingComputerdesk/KidneyDish pressed
 Then
-	/KidCanvas/Dish reset
+	ScoreTracker gain 1
+	ScoreTracker complete 0
+	StandingComputerdesk/KidneyDish reset
 	StandingComputerdesk/KidneyDish moveto KidDishOrig
-	Wait 2
-	Do '04/Door.txt'
+Endif
+If
+DoorSingle pressed
+Then
+DoorSingle reset
+Do '04/Door.txt'
 Endif
 Goto 'KidneyLoop'

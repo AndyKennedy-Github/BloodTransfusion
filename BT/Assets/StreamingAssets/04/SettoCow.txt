@@ -1,6 +1,8 @@
 If
 InfusionSet01 isChosen
 Then
+ScoreTracker gain 1
+ScoreTracker complete 0
 InfusionSet01 moveto SetCOWPosition
 InfusionSet01 matchrotation SetCOWPosition
 Do '04/PlayertoCOW.txt'
@@ -9,9 +11,13 @@ If
 InfusionSet02 isChosen
 Then
 InfusionSet02 moveto SetCOWPosition
+InfusionSet02 matchrotation SetCOWPosition
+Do '04/PlayertoCOW.txt'
 Endif
 If
 InfusionSet03 isChosen
 Then
 InfusionSet03 moveto SetCOWPosition
+InfusionSet03 matchrotation SetCOWPosition
+Do '04/PlayertoCOW.txt'
 Endif

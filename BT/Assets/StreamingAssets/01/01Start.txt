@@ -1,30 +1,32 @@
 Label '01Loop'
-/StartCanvas on
-/WardCanvas off
-/NurseCanvas off
-/PatientCanvas off
 /CheckCanvas off
-/LabelCanvas off
+/PatientCanvas off
 If
-	/StartCanvas/GXM pressed
+	GXMForm pressed
 Then
-	/StartCanvas/GXM reset
+	GXMForm reset
 	GXMForm align GXMDeskPos
-	GXMForm parentto StandingComputerdesk
+	GXMForm parentto COW
+	ScoreTracker gain 1
+	ScoreTracker complete 1
 ENDIF
 Wait 1
 If
-	/StartCanvas/ID pressed
+	IDLabel pressed
 Then
-	/StartCanvas/ID reset
+	IDLabel reset
 	IDLabel align IDDeskPos
-	IDLabel parentto StandingComputerdesk
+	IDLabel parentto COW
+	ScoreTracker gain 1
+	ScoreTracker complete 0
 ENDIF
 Wait 1
 If
-	/StartCanvas/MoveToWard pressed
+	Beds/Bed pressed
 Then
-	/StartCanvas/MoveToWard reset
+	Beds/Bed reset
+	ScoreTracker gain 1
+	ScoreTracker complete 2
 	Do '01/PatientChoice.txt'
 ENDIF
 Goto '01Loop'

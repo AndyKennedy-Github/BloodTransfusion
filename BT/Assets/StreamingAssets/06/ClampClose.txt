@@ -5,7 +5,7 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
 	Prompt 'The Clamp has been closed.'
 	Wait 1

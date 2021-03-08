@@ -1,4 +1,3 @@
-/COWCanvas off
 WipeCanvas off
 SyringeCanvas off
 Prompt ''
@@ -11,21 +10,21 @@ Prompt 'Clean needleless connector?'
 Label 'Loop'
 DishCanvas on
 If
-	DishCanvas/Wipe pressed
+	Wipe1 pressed
 Then 
-	DishCanvas/Wipe reset
+	Wipe1 reset
 	Do '07/WipeCheck.txt'
 Endif
 If
-	DishCanvas/Wipe/Syringe pressed
+	Syringe pressed
 Then
-	DishCanvas/Wipe/Syringe reset
+	Syringe reset
 	Do '07/SyringeCheck.txt'
 Endif
 If
-	DishCanvas/Wipe/Connector pressed
+	Cannula pressed
 Then
-	DishCanvas/Wipe/Connector reset
+	Cannula reset
 	Do '07/ConnectorDisconnect.txt'
 Endif
 Goto 'Loop'

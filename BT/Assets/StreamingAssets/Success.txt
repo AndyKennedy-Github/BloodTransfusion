@@ -1,5 +1,5 @@
 If
-ScoreTracker percentachieved 88
+ScoreTracker percentachieved 80
 Then
 GoodEnd on
 UICompletionTracker showtext

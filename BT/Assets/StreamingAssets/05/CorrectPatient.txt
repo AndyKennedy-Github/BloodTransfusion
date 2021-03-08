@@ -5,9 +5,11 @@ WaitFor
 ZoomSpot Menu.Done
 Wait 1
 If
-ZoomSpot Menu.Result YES
+ZoomSpot Menu.Result Y
 Then
-Do '05/COWCheck.txt'
+ScoreTracker gain 1
+ScoreTracker complete 2
+Do '05/PatientCheck.txt'
 Else
 Do '05/PatientCheck.txt'
 Endif

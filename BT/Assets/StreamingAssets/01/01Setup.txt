@@ -1,8 +1,5 @@
-BloodBox MoveTo Table/BoxTable
-Create telephone 'telephone'
-telephone MoveTo Table/TelephoneLoc
-ScoreTracker setstages 3
+ScoreTracker setstages 1
 PerfectEnd off
 GoodEnd off
 BadEnd off
-Do '03/Scene03Start.txt'
+Do '01/01Start.txt'

@@ -1,12 +1,17 @@
 Player lookat IDLabel
+/JoystickCanvas on
+/PatientCanvas off
 /CheckCanvas off
-/LabelCanvas on
 Label 'Loop'
 If
-	/LabelCanvas/ID pressed
+	IDLabel pressed
 Then
-	/LabelCanvas/ID reset
+	IDLabel reset
 	Prompt 'You paste the patient ID label on the blood specimen tube'
-	SceneManager switchtoscene Scenes/MainMenu
+	ScoreTracker gain 1
+	ScoreTracker complete 7
+	Wait 2
+	Prompt ''
+	Do 'EndCheck.txt'
 Endif
 Goto 'Loop'

@@ -8,33 +8,33 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 1be2101ac0d5c644387839028d57b036
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RoomGenerationTest.unity
     guid: a82fc469666768041806f1c66eff6c47
-  - enabled: 1
+  - enabled: 0
     path: Assets/ScenesRooms/RoomLrgPatient_base.unity
     guid: 2a3a749804737b74f9f9277a43e34918
-  - enabled: 1
+  - enabled: 0
     path: Assets/ScenesRooms/RoomMedBreak_3couch.unity
     guid: f45218dd9c1340f4597551ba28514e1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/ScenesRooms/RoomMedExam_3bed.unity
     guid: b3a3514ca5e649d48af5bf1c6b5d22b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/ScenesRooms/RoomMedExam_base.unity
     guid: 27fda95552348c3488eb12e89ee9dea6
-  - enabled: 1
+  - enabled: 0
     path: Assets/ScenesRooms/RoomMedPatient_3bed.unity
     guid: 670dbdd8d0f573340b8e59b714e1a8cb
-  - enabled: 1
-    path: Assets/ScenesRooms/RoomMedOffice_base.unity
-    guid: afcd6c36afa98534ba5b8e8156fe9d50
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/ScenesRooms/RoomXLGPatient_base.unity
     guid: bafe963876585714da0029989082dcc4
-  - enabled: 1
-    path: Assets/ScenesRooms/RoomXLGWaiting_base.unity
-    guid: 80913abc23fc1554ca27b5e50e3f93fc
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/01.unity
     guid: c5645d60735f77d4a9f7253d40a23347

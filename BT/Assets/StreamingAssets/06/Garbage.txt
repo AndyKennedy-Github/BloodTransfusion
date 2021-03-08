@@ -4,5 +4,7 @@ Wait 1
 StandingComputerdesk/KidneyDish/Wipe1 align Wastebin
 StandingComputerdesk/KidneyDish/Wipe2 align Wastebin
 StandingComputerdesk/KidneyDish/Syringe align Wastebin
+ScoreTracker gain 1
+ScoreTracker complete 6
 Wait 1
 Do '06/COWStart.txt'

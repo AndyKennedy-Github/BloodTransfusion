@@ -4,16 +4,16 @@ Player align IVLook
 Prompt ''
 Label 'Loop'
 If
-	IVCanvas/Chamber pressed
+	InfusionSet pressed
 Then
-	IVCanvas/Chamber reset
+	InfusionSet reset
 	Player lookat PlayerSqueezeLook
 	Do '06/BagSqueeze.txt'
 Endif
 If
-	IVCanvas/Chamber/Clamp pressed
+	InfusionClamp pressed
 Then
-	IVCanvas/Chamber/Clamp reset
+	InfusionClamp reset
 	Do '06/ClampRelease.txt'
 Endif
 Goto 'Loop'

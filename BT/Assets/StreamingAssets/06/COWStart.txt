@@ -1,48 +1,47 @@
-/StartCanvas off
-/COWCanvas on
 WipeCanvas off
-/DishCanvas off
 /SyringeCanvas off
 /IVCanvas off
 /DripCanvas off
 Player align DeskStart
 Label 'Loop'
 If
-	COWCanvas/Sanitizer pressed
+	Soap pressed
 Then
-	COWCanvas/Sanitizer reset
+	Soap reset
 	Do '06/Sanitizer.txt'
 Endif
 If
-	COWCanvas/Sanitizer/Gloves pressed
+	Gloves pressed
 Then
-	COWCanvas/Sanitizer/Gloves reset
+	Gloves reset
 	Do '06/Gloves.txt'
 Endif
 If
-	COWCanvas/Sanitizer/Dish pressed
+	KidneyDish pressed
 Then
-	COWCanvas/Sanitizer/Dish reset
+	KidneyDish reset
 	Do '06/Dish.txt'
 Endif
 If
-	COWCanvas/Sanitizer/BloodBag pressed
+	BloodBag pressed
 Then
-	COWCanvas/Sanitizer/BloodBag reset
+	BloodBag reset
 	BloodBag align BagTableSpot
 Endif
 If
-	COWCanvas/Sanitizer/Set pressed
+	Set pressed
 Then
-	COWCanvas/Sanitizer/Set reset
+	Set reset
 	Set align SetTablePos
 	Do '06/BagCombine.txt'
 Endif
 If
-	COWCanvas/Sanitizer/Cuff pressed
+	PressureCuff pressed
 Then
-	COWCanvas/Sanitizer/Cuff reset
+	PressureCuff reset
 	PressureCuff align CuffPos
+	ScoreTracker gain 1
+	ScoreTracker complete 11
 	Player lookat Patient/Cube
 	Do '06/Connector.txt'
 Endif
