@@ -22,7 +22,7 @@ public class SubObjectParent : MonoBehaviour
 
         foreach (Transform t in subObjectLocs)
         {
-            Debug.Log("-=-=-=-=-=-=-= SUB OBJECT LOCATION: " + t.name);
+            Debug.Log("SUB OBJECT PARENT: " + gameObject.name + "-=-=-=-=-=-=-= SUB OBJECT LOCATION: " + t.name);
         }
     }
 

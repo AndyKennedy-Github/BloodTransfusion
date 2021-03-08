@@ -6457,7 +6457,7 @@ MonoBehaviour:
   deskLocs:
   - {fileID: 1139470956526981160}
   chairLocs:
-  - {fileID: 0}
+  - {fileID: 3228742406376193283}
 --- !u!1 &1859867943393972320
 GameObject:
   m_ObjectHideFlags: 0

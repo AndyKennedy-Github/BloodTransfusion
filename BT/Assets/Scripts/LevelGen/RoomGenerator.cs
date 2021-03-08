@@ -97,7 +97,7 @@ public class RoomObject
     public void Spawn(Transform refTransform, Transform myParent = null) {
         // If parent is null, InstantiateAsync() will default to instantiating unparented
         handle = Addressables.InstantiateAsync(objectAsset, refTransform.position, refTransform.rotation, myParent);
-        handle.Completed += handle => { gameObject = handle.Result; Debug.Log("GOT A GAME OBJECT: " + gameObject.name); };
+        handle.Completed += handle => { gameObject = handle.Result; RoomGenerator.instance.RoomObjectSpawnComplete();  Debug.Log("LEVEL GEN: GOT A GAME OBJECT: " + gameObject.name); };
     }
 }
 
@@ -106,6 +106,9 @@ public class RoomGenerator : MonoBehaviour
     public string[] setupFiles; /**< Array of level setup filenames*/
     public Dictionary<string, RoomObject> roomObjects = new Dictionary<string, RoomObject>(); /**< Keeps track of objects in the room*/
     private Scene roomScene; /**< Reference to room scene being added to the current scene*/
+    private int numObjectsToSpawn = 0; /**< Used to track when all room objects are loaded into scene*/
+    private int numObjectsSpawned = 0; /**< Used to track when all room objects are loaded into scene*/
+    private bool roomObjectsDoneSpawning = false;
 
     private static RoomGenerator roomGenerator;
 
@@ -158,23 +161,30 @@ public class RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            foreach (KeyValuePair<string, RoomObject> entry in instance.roomObjects)
-            {
-                Debug.Log("KEY: " + entry.Key + " | VALUE: " + entry.Value.gameObject.name);
-                if (entry.Value.CountSubObjects() > 0)
-                {
-                    foreach (KeyValuePair<string, RoomObject> subEntry in entry.Value.GetAllSubObjects())
-                    {
-                        Debug.Log("== SUB OBJECT KEY: " + subEntry.Key + " | VALUE: " + subEntry.Value.gameObject.name);
-                        foreach (KeyValuePair<string, RoomObject> subSubEntry in subEntry.Value.GetAllSubObjects())
-                        {
-                            Debug.Log("====== SUB SUB OBJECT KEY: " + subSubEntry.Key + " | VALUE: " + subSubEntry.Value.gameObject.name);
-                        }
+            RoomObjectInventory();
+        }
+    }
 
+    private void RoomObjectInventory()
+    {
+        Debug.Log("LEVEL GEN: ---------------- ROOM OBJECT INVENTORY ---------------------------------------------------");
+        foreach (KeyValuePair<string, RoomObject> entry in instance.roomObjects)
+        {
+            Debug.Log("LEVEL GEN: Inventory - OBJECT KEY: " + entry.Key + " | VALUE: " + entry.Value.gameObject.name);
+            if (entry.Value.CountSubObjects() > 0)
+            {
+                foreach (KeyValuePair<string, RoomObject> subEntry in entry.Value.GetAllSubObjects())
+                {
+                    Debug.Log("LEVEL GEN: Inventory == SUB OBJECT KEY: " + subEntry.Key + " | VALUE: " + subEntry.Value.gameObject.name);
+                    foreach (KeyValuePair<string, RoomObject> subSubEntry in subEntry.Value.GetAllSubObjects())
+                    {
+                        Debug.Log("LEVEL GEN: Inventory == == SUB SUB OBJECT KEY: " + subSubEntry.Key + " | VALUE: " + subSubEntry.Value.gameObject.name);
                     }
+
                 }
             }
         }
+        Debug.Log("LEVEL GEN: ------------------------------------------------------------------------------------------");
     }
 
     //loads local or remote file
@@ -220,12 +230,11 @@ public class RoomGenerator : MonoBehaviour
 
         for (int i = 0; i < commands.Length; i++)
         {
-            print("LEVEL GEN: command: " + commands[i] + "|");
             string locationName, locationNum, assetName;
             // Trim to remove extra whitespace at start/end
             commands[i] = commands[i].TrimEnd('\r');
             //commands[i].Replace(System.Environment.NewLine, "");
-            print("LEVEL GEN: command: " + commands[i] + "|");
+            print("LEVEL GEN: Raw Command: " + commands[i] + "|");
 
             //split up cs.commandLine into location and asset
             string[] splitArray = commands[i].Split(separators, System.StringSplitOptions.None);
@@ -237,7 +246,7 @@ public class RoomGenerator : MonoBehaviour
                     tempString += s;
                     tempString += "|";
                 }
-                Debug.Log(tempString);
+                Debug.Log("LEVEL GEN: Split Command: " + tempString);
 
                 locationName = splitArray[0].TrimEnd(System.Environment.NewLine.ToCharArray());
                 locationNum = splitArray[1].TrimEnd(System.Environment.NewLine.ToCharArray());
@@ -257,6 +266,7 @@ public class RoomGenerator : MonoBehaviour
                     temp.locNum = int.Parse(locationNum);
                     temp.objectAsset = assetName;
                     instance.roomObjects.Add(string.Concat(temp.locName, temp.locNum), temp);
+                    numObjectsToSpawn++;
                     if (splitArray.Length > 5)
                     {
                         // Process subassets located on this asset
@@ -266,14 +276,19 @@ public class RoomGenerator : MonoBehaviour
                             subLocName = splitArray[j].TrimEnd(System.Environment.NewLine.ToCharArray());
                             subLocNum = splitArray[j+1].TrimEnd(System.Environment.NewLine.ToCharArray());
                             subAssetName = splitArray[j+2].TrimEnd(System.Environment.NewLine.ToCharArray());
-                            print("LEVEL GEN: sub object loc = " + subLocName + subLocNum + " | asset = " + subAssetName + " (" + subAssetName.Length + " chars)");
                             if (subAssetName.Length > 0)
                             {
+                                print("LEVEL GEN: sub object loc = " + subLocName + subLocNum + " | asset = " + subAssetName + " (" + subAssetName.Length + " chars)");
                                 RoomObject subTemp = new RoomObject();
                                 subTemp.locName = subLocName;
                                 subTemp.locNum = int.Parse(subLocNum);
                                 subTemp.objectAsset = subAssetName;
                                 temp.SetSubObject(string.Concat(subLocName, subLocNum), subTemp);
+                                numObjectsToSpawn++;
+                            }
+                            else
+                            {
+                                print("LEVEL GEN: BLANK sub object loc = " + subLocName + subLocNum + " | asset = " + subAssetName + "| - IGNORING");
                             }
                         }
                     }
@@ -359,16 +374,26 @@ public class RoomGenerator : MonoBehaviour
         {
             if (entry.Value.CountSubObjects() > 0)
             {
-                print("--LEVEL GEN SPAWNING SUB OBJECTS: Looking for " + subObjectParent.gameObject.name);
+                print("-- LEVEL GEN: SPAWNING SUB OBJECTS: Looking for " + subObjectParent.gameObject.name);
                 if (entry.Value.gameObject == subObjectParent.gameObject)
                 {
                     foreach (KeyValuePair<string, RoomObject> subEntry in entry.Value.GetAllSubObjects())
                     {
-                        print("--LEVEL GEN SPAWNABLE SUB OBJECT FOUND FOR: " + entry.Value.gameObject.name + "| sub object: " + subEntry.Value.objectAsset);
+                        print("-- -- LEVEL GEN: SPAWNABLE SUB OBJECT FOUND FOR: " + entry.Value.gameObject.name + "| sub object: " + subEntry.Value.objectAsset);
                         subEntry.Value.Spawn(subObjectParent.subObjectLocs[subEntry.Value.locNum - 1], entry.Value.gameObject.transform);
                     }
                 }
             }
+        }
+    }
+
+    public void RoomObjectSpawnComplete()
+    {
+        if (++numObjectsSpawned >= numObjectsToSpawn) {
+            roomObjectsDoneSpawning = true;
+            // All Room Objects have finished spawning in
+            Debug.Log("LEVEL GEN: ALL ROOM OBJECTS SPAWNED - confirmed " + numObjectsSpawned + " of " + numObjectsToSpawn);
+            RoomObjectInventory();
         }
     }
 }

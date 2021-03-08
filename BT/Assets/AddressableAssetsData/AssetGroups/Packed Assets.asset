@@ -22,10 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Chair
-    m_MainAsset: {fileID: 7130434311932012528, guid: 07c0dd5408ea85c4da636a5bd7ec0bd7,
-      type: 3}
-    m_TargetAsset: {fileID: 7130434311932012528, guid: 07c0dd5408ea85c4da636a5bd7ec0bd7,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 099cb011c883b85429fe982a57b6222e
     m_Address: Poster03
     m_ReadOnly: 0
@@ -38,17 +36,17 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bedside
-    m_MainAsset: {fileID: 1000011426231140, guid: 0ac796e923aba664d8ed9500b5b8f8b0,
-      type: 3}
-    m_TargetAsset: {fileID: 1000011426231140, guid: 0ac796e923aba664d8ed9500b5b8f8b0,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 0d8d3dbff6371b544b77f9018eb04c5f
     m_Address: Trolley01
     m_ReadOnly: 0
     m_SerializedLabels:
     - Cart
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 3138375883902953468, guid: 0d8d3dbff6371b544b77f9018eb04c5f,
+      type: 3}
+    m_TargetAsset: {fileID: 3138375883902953468, guid: 0d8d3dbff6371b544b77f9018eb04c5f,
+      type: 3}
   - m_GUID: 179916eac09f26e458324a2faa2a919f
     m_Address: InfusionBottle01
     m_ReadOnly: 0
@@ -61,10 +59,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bedside
-    m_MainAsset: {fileID: 1000010894022844, guid: 1976ffee3bbf8244fb420cbe4f877837,
-      type: 3}
-    m_TargetAsset: {fileID: 1000010894022844, guid: 1976ffee3bbf8244fb420cbe4f877837,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1a02d1fcccb37a747a3565fa5c397374
     m_Address: InfusionBottleLiquid03
     m_ReadOnly: 0
@@ -77,10 +73,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Wall
-    m_MainAsset: {fileID: 5289961872572387257, guid: 1ffb70fcf2c81b14b801e1bcfe54255c,
-      type: 3}
-    m_TargetAsset: {fileID: 5289961872572387257, guid: 1ffb70fcf2c81b14b801e1bcfe54255c,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 20104b784b910f740ba312d06944fc5e
     m_Address: Poster01
     m_ReadOnly: 0
@@ -100,19 +94,15 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bed
-    m_MainAsset: {fileID: 1352311408996475221, guid: 3976873d3fe89294682af2b689df003f,
-      type: 3}
-    m_TargetAsset: {fileID: 1352311408996475221, guid: 3976873d3fe89294682af2b689df003f,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 3c0ce3dbaf35743449df61aa2a8362ab
     m_Address: ChairNoArms01
     m_ReadOnly: 0
     m_SerializedLabels:
     - Chair
-    m_MainAsset: {fileID: 7473569304404547664, guid: 3c0ce3dbaf35743449df61aa2a8362ab,
-      type: 3}
-    m_TargetAsset: {fileID: 7473569304404547664, guid: 3c0ce3dbaf35743449df61aa2a8362ab,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 3d48fa272e99ef74e89a64eaf5eec000
     m_Address: NoSmokingSign01
     m_ReadOnly: 0
@@ -125,10 +115,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bed
-    m_MainAsset: {fileID: 1901535484127214506, guid: 44ac0ec534e5ae547b27368951e8e804,
-      type: 3}
-    m_TargetAsset: {fileID: 1901535484127214506, guid: 44ac0ec534e5ae547b27368951e8e804,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 56596b58b85751348898ec3fc2934b59
     m_Address: InfusionBag01
     m_ReadOnly: 0
@@ -148,28 +136,22 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bed
-    m_MainAsset: {fileID: 2122906156446336181, guid: 5da255e86649d4a46ab02cf36bd106ba,
-      type: 3}
-    m_TargetAsset: {fileID: 2122906156446336181, guid: 5da255e86649d4a46ab02cf36bd106ba,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 616884fd988f10341ad82d615653ccb0
     m_Address: ComputerSet01
     m_ReadOnly: 0
     m_SerializedLabels:
     - DeskComputer
-    m_MainAsset: {fileID: 4913162271599557820, guid: 616884fd988f10341ad82d615653ccb0,
-      type: 3}
-    m_TargetAsset: {fileID: 4913162271599557820, guid: 616884fd988f10341ad82d615653ccb0,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6a182f24ae7289743b7e9598d80d8294
     m_Address: ChairArms01
     m_ReadOnly: 0
     m_SerializedLabels:
     - Chair
-    m_MainAsset: {fileID: 5703251565581293502, guid: 6a182f24ae7289743b7e9598d80d8294,
-      type: 3}
-    m_TargetAsset: {fileID: 5703251565581293502, guid: 6a182f24ae7289743b7e9598d80d8294,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6bf2610a948cf7246ab81ef54568fe88
     m_Address: XRayViewBox02
     m_ReadOnly: 0
@@ -189,10 +171,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Desk
-    m_MainAsset: {fileID: 2248080250508069545, guid: 6e9fdd9a5211df74a92d3dc0e6c43d8f,
-      type: 3}
-    m_TargetAsset: {fileID: 2248080250508069545, guid: 6e9fdd9a5211df74a92d3dc0e6c43d8f,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 8208ee86ee884a54397439247e9646e6
     m_Address: GenAnaesthesiaMachine01
     m_ReadOnly: 0
@@ -263,10 +243,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - InfusionBag
-    m_MainAsset: {fileID: 1000013734680830, guid: ad860a9f91bc6424a8d16fbd83e04a4c,
-      type: 3}
-    m_TargetAsset: {fileID: 1000013734680830, guid: ad860a9f91bc6424a8d16fbd83e04a4c,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: cdaaa946d259da64fa54701b4eff64ca
     m_Address: RackInfusionBag02
     m_ReadOnly: 0
@@ -307,28 +285,22 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - DeskPhone
-    m_MainAsset: {fileID: 1307229414604918297, guid: da83fee8760c1c042941412b29f5ed17,
-      type: 3}
-    m_TargetAsset: {fileID: 1307229414604918297, guid: da83fee8760c1c042941412b29f5ed17,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: db0f9d8fd82a0cd4cb86f8cf59280666
     m_Address: Trolley02
     m_ReadOnly: 0
     m_SerializedLabels:
     - Cart
-    m_MainAsset: {fileID: 5469913510826094978, guid: db0f9d8fd82a0cd4cb86f8cf59280666,
-      type: 3}
-    m_TargetAsset: {fileID: 5469913510826094978, guid: db0f9d8fd82a0cd4cb86f8cf59280666,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e12d80a96b99b1940b97aada008dc084
     m_Address: InfusionBag04
     m_ReadOnly: 0
     m_SerializedLabels:
     - InfusionBag
-    m_MainAsset: {fileID: 1000011670230966, guid: e12d80a96b99b1940b97aada008dc084,
-      type: 3}
-    m_TargetAsset: {fileID: 1000011670230966, guid: e12d80a96b99b1940b97aada008dc084,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e1c553bb1a1d3084db9375c1ebbf4ed0
     m_Address: Poster02
     m_ReadOnly: 0
@@ -364,6 +336,15 @@ MonoBehaviour:
     - Wall
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: ee40f32e7fcee274f88e37d24053e28a
+    m_Address: DocConsentForm
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - DeskDocument
+    m_MainAsset: {fileID: 6103647431310939630, guid: ee40f32e7fcee274f88e37d24053e28a,
+      type: 3}
+    m_TargetAsset: {fileID: 6103647431310939630, guid: ee40f32e7fcee274f88e37d24053e28a,
+      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3132ff6bffb476e40ac16e9a1fcb5174, type: 2}
   m_SchemaSet:
