@@ -1,11 +1,11 @@
-﻿/*using System;
+﻿using System;
 using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
 using System.Linq;
-
+namespace DeepBrook {
 /////////////////////////////////////////////////////////////////////////////////////////
 // Parameter expressions routines
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +174,7 @@ public class CommandSequence{
     public int nestingLevel;
 }
 
-public class MyGameManager : MonoBehaviour
+public class MyGameManager_old : MonoBehaviour
 {
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
@@ -542,7 +542,7 @@ public class MyGameManager : MonoBehaviour
         //Get the parameters
         if (splitArray.Length>paramStart){ //there are parameters too
             //find where parameters start (after command)
-            /*
+            
             int start = 0;
             int end = cs.commandLine.Length;
             int count = end - start;
@@ -552,7 +552,7 @@ public class MyGameManager : MonoBehaviour
 
             //Trim off end comments like this  #this is a comment
             //print("cs.commandLine cparams starts at "+ start);
-            string ptmp = cs.commandLine.Substring(start);
+            //string ptmp = cs.commandLine.Substring(start);
             string ptmp = cs.commandLine.StringAfter(command);
             //print("ptmp="+ptmp);
             string [] tmp = ptmp.Split('#');
@@ -562,7 +562,7 @@ public class MyGameManager : MonoBehaviour
         command = command.ToLower();//change command to lower case
         return true;
     }
-/*
+
     //gets the rest of "all" after location of "match" in all.
     public string StringAfter(string all,string match)
     {
@@ -790,4 +790,4 @@ static class Extensions
         }
     }
 }
-*/
+}

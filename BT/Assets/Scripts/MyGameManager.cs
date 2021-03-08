@@ -188,7 +188,7 @@ public class MyGameManager : MonoBehaviour
 {
     public string [] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel=0;
-    public string Prompt;
+    public string Prompt, Prompt1, Prompt2;
     Dictionary<string, string> fullnames = new Dictionary<string, string>();
     Dictionary<string, int> label = new Dictionary<string, int>();
     Dictionary<string, float> variables = new Dictionary<string, float>();
@@ -211,6 +211,8 @@ public class MyGameManager : MonoBehaviour
         "create",
         "goto",
         "prompt",
+        "speaker1",
+        "speaker2",
         "label"
     };
 
@@ -480,6 +482,21 @@ obj=go;
                 if (command == "label"){     //Label a line number in the Scenario file
                     string paramStr = cparams;
                     label.AddSafe(paramStr,i);
+                }
+                if (command == "prompt")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt = (string)ep.EvaluateParam(cparams);
+                }
+                if (command == "speaker1")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt1 = (string)ep.EvaluateParam(cparams);
+                }
+                if (command == "speaker2")
+                {   //Prompt dialog message
+                    //Prompt = cparams;//(string) ep.EvaluateParam(cparams);
+                    Prompt2 = (string)ep.EvaluateParam(cparams);
                 }
                 continue;
 
@@ -840,7 +857,8 @@ print("FU1.4");
         GUIStyle style = new GUIStyle(GUI.skin.textArea);
 
         style.fontSize = Screen.height/40; //change the font size 
-        if (GUIcommandLine!=null){
+        if (GUIcommandLine != null)
+        {
 
            GUI.TextArea(new Rect(10, 10, Screen.width/2, Screen.height/5), GUIlastcommandLine + "\n" + GUIcommandLine,style);
 //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
@@ -850,9 +868,25 @@ print("FU1.4");
 
         //GUIStyle style = new GUIStyle(GUI.skin.textArea);
 
+        int border = 10;
+        float dialogWidth = 0.8f;
         style.fontSize = Screen.height/10; //change the font size 
-        if (Prompt!=null && Prompt != ""){
+        if (Prompt1 != null && Prompt1 != "")
+        {
+            GUI.TextArea(new Rect(border, Screen.height * .4f, Screen.width * dialogWidth, Screen.height / 5), Prompt1, style);
+        }
+        style.fontSize = Screen.height / 10; //change the font size 
+        if (Prompt2 != null && Prompt2 != "")
+        {
+            GUI.TextArea(new Rect(Screen.width * (1 - dialogWidth) - border, Screen.height * .6f, Screen.width * dialogWidth - border, Screen.height / 5), Prompt2, style);
+            //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine ); 
+        }
 
+
+
+        style.fontSize = Screen.height / 10; //change the font size 
+        if (Prompt != null && Prompt != "")
+        {
            GUI.TextArea(new Rect(0, Screen.height*.8f, Screen.width, Screen.height/5), Prompt,style);
 //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
  
