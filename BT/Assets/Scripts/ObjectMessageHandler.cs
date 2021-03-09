@@ -860,18 +860,40 @@ public class ObjectMessageHandler : MonoBehaviour
 
             string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             param = temp[0];
-            GameObject go=GameObject.Find(param); //moveTo object's position
+
+            // Update to method to work with RoomGenerator and new Game Manager
+            GameObject go;
+            if (GameManager.instance != null)
+            {
+                go = GameManager.FindThisObject(param);
+            }
+            else
+            {
+                go = GameObject.Find(param); //moveTo object's position
+            }
+
+
             print("getting position of target game object "+ go.name);
             tpos= go.transform.position;
             if (temp.Length>1)
             {
                 string offsetStr = temp[1];
-                if ((offsetStr[0] == '-' ) || System.Char.IsDigit (offsetStr[0])){ //moveTo position
-                    pos = getVector3(offsetStr);
-                    offset = getVector3(temp[1]);
-                    vpos= tpos + offset;
+                if ((offsetStr[0] == '-' ) || System.Char.IsDigit (offsetStr[0])){ // move camera to position offset
+                    //pos = getVector3(offsetStr);
+                    //offset = getVector3(temp);
+
+                    // Re-index the array into something useful - get rid object name, join the strings together, then let getVector3 take it apart again
+                    string[] newTempArray = new string[temp.Length - 1];
+                    int i = 1;
+                    while (i < temp.Length)
+                    {
+                        newTempArray[i-1] = temp[i];
+                        i++;
+                    }
+                    offset = getVector3(String.Join(" ", newTempArray));
+                    vpos = tpos + offset;
                 }else{
-                    GameObject vgo=GameObject.Find(offsetStr); //moveTo object's position
+                    GameObject vgo=GameObject.Find(offsetStr); // move camera to object's position
                     vpos= vgo.transform.position;
                 }
                 Camera.main.transform.position = vpos;

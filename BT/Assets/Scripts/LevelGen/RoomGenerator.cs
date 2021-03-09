@@ -18,15 +18,6 @@ using UnityEngine.Networking;  //Use this if WWW is obsolete in Unity version
  */
 public class RoomObject
 {
-/*
-    public enum ObjType { Bed, Wall, Rack, Trolley, Screen };
-    private ObjType _objectType;
-    public ObjType objectType {
-        get { return _objectType; }
-        set { _objectType = value; }
-    }
-*/
-
     private string _locName;
     public string locName {
         get { return _locName; }
@@ -153,7 +144,7 @@ public class RoomGenerator : MonoBehaviour
 
     private void LoadMyRoomFile(string roomFileName)
     {
-        StartCoroutine(executeSceneSetupFile(roomFileName));
+        StartCoroutine(ExecuteSceneSetupFile(roomFileName));
     }
 
     /** <summary>Press X for debug list of objects</summary>*/
@@ -167,7 +158,9 @@ public class RoomGenerator : MonoBehaviour
 
     private void RoomObjectInventory()
     {
+        Debug.Log("LEVEL GEN: ------------------------------------------------------------------------------------------");
         Debug.Log("LEVEL GEN: ---------------- ROOM OBJECT INVENTORY ---------------------------------------------------");
+        Debug.Log("LEVEL GEN: ------------------------------------------------------------------------------------------");
         foreach (KeyValuePair<string, RoomObject> entry in instance.roomObjects)
         {
             Debug.Log("LEVEL GEN: Inventory - OBJECT KEY: " + entry.Key + " | VALUE: " + entry.Value.gameObject.name);
@@ -185,10 +178,11 @@ public class RoomGenerator : MonoBehaviour
             }
         }
         Debug.Log("LEVEL GEN: ------------------------------------------------------------------------------------------");
+        Debug.Log("LEVEL GEN: ------------------------------------------------------------------------------------------");
     }
 
     //loads local or remote file
-    IEnumerator executeSceneSetupFile(string fileName)
+    IEnumerator ExecuteSceneSetupFile(string fileName)
     {
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
 
@@ -210,14 +204,13 @@ public class RoomGenerator : MonoBehaviour
             {
                 result = webRequest.downloadHandler.text;
             }
-
         }
         else
         {
             result = System.IO.File.ReadAllText(filePath);
         }
 
-        Debug.Log("Loaded file: " + fileName);
+        Debug.Log("LEVEL GEN: Loaded file: " + fileName);
 
         string[] linesInFile = result.Split('\n');
         yield return StartCoroutine(ParseCommands(linesInFile));
@@ -394,6 +387,9 @@ public class RoomGenerator : MonoBehaviour
             // All Room Objects have finished spawning in
             Debug.Log("LEVEL GEN: ALL ROOM OBJECTS SPAWNED - confirmed " + numObjectsSpawned + " of " + numObjectsToSpawn);
             RoomObjectInventory();
+            if (GameManager.instance != null) {
+                GameManager.StartScenario();
+            }
         }
     }
 }

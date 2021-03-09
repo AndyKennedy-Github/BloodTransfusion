@@ -190,7 +190,7 @@ public class MyGameManager : MonoBehaviour
     public string[] CommandFiles; //contains list of Scenario files
     private int currentNestingLevel = 0;
     public string Prompt, Prompt1, Prompt2;
-    Dictionary<string, string> fullnames = new Dictionary<string, string>();
+    protected Dictionary<string, string> fullnames = new Dictionary<string, string>();
     Dictionary<string, int> label = new Dictionary<string, int>();
     Dictionary<string, float> variables = new Dictionary<string, float>();
 
@@ -244,7 +244,7 @@ public class MyGameManager : MonoBehaviour
     }
 
     //loads local or remote file
-    IEnumerator exectueScenarioFiles(string[] fileNames)
+    protected IEnumerator exectueScenarioFiles(string[] fileNames)
     {
         foreach (string fileName in fileNames)
         {
@@ -623,13 +623,13 @@ public class MyGameManager : MonoBehaviour
             return all.Substring(start);
         }
     */
-    private GameObject[] m_gameObjects;
+    protected GameObject[] m_gameObjects;
 
     //Find children objects of objName for commands meant for multiple objects
     //Supports ANY and ALL patterns
     //e.g.: Lights/ALL
     //Returns list of children
-    GameObject[] FindGameObjects(string objName)
+    protected virtual GameObject[] FindGameObjects(string objName)
     {
 
         print("FindGameObjects for " + objName);
@@ -654,7 +654,7 @@ public class MyGameManager : MonoBehaviour
     //Process commands meant for multiple objects
     //Supports ANY and ALL patterns
     //e.g.: Lights/ALL
-    bool processObjectsCommand(string objName, string command, string cparams)
+    protected virtual bool processObjectsCommand(string objName, string command, string cparams)
     {
         GameObject[] Objects;
         bool retval;
@@ -705,7 +705,7 @@ public class MyGameManager : MonoBehaviour
                 }
             }
 
-            //print("=========================================Object FULLNAME = "+ fullname);
+            print("=========================================Object FULLNAME = "+ fullname);
             GameObject go = GameObject.Find(fullname);
             if (!fullname.Contains("/"))
             { //get full name with path and add to dictionary
@@ -724,7 +724,7 @@ public class MyGameManager : MonoBehaviour
     }
 
     //Send a GameObject command to appropriate GameObject(s)
-    bool processObjectCommand(GameObject go, string command, string cparams)
+    protected bool processObjectCommand(GameObject go, string command, string cparams)
     {
         //get GameObject name to send command to    
         if (go == null)
