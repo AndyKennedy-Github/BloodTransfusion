@@ -43,10 +43,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Cart
-    m_MainAsset: {fileID: 3138375883902953468, guid: 0d8d3dbff6371b544b77f9018eb04c5f,
-      type: 3}
-    m_TargetAsset: {fileID: 3138375883902953468, guid: 0d8d3dbff6371b544b77f9018eb04c5f,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 179916eac09f26e458324a2faa2a919f
     m_Address: InfusionBottle01
     m_ReadOnly: 0
@@ -236,8 +234,10 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - InfusionBag
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 1000012219922736, guid: a7f091aeb16d2024aaa3b106320dfcf0,
+      type: 3}
+    m_TargetAsset: {fileID: 1000012219922736, guid: a7f091aeb16d2024aaa3b106320dfcf0,
+      type: 3}
   - m_GUID: ad860a9f91bc6424a8d16fbd83e04a4c
     m_Address: InfusionBag03
     m_ReadOnly: 0
@@ -336,15 +336,6 @@ MonoBehaviour:
     - Wall
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: ee40f32e7fcee274f88e37d24053e28a
-    m_Address: DocConsentForm
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - DeskDocument
-    m_MainAsset: {fileID: 6103647431310939630, guid: ee40f32e7fcee274f88e37d24053e28a,
-      type: 3}
-    m_TargetAsset: {fileID: 6103647431310939630, guid: ee40f32e7fcee274f88e37d24053e28a,
-      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3132ff6bffb476e40ac16e9a1fcb5174, type: 2}
   m_SchemaSet:
