@@ -177,6 +177,7 @@ public class CommandSequence
     public enum IFState { False, Condition, Then, Else };
     public enum WAITState { False, Condition, ConditionAny, ConditionAll };
     public enum CHOICEState { False, Choice, NotChoice };
+
     public IFState IFstate = IFState.False;
     public WAITState WAITstate = WAITState.False;
     public CHOICEState CHOICEstate = CHOICEState.False;
@@ -207,6 +208,7 @@ public class MyGameManager : MonoBehaviour
         "]",
         "load",
         "waitfor",
+        "pause",
         "wait",
         "create",
         "goto",
@@ -233,21 +235,24 @@ public class MyGameManager : MonoBehaviour
     //instance of expression parser to handle number, string, and bool expressions
     public ExpressionParser ep;
 
+    bool started = false;
     // Start is called before the first frame update
     // This starts the 
     void Start()
     {
         ep = new ExpressionParser();
 
-        StartCoroutine(exectueScenarioFiles(CommandFiles));
+        StartCoroutine(executeScenarioFiles(CommandFiles));
         //StartCoroutine(ExecuteCommands(commands));
     }
 
     //loads local or remote file
-    IEnumerator exectueScenarioFiles(string[] fileNames)
+    IEnumerator executeScenarioFiles(string [] fileNames)
     {
-        foreach (string fileName in fileNames)
-        {
+//                                                FixedUpdate1();
+//                            FixedUpdate1();
+
+        foreach (string fileName in fileNames){
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
 
             string result;
@@ -277,6 +282,7 @@ public class MyGameManager : MonoBehaviour
 
             Debug.Log("Loaded file: " + fileNames);
 
+
             string[] linesInFile = result.Split('\n');
             yield return StartCoroutine(ExecuteCommands(linesInFile));
         }
@@ -284,12 +290,16 @@ public class MyGameManager : MonoBehaviour
 
 
     //Executes array of commands
-    IEnumerator ExecuteCommands(string[] commands)
+    IEnumerator ExecuteCommands(string [] commands,int startnum = 0 )
     {
+
         CommandSequence cs = new CommandSequence();
+        Stack<CommandSequence> css = new Stack<CommandSequence>();
+        css.Push(cs);
         cs.nestingLevel = currentNestingLevel;
         for (int i = 0; i < commands.Length; i++)
         {
+
             string objName = "", command = "", cparams = "";
             cs.commandNum = i;
             if (!GetCommandParts(cs, ref commands, ref objName, ref command, ref cparams))
@@ -301,21 +311,21 @@ public class MyGameManager : MonoBehaviour
 
 
             //First check IF states and DoChoice blocks
-            if (IFstateSwitch(command, cs))
-            { //handle IF-THEN-ELSE-ENDIF commands
+            if (IFstateSwitch(command,ref css)){ //handle IF-THEN-ELSE-ENDIF commands
+                cs = css.Peek();
                 print("cs.IFstate after stateswitch = " + cs.IFstate);
+
                 continue;
             }
 
             //Check if Game Manager commands or expressions (begin with $)
-            if (objName == "GM" || (objName[0] == '$' && (command == null || command[0] == '=')) || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
+            if (objName=="GM" || (objName[0] == '$'  && (command==null || command[0]=='=' || command[0]=='#'))  || GMcommands.Contains(objName.ToLower())) //objName=="GM" || objName == "if" .. //special Game Manager commands
             {
                 //execute GameManager commands
                 print("GM command : " + command + " for object " + objName);
                 //Handle Game Manager commands
 
-                if (command == "waitfor")
-                { //handle WAITFOR commands to wait on next line's boolean value
+                if (command == "waitfor"){ //handle WAITFOR commands to wait on next line's boolean value
                     if (cparams != null && cparams.ToLower() == "any")
                         cs.WAITstate = CommandSequence.WAITState.ConditionAny;
                     else if (cparams != null && cparams.ToLower() == "all")
@@ -394,7 +404,7 @@ public class MyGameManager : MonoBehaviour
                     //                        sArray[0] = cparams;  //convert to string array for loadStreamingAsset
                     print("Load " + sArray[0]);
                     currentNestingLevel++;
-                    StartCoroutine(exectueScenarioFiles(sArray));
+                    StartCoroutine(executeScenarioFiles(sArray));
                     // coroutineDone is never called
                     //bool coroutineDone = false;
                     while (currentNestingLevel != cs.nestingLevel)
@@ -415,8 +425,7 @@ public class MyGameManager : MonoBehaviour
                 }
 
 
-                if (command == "wait")
-                {    //Sleep for a given time in seconds
+                if (command == "wait" || command == "pause"){    //Sleep for a given time in seconds
                     string paramStr = cparams;
                     print("Sleep for " + paramStr);
                     float delay = ep.EvaluateParam(cparams);//float.Parse(paramStr);
@@ -502,11 +511,18 @@ public class MyGameManager : MonoBehaviour
         currentNestingLevel--;
     }
 
-    //Handles states for If-Then-Else-Endif and DoChoice blocks
-    bool IFstateSwitch(string command, CommandSequence cs)
+    void CommandSequencePush()
     {
-        if (command == "]")
-        {  //endo of choices
+    //Handles states for If-Then-Else-Endif and DoChoice blocks
+    }
+    //Handles states for If-Then-Else-Endif and DoChoice blocks
+    bool IFstateSwitch(string command,ref Stack<CommandSequence> css)
+    {
+        CommandSequence cs = css.Peek();   
+print("IFstateSwitch: command="+ command + ", cs.IFstate=" + cs.IFstate);
+        //Handle DoChoice choices 
+
+        if (command == "]"){  //end of choices, so exit choice mode
             cs.CHOICEstate = CommandSequence.CHOICEState.False;
             return true;
         }
@@ -517,32 +533,39 @@ public class MyGameManager : MonoBehaviour
 
         //Handle IF-THEN-ELSE-ENDIF statements
         //cs.IFstate keeps track of where we are in the IF statement
-        if (cs.IFstate == CommandSequence.IFState.Condition)
-        {  //If we are in conditional part (IF)
-            if (command == "then")
-            {         //IF switches us to next state
+//        if (cs.IFstate == CommandSequence.IFState.Condition){  //If we are in conditional part (IF)
+            if (command == "then"){         //IF switches us to next state
                 cs.IFstate = CommandSequence.IFState.Then;
+//                css.PushCS(cs);
+
                 return true;
             }
-        }
-        if (cs.IFstate == CommandSequence.IFState.Then)
-        {       //If we are in THEN statements
-            if (command == "else")
-            {         //switch state when ELSE statement
+//        }
+        if (command == "else"){         //switch state when ELSE statement
+//            css.Pop();
+//            cs= css.Peek();
+//            if (cs.IFstate == CommandSequence.IFState.Then){       //If we are in THEN statements
                 cs.IFstate = CommandSequence.IFState.Else;
+//                css.PushCS(cs);
                 return true;
+//            }
             }
-        }
-        if (command == "endif")
-        {            //Leave cs.IFstate when ENDIF is reached
+        if (command == "endif"){            //Leave cs.IFstate when ENDIF is reached
+                cs = css.Pop();
+                CommandSequence cst ;
+                if (css.Count() ==0)
+                    css.PushCS(cs);
             cs.IFstate = CommandSequence.IFState.False;
             return true;
         }
-        if (command == "if")
-        {       //IF command
+        if (command == "if"){       //IF command
+            if (css.Peek().IFstate!= CommandSequence.IFState.False)
+                css.PushCS(cs);
             cs.IFstate = CommandSequence.IFState.Condition;
             return true;
         }
+        
+print("IFstateSwitch: command="+ command + ", cs.IFresult=" + cs.IFresult);
 
         if (cs.IFstate == CommandSequence.IFState.Then && !cs.IFresult)  //skip THEN if conditiional is false
             return true;
@@ -799,6 +822,7 @@ public class MyGameManager : MonoBehaviour
         {
             GUI.TextArea(new Rect(0, Screen.height * .8f, Screen.width, Screen.height / 5), Prompt, style);
             //           GUI.Label(new Rect(10, 10, 100, 20), cs.commandLine );
+ 
         }
     }
 
@@ -812,6 +836,20 @@ public class MyGameManager : MonoBehaviour
 //AddSafe is a dictionary helper class to add extension that overrides duplcate entries
 static class Extensions
 {
+
+    public static void PushCS(this Stack<CommandSequence> css, CommandSequence cs)
+    {
+        CommandSequence ncs = new CommandSequence();
+        ncs.commandNum = cs.commandNum;
+        ncs.nestingLevel = cs.nestingLevel;
+        css.Push(ncs);
+    }
+
+    public static CommandSequence PopCS(this Stack<CommandSequence> css)
+    {
+        return css.Pop();
+    }
+
     //gets the rest of "all" after location of "match" in all.
     public static string StringAfter(this string all, string match)
     {

@@ -1,9 +1,9 @@
 /Canvas/SelectionPanel on
 /Canvas/Table off
-Player align PlayerPos
 Paper/FormGeom outlineoff
 Table outlineon
 Label 'Scene3_MainLoop'
+Player align PlayerPos
 If
 	/Canvas/MainMenu pressed
 Then
@@ -32,8 +32,17 @@ If
     RefrigeratorDoor pressed
 #    /Canvas/SelectionPanel/Panel/Fridge pressed
 Then
-    /Canvas/SelectionPanel/Panel/Fridge reset
+#    RefrigeratorDoor reset
+#    Pause .1
+#    /Canvas/SelectionPanel/Panel/Fridge reset
+    Prompt 'About to call IceFridge'
+    Wait 2
     Do '03/IceFridge.txt'
+    Prompt 'Done with ice'
+    Wait 2
+    RefrigeratorDoor reset
+    Prompt 'Done with reset'
+    Wait 2
 ENDIF
 Wait 1
 Goto 'Scene3_MainLoop'

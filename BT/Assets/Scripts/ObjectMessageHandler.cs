@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class ObjectMessageHandler : MonoBehaviour
 {
@@ -56,13 +57,86 @@ public class ObjectMessageHandler : MonoBehaviour
         ikcontroller = GetComponent<IKController>();
         mr = GetComponent<MeshRenderer>();
     }
-    void OnMouseDown()
+    void OnMouseDown1()
     {
+        /*
+        // Check for Canvas GUI
+        bool blockedByCanvasUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        // Check for IMGUI
+
+                // Note: Only checking MouseButtonDown here.
+        //       MouseButtonUp for IMGUI blocking would require checking last frame's GUIUtility.hotControl.
+        Camera curCam = Camera.current;
+        bool blockedByIMGUI = GUIUtility.hotControl != 0;
+        {
+            Collider colliderOver = RaycastFirstCollider(curCam);
+            if (colliderOver == null)
+                return;
+
+            if (blockedByCanvasUI)
+                Debug.Log("Click to " + colliderOver.name + " Blocked by Canvas UI!");
+            else if (blockedByIMGUI)
+                Debug.Log("Click to " + colliderOver.name + " Blocked by IMGUI UI!");
+            else
+                Debug.Log("Click to " + colliderOver.name + " Success!");
+        }
+        */
+
         // Destroy the gameObject after clicking on it
         print("Clicked on :" + this.name);
-        Pressed();
+//        Pressed();
     }
 
+void UpdateClick()
+    {
+                Camera curCam = Camera.main;
+
+        // Check for Canvas GUI
+        bool blockedByCanvasUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        // Check for IMGUI
+        bool blockedByIMGUI = GUIUtility.hotControl != 0;
+//print("UpdateClick:1");
+        // Note: Only checking MouseButtonDown here.
+        //       MouseButtonUp for IMGUI blocking would require checking last frame's GUIUtility.hotControl.
+        if(Input.GetMouseButtonDown(0))
+                {
+//print("UpdateClick:2");
+            Collider colliderOver = RaycastFirstCollider(curCam);
+            if (colliderOver == null)
+                return;
+//print("UpdateClick:3");
+
+            if (blockedByCanvasUI)
+                Debug.Log("Click to " + colliderOver.name + " Blocked by Canvas UI!");
+            else if (blockedByIMGUI)
+                Debug.Log("Click to " + colliderOver.name + " Blocked by IMGUI UI!");
+            else{
+                Debug.Log("Click to " + colliderOver.name + " Success!");
+                if (colliderOver.gameObject == this.gameObject){
+                        print("Clicked on :" + this.name);
+                    Pressed();
+                }
+            }
+        }
+
+    }
+
+    // Raycast the current mouse pointer on a given camera. Returns first collider hit by distance
+    Collider RaycastFirstCollider(Camera cam)
+    {
+        if (cam == null)
+            return null;
+
+        Ray curRay = cam.ScreenPointToRay(Input.mousePosition);
+        var hits = Physics.RaycastAll(curRay, cam.farClipPlane);
+
+        if (hits.Length < 1)
+            return null;
+
+        // Ensure that hits are in order of shortest to longest (not guaranteed by default!)
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+        return hits[0].collider;
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -124,10 +198,12 @@ public class ObjectMessageHandler : MonoBehaviour
         if (msg == "reset")
         {
             pressed = false;
+            print(this.name + " pressed reset = " + pressed);
         }
 
         if (msg == "pressed")
         {
+            print(this.name + " pressed? = " + pressed);
             return pressed;
         }
 
@@ -1016,6 +1092,7 @@ public class ObjectMessageHandler : MonoBehaviour
     public void Pressed()
     {
         pressed = true;
+            print(this.name + " pressed() = " + pressed);
     }
     private void FollowObj()
     {
@@ -1033,6 +1110,7 @@ Vector3 oldpos ;
     // Update is called once per frame
     private void Update()
     {
+        UpdateClick();
         Vector3 pos = this.transform.position;
         float velocity = ((oldpos - pos)/Time.deltaTime).magnitude;
         //print("Velocity = "+ velocity);

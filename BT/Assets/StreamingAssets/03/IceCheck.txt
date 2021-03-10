@@ -9,16 +9,18 @@ Wait 1
  If
     ZoomSpot Menu.Result Y
 Then
-wait 1
-IcePack align IceTable
-wait 1
-Refrigerator/RefrigeratorDoor play close
-Refrigerator/FreezerDoor changeshader good
-Refrigerator/RefrigeratorDoor changeshader good
-Refrigerator/Refrigerator changeshader good
-ScoreTracker gain 1
-ScoreTracker complete 4
-Do '03/Scene03Start.txt'
+   wait 1
+   IcePack align IceTable
+   wait 1
+   Refrigerator/RefrigeratorDoor play close
+   Refrigerator/FreezerDoor changeshader good
+   Refrigerator/RefrigeratorDoor changeshader good
+   Refrigerator/Refrigerator changeshader good
+   ScoreTracker gain 1
+   ScoreTracker complete 4
+   #Do '03/Scene03Start.txt'
 Else
-Do '03/Scene03Start.txt'
+   Refrigerator/RefrigeratorDoor play close
+   Wait .1
+   #Do '03/Scene03Start.txt'
 Endif

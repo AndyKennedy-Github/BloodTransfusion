@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - Nurse
   - Patient
+  - Debug
   layers:
   - Default
   - TransparentFX
