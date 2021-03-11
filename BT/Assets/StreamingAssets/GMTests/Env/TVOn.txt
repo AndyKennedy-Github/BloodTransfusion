@@ -1,4 +1,4 @@
-   View LookAt TV
+   Viewer LookAt TV
 GM Wait 5
    TV/Screen on
 GM Wait 7
