@@ -1,5 +1,3 @@
-ScoreTracker setstages 5
-PerfectEnd off
-GoodEnd off
-BadEnd off
-Do '05/Scene05Start.txt'
+ScoreTracker setstages 4
+End off
+Do '04/Scene04Start.txt'
