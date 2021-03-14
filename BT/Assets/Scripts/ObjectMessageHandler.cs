@@ -431,7 +431,31 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if(msg == "complete")
+        if(msg == "perfect")
+        {
+            if(gameObject.GetComponent<UITextShower>() != null)
+            {
+                gameObject.GetComponent<UITextShower>().perfect = true;
+            }
+        }
+        
+        if (msg == "good")
+        {
+            if (gameObject.GetComponent<UITextShower>() != null)
+            {
+                gameObject.GetComponent<UITextShower>().good = true;
+            }
+        }
+
+        if (msg == "bad")
+        {
+            if (gameObject.GetComponent<UITextShower>() != null)
+            {
+                gameObject.GetComponent<UITextShower>().bad = true;
+            }
+        }
+
+        if (msg == "complete")
         {
             stages[int.Parse(param)] = true;
         }

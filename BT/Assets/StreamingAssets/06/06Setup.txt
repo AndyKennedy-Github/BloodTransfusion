@@ -1,5 +1,3 @@
 ScoreTracker setstages 6
-PerfectEnd off
-GoodEnd off
-BadEnd off
+End off
 Do '06/06Start.txt'

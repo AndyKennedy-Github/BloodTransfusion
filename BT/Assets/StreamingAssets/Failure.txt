@@ -1,10 +1,9 @@
-BadEnd on
-UICompletionTracker showtext
+UICompletion bad
 Label 'Loop'
 If
-End pressed
+Leave pressed
 Then
-End reset
+Leave reset
 SceneManager switchtoscene Scenes/MainMenu
 Endif
 Goto 'Loop'
