@@ -101,68 +101,11 @@ public class ObjectMessageHandler : MonoBehaviour
             param =  ep.EvaluateParam(param);
         */
         print(this.name + ": Handle Message " + msg + " for " + this.name + " with param = "+ param);
-        if (msg == "follow")
-        {
-            if (param != "false")
-            {
-                followTarget = param;
-                follow = true;
-                print("I will follow " + param);
-            }
-            else
-            {
-                follow = false;
-            }
-        }
-        //Need a command to switch scenes, for now uses scene name in the param to trans
-        if (msg == "switchtoscene")
-        {
-            print("I'm going to scene " + param);
-            SceneManager.LoadScene(param);
-        }
-        //These two keywords relate to buttons, just so they can be tracked within the scene
-        if (msg == "reset")
-        {
-            pressed = false;
-        }
-
-        if (msg == "pressed")
-        {
-            return pressed;
-        }
-
-        if(msg == "isempty")
-        {
-            return isEmpty;
-        }
-
-        if (msg == "gain")
-        {
-            if (param != null)
-            {
-                pointTotal += int.Parse(param);
-            }
-            else
-            {
-                pointTotal += 1;
-            }
-        }
-
-        if(msg == "lose")
-        {
-            if(pointTotal > 0)
-            {
-                if (param != null)
-                {
-                    pointTotal += int.Parse(param);
-                }
-                else
-                {
-                    pointTotal += 1;
-                }
-            }
-        }
-
+                
+        //Objects: Objects Tracking Saline
+        //Tags:
+        //Talks to:
+        //Behaviour: Controls the amount of saline and manipulating that value
         if(msg == "reducesaline")
         {
             if(salineAmount > 0)
@@ -171,7 +114,39 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if(msg == "raiseinterval")
+        if (msg == "raisesaline")
+        {
+            salineAmount++;
+        }
+
+        if (msg == "setsaline")
+        {
+            salineAmount = int.Parse(param);
+            if (salineAmount < 0)
+            {
+                salineAmount = 0;
+            }
+        }
+
+        if (msg == "salineamount")
+        {
+            if (salineAmount == int.Parse(param))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Objects: Drip Test Objects
+        //Tags:
+        //Talks to: The Audio Manager
+        //Behaviour: Lowers the drip test interval and plays the drip sound
+        if (msg == "raiseinterval")
         {
             interval--;
         }
@@ -189,45 +164,19 @@ public class ObjectMessageHandler : MonoBehaviour
             timertrack = 0.0f;
         }
 
-        if (msg == "raisesaline")
-        {
-                salineAmount++;
-        }
+        ////////////////////////////////////////////////////////////////////////////
 
-        if (msg == "setsaline")
-        {
-            salineAmount = int.Parse(param);
-            if(salineAmount < 0)
-            {
-                salineAmount = 0;
-            }
-        }
-
-        if(msg == "salineamount")
-        {
-            if(salineAmount == int.Parse(param))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        if(msg == "play")
+        //Objects: Any with an Animation
+        //Tags:
+        //Talks to: The object's animator
+        //Behaviour: Plays an object's animation
+        if (msg == "play")
         {
             animator.SetTrigger(param);
             print("I'm playing " + param);
         }
 
-        // JUMP
-        if (msg == "jump")
-        {
-            jump = true;
-            print("imma jump");
-        }
-
+        
         if(msg == "increasetime")
         {
             time += 15;
@@ -253,7 +202,13 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if(msg == "says")
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Objects: Any with a Text component
+        //Tags:
+        //Talks to:
+        //Behaviour: Checks what an object's Text component says 
+        if (msg == "says")
         {
             if(param == inputText)
             {
@@ -266,7 +221,13 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if(msg == "setstages")
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Object(s): SceneManager
+        //Tags: N/A
+        //Talks to: 
+        //Behaviour: Sets variables to be tracked in scene for goal completion
+        if (msg == "setstages")
         {
             if(param == "2")
             {
@@ -431,7 +392,100 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if(msg == "perfect")
+        //Behaviour: These functions handle setting and checking the stage completion
+        if (msg == "complete")
+        {
+            stages[int.Parse(param)] = true;
+        }
+
+        if (msg == "iscomplete")
+        {
+            return stages[int.Parse(param)];
+        }
+
+        if (msg == "rangecomplete")
+        {
+            char[] separators = new char[] { ' ', ',', '-' };
+
+            string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            int start = int.Parse(temp[0]);
+            int stop = int.Parse(temp[1]);
+            int totalComplete = 0;
+
+            for (int i = start; i < stop + 1; i++)
+            {
+                if (stages[i])
+                {
+                    totalComplete++;
+                }
+            }
+
+            Debug.LogWarning("Total: " + totalComplete);
+            if (totalComplete == stop - start + 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (msg == "getcompletepercent")
+        {
+            Debug.LogWarning(pointTotal);
+            percentComplete = (pointTotal / stages.Count) * 100;
+            Debug.LogWarning(percentComplete);
+        }
+
+        if (msg == "allcomplete")
+        {
+
+            if (percentComplete == 100)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (msg == "percentachieved")
+        {
+            if (percentComplete > int.Parse(param))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        if (msg == "stageset")
+        {
+            return stageset;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Talks to: Unity Scene Management
+        //Behaviour: Switches scene
+        if (msg == "switchtoscene")
+        {
+            print("I'm going to scene " + param);
+            SceneManager.LoadScene(param);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Object(s): UICompletion
+        //Tags: N/A
+        //Talks to: UITextShower.cs
+        //Behaviour: Sets what end screen should be present when stage is complete
+        if (msg == "perfect")
         {
             if(gameObject.GetComponent<UITextShower>() != null)
             {
@@ -455,66 +509,21 @@ public class ObjectMessageHandler : MonoBehaviour
             }
         }
 
-        if (msg == "complete")
+        if (msg == "showtext")
         {
-            stages[int.Parse(param)] = true;
-        }
-
-        if(msg == "iscomplete")
-        {
-            return stages[int.Parse(param)];
-        }
-
-        if(msg == "rangecomplete")
-        {
-            char[] separators = new char[] { ' ', ',', '-' };
-
-            string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-
-            int start = int.Parse(temp[0]);
-            int stop = int.Parse(temp[1]);
-            int totalComplete = 0;
-
-            for(int i = start; i < stop +1; i++)
+            if (GetComponent<UITextShower>() != null)
             {
-                if(stages[i])
-                {
-                    totalComplete++;
-                }
-            }
-
-            Debug.LogWarning("Total: " + totalComplete);
-            if(totalComplete == stop - start + 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
+                GetComponent<UITextShower>().DisplayText();
             }
         }
 
-        if(msg == "getcompletepercent")
-        {
-            Debug.LogWarning(pointTotal);
-            percentComplete = (pointTotal/stages.Count) * 100;
-            Debug.LogWarning(percentComplete);
-        }
+        ////////////////////////////////////////////////////////////////////////////
 
-        if(msg == "allcomplete")
-        {
-            
-            if (percentComplete == 100)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }    
-        }
-
-        if(msg == "outlineon")
+        //Object(s): Any object w/ a mesh
+        //Tags: N/A
+        //Talks to: The Object's Mesh Renderer
+        //Behaviour: Sets whether the outline should be on or off for an object
+        if (msg == "outlineon")
         {
             Material[] mats = mr.materials;
             if (mats.Length == 1)
@@ -536,32 +545,91 @@ public class ObjectMessageHandler : MonoBehaviour
             mr.materials = mats;
         }
 
-        if(msg == "percentachieved")
+        //Behaviour: Changes what shader is active
+        if (msg == "changeshader")
         {
-            if(percentComplete > int.Parse(param))
+            Material[] mats = mr.materials;
+            if (param == "normal")
             {
-                return true;
+                mats[1] = normal;
+                mr.materials = mats;
             }
-            else
+            else if (param == "good")
             {
-                return false;
+                mats[1] = good;
+                mr.materials = mats;
+            }
+            else if (param == "bad")
+            {
+                mats[1] = bad;
+                mr.materials = mats;
+            }
+            else if (param == "off")
+            {
+                Array.Resize(ref mats, mats.Length - 1);
             }
         }
 
-        if(msg == "showtext")
+        //Behaviour: Checks what shader is active
+        if (msg == "shadercheck")
         {
-            if(GetComponent<UITextShower>() != null)
+            Material[] mats = mr.materials;
+            if (param == "good")
             {
-                GetComponent<UITextShower>().DisplayText();
+                if (mats[1].name == good.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
+            }
+            else if (param == "bad")
+            {
+
+                if (mats[1].name == bad.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
+            }
+            else if (param == "normal")
+            {
+                if (mats[1].name == normal.name)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Current Highlight " + mats[1].name);
+                    return false;
+                }
             }
         }
 
-        if(msg == "stageset")
+        //Behaviour: Checks/Resets whether an object has been pressed
+        if (msg == "reset")
         {
-            return stageset;
+            pressed = false;
         }
+
+        if (msg == "pressed")
+        {
+            return pressed;
+        }
+
         /////////////////////////////////////////////////////////////////////
 
+        //Objects: Any object
+        //Talks to:
+        //Tags:
+        //Behaviour: Changes whether an object is active, inactive, or destroyed
         // ON
         if (msg == "on")
         {
@@ -576,8 +644,12 @@ public class ObjectMessageHandler : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if (msg == "ison")
+        {
+            return this.transform.GetChild(0).gameObject.activeSelf;
+        } 
 
-        // ROTATEY
+        //Behaviour: These commands handle rotations
         if (msg == "rotatey")
         {
             float duration = float.Parse(param);
@@ -610,7 +682,181 @@ public class ObjectMessageHandler : MonoBehaviour
             print(transform.rotation);
         }
 
-        if(msg == "correctset")
+        //Behaviour: Sets an object's scale
+        if (msg == "scale")
+        {
+            print("hello, I am scaling");
+            toScale = true;
+            scale = getVector3(param);
+            print("The scale is " + scale);
+
+            //do something...
+        }
+
+        //Behaviour: Moves an object to a position
+        if (msg == "moveto" || msg == "align")
+        {
+            print("hello, I am moving");
+            toMove = true;
+            Vector3 oldpos = transform.position;
+
+            if ((param[0] == '-' || System.Char.IsDigit(param[0])))
+            { //moveTo position
+                pos = getVector3(param);
+                //transform.DOMove(pos, 2);
+                transform.DOMove(pos, 2).SetEase(Ease.Linear);
+            }
+            else
+            {
+
+                GameObject go = GameObject.Find(param); //moveTo object's position
+                print("moving to position of game object " + go.name);
+                pos = go.transform.position;
+                if (msg == "align")
+                    transform.rotation = go.transform.rotation;
+                //transform.DOMove(pos, 2);
+                transform.DOMove(pos, 2).SetEase(Ease.Linear);
+            }
+
+            print("The position is " + pos);
+
+            //do something...
+        }
+
+        //Behaviour: Makes an object the child of another object
+        if (msg == "parentto" || msg == "attachto")
+        {
+            GameObject go = GameObject.Find(param);
+            if (transform.parent != null)
+            {
+                transform.parent = null;
+                transform.parent = go.transform;
+            }
+            else
+            {
+                transform.parent = go.transform;
+            }
+        }
+
+        //Behaviour: Runs the follow command
+        if (msg == "follow")
+        {
+            if (param != "false")
+            {
+                followTarget = param;
+                follow = true;
+                print("I will follow " + param);
+            }
+            else
+            {
+                follow = false;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Objects: Any object tracking an integer
+        //Tags:
+        //Talks to:
+        //Behaviour: Adjusts the integer variable pointTotal
+
+        if (msg == "gain")
+        {
+            if (param != null)
+            {
+                pointTotal += int.Parse(param);
+            }
+            else
+            {
+                pointTotal += 1;
+            }
+        }
+
+        if (msg == "lose")
+        {
+            if (pointTotal > 0)
+            {
+                if (param != null)
+                {
+                    pointTotal += int.Parse(param);
+                }
+                else
+                {
+                    pointTotal += 1;
+                }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Objects: Any
+        //Tags:
+        //Talks to: Main Camera in scene
+        //Behaviour: "Lookatme" has the camera look at whatever object has called it, "lookat" has the camera look at whatever object is specified in the param
+        if (msg == "lookatme")
+        {
+            print("lookAtMe");
+            //toMove = true;
+            Vector3 mpos;
+            //BUG Needs to be fixed: DOESNT HANDLE NEGATIVE SIGN
+            if (param != null && (param[0] == '-' || System.Char.IsDigit(param[0])))
+            { //moveTo position
+                offset = getVector3(param);
+            }
+            {
+                GameObject go = this.gameObject;//GameObject.Find(param); //moveTo object's position
+                print("getting position of game object " + go.name);
+                mpos = go.transform.position;
+            }
+            //transform.position = pos;
+            Camera.main.transform.position = mpos + offset;
+            Camera.main.transform.LookAt(mpos);
+        } //lookAtMe
+
+        // LOOKAAT
+        // lookAt targetObject offset
+        // lookAt targetObject viewerObject(for position)
+        if (msg == "lookat")
+        {
+            print("lookAt" + param);
+            //toMove = true;
+            Vector3 vpos, tpos;
+            /*  Need to support both object and offset*/
+            char[] separators = new char[] { ' ' };
+
+            string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            param = temp[0];
+            GameObject go = GameObject.Find(param); //moveTo object's position
+            print("getting position of target game object " + go.name);
+            tpos = go.transform.position;
+            if (temp.Length > 1)
+            {
+                string offsetStr = temp[1];
+                if ((offsetStr[0] == '-') || System.Char.IsDigit(offsetStr[0]))
+                { //moveTo position
+                    pos = getVector3(offsetStr);
+                    offset = getVector3(temp[1]);
+                    vpos = tpos + offset;
+                }
+                else
+                {
+                    GameObject vgo = GameObject.Find(offsetStr); //moveTo object's position
+                    vpos = vgo.transform.position;
+                }
+                Camera.main.transform.position = vpos;
+            }
+
+            //transform.position = pos;
+            Camera.main.transform.LookAt(tpos);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        //Objects: Infusion Sets
+        //Tags:
+        //Talks to:
+        //Behaviour: Sets/Checks what sets are correct for Stage 4
+        if (msg == "correctset")
         {
             correctSet = true;
         }
@@ -633,97 +879,6 @@ public class ObjectMessageHandler : MonoBehaviour
         if(msg == "ischosen")
         {
             return chosenSet;
-        }
-
-        if(msg == "parentto" || msg == "attachto")
-        {
-            GameObject go = GameObject.Find(param);
-            if(transform.parent != null)
-            {
-                transform.parent = null;
-                transform.parent = go.transform;
-            }
-            else
-            {
-                transform.parent = go.transform;
-            }
-        }
-
-        if(msg == "changeshader")
-        {
-            Material[] mats = mr.materials;
-            if(param == "normal")
-            {
-                mats[1] = normal;
-                mr.materials = mats;
-            }
-            else if(param == "good")
-            {
-                mats[1] = good;
-                mr.materials = mats;
-            }
-            else if (param == "bad")
-            {
-                mats[1] = bad;
-                mr.materials = mats;
-            }
-            else if(param == "off")
-            {
-                Array.Resize(ref mats, mats.Length - 1);
-            }
-        }
-
-        if(msg == "shadercheck")
-        {
-            Material[] mats = mr.materials;
-            if (param == "good")
-            {
-                if (mats[1].name == good.name)
-                {
-                    return true;
-                }
-                else
-                {
-                    Debug.LogWarning("Current Highlight " + mats[1].name);
-                    return false;
-                }
-            }
-            else if(param == "bad")
-            {
-                
-                if (mats[1].name == bad.name)
-                {
-                    return true;
-                }
-                else
-                {
-                    Debug.LogWarning("Current Highlight " + mats[1].name);
-                    return false;
-                }
-            }
-            else if(param == "normal")
-            {
-                if (mats[1].name == normal.name)
-                {
-                    return true;
-                }
-                else
-                {
-                    Debug.LogWarning("Current Highlight " + mats[1].name);
-                    return false;
-                }
-            }
-        }
-
-        // SCALE
-        if (msg == "scale")
-        {
-            print("hello, I am scaling");
-            toScale = true;
-            scale = getVector3(param);
-            print("The scale is " + scale);
-
-            //do something...
         }
 
         // GRAB
@@ -755,34 +910,8 @@ public class ObjectMessageHandler : MonoBehaviour
 
             //do something...
         }
-        // MOVETO
-        if (msg == "moveto" || msg== "align")
-        {
-            print("hello, I am moving");
-            toMove = true;
-            Vector3 oldpos = transform.position;
-            
-            if ((param[0] == '-'  || System.Char.IsDigit (param[0]))){ //moveTo position
-                pos = getVector3(param);
-                //transform.DOMove(pos, 2);
-                transform.DOMove(pos, 2).SetEase(Ease.Linear);
-            }
-            else{
 
-                GameObject go=GameObject.Find(param); //moveTo object's position
-                print("moving to position of game object "+ go.name);
-                pos= go.transform.position;
-                if (msg=="align")
-                    transform.rotation = go.transform.rotation;
-                //transform.DOMove(pos, 2);
-                transform.DOMove(pos, 2).SetEase(Ease.Linear);
-            }
-
-            print("The position is " + pos);
-
-            //do something...
-        }
-
+        ////////////////////////////////////////////////////////////////////////////
 
         // RADIALMENU
         //Each object can have its own GUI menu element, so multiple ones can be present at a time.
@@ -847,69 +976,6 @@ public class ObjectMessageHandler : MonoBehaviour
             return (param == radialMenuResult);
             
         }
-
-
-        //LOOKATME
-        // [Object] lookAtMe [Offset]
-        // e.g.: /ExamRoom1/Desk lookAtMe  0.0,1.0,1.0   
-        if (msg == "lookatme")
-        {
-            print("lookAtMe");
-            //toMove = true;
-            Vector3 mpos;
-            //BUG Needs to be fixed: DOESNT HANDLE NEGATIVE SIGN
-            if (param!=null && (param[0] == '-' || System.Char.IsDigit (param[0]))){ //moveTo position
-                offset = getVector3(param);
-            }
-            {
-                GameObject go=this.gameObject;//GameObject.Find(param); //moveTo object's position
-                print("getting position of game object "+ go.name);
-                mpos= go.transform.position;
-            }
-            //transform.position = pos;
-            Camera.main.transform.position = mpos + offset;
-            Camera.main.transform.LookAt(mpos);
-        } //lookAtMe
-
-        // LOOKAAT
-        // lookAt targetObject offset
-        // lookAt targetObject viewerObject(for position)
-        if (msg == "lookat")
-        {
-            print("lookAt" + param);
-            //toMove = true;
-            Vector3 vpos,tpos;
-            /*  Need to support both object and offset*/
-            char[] separators = new char[] { ' '};
-
-            string[] temp = param.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            param = temp[0];
-            GameObject go=GameObject.Find(param); //moveTo object's position
-            print("getting position of target game object "+ go.name);
-            tpos= go.transform.position;
-            if (temp.Length>1)
-            {
-                string offsetStr = temp[1];
-                if ((offsetStr[0] == '-' ) || System.Char.IsDigit (offsetStr[0])){ //moveTo position
-                    pos = getVector3(offsetStr);
-                    offset = getVector3(temp[1]);
-                    vpos= tpos + offset;
-                }else{
-                    GameObject vgo=GameObject.Find(offsetStr); //moveTo object's position
-                    vpos= vgo.transform.position;
-                }
-                Camera.main.transform.position = vpos;
-            }
-
-            //transform.position = pos;
-            Camera.main.transform.LookAt(tpos);
-        } //lookat
-
-
-        if (msg == "ison")
-        {
-            return this.transform.GetChild(0).gameObject.activeSelf;
-        } //isOn
 
         return true;
     }
