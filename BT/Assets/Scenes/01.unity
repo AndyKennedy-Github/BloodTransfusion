@@ -4970,11 +4970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b32bd96c6864b218b011e2d5211219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CommandFiles:
-  - 01/01Start.txt
-  Prompt: 
-  Prompt1: 
-  Prompt2: 
 --- !u!4 &786441498
 Transform:
   m_ObjectHideFlags: 0
@@ -11150,6 +11145,75 @@ MonoBehaviour:
   choices: []
   menuSizeFraction: 0.5
   radialMenuActive: 0
+--- !u!1001 &7771274013356214955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011982310886790837, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651172048092377907, guid: c1c613a5ba0293040b1feb0127a21bae,
+        type: 3}
+      propertyPath: m_Name
+      value: Patient_Bed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1c613a5ba0293040b1feb0127a21bae, type: 3}
 --- !u!1001 &9114560902969899479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11157,10 +11221,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.50120896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49878812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.50120896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.49878812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684261673743786229, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692581926270995117, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692816400002359019, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692816400002359019, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692816400002359019, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692816400002359019, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4005012026127204971, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
         type: 3}
       propertyPath: m_Name
       value: Patient
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005012026127204971, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164554147502584554, guid: 5741a563ae9cadc4f8cdc87254a7d3a3,
         type: 3}
