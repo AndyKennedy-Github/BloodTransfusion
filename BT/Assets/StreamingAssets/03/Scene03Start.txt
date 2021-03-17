@@ -32,7 +32,7 @@ If
     RefrigeratorDoor pressed
 #    /Canvas/SelectionPanel/Panel/Fridge pressed
 Then
-    /Canvas/SelectionPanel/Panel/Fridge reset
+    RefrigeratorDoor reset
     Do '03/IceFridge.txt'
 ENDIF
 Wait 1
