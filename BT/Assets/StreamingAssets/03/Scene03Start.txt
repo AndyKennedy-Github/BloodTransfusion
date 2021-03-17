@@ -8,18 +8,7 @@ If
 	/Canvas/MainMenu pressed
 Then
 	/Canvas/MainMenu reset
-	Do '03/EndCheck.txt'
-Endif
-If
-    BloodBox pressed
-Then
-#    /Canvas/SelectionPanel/Panel/BloodBox reset
-#    /Canvas/SelectionPanel/Panel/BloodBox off
-    ScoreTracker gain 1
-    ScoreTracker complete 0
-    Wait 1
-    BloodBox align BoxTable
-    wait 1
+	Do 'EndCheck.txt'
 Endif
 If
     Table pressed	
@@ -32,7 +21,7 @@ If
     RefrigeratorDoor pressed
 #    /Canvas/SelectionPanel/Panel/Fridge pressed
 Then
-    /Canvas/SelectionPanel/Panel/Fridge reset
+    RefrigeratorDoor reset
     Do '03/IceFridge.txt'
 ENDIF
 Wait 1

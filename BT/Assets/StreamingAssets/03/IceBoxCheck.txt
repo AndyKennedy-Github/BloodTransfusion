@@ -1,10 +1,10 @@
 If
 ScoreTracker iscomplete 5
 Then
-Goto 26
+Goto 23
 Endif
 If
-ScoreTracker iscomplete 4
+ScoreTracker iscomplete 3
 Then
 wait 1
 IcePack align IceBox

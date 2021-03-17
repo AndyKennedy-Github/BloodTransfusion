@@ -1,10 +1,10 @@
 If
-ScoreTracker iscomplete 7
+ScoreTracker iscomplete 6
 Then
 Goto 27
 Endif
 If
-ScoreTracker iscomplete 1
+ScoreTracker iscomplete 0
 Then
 Paper align PaperBox
 Goto 14 
@@ -13,16 +13,16 @@ Paper align PaperBox
 Goto 27
 Endif
 If
-ScoreTracker iscomplete 5
+ScoreTracker iscomplete 4
 Then
 Goto 21
 Else
 Goto 27
 Endif
 If
-ScoreTracker iscomplete 6
+ScoreTracker iscomplete 5
 Then
 ScoreTracker gain 1
-ScoreTracker complete 7
+ScoreTracker complete 6
 wait 1
 Endif

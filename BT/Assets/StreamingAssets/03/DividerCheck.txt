@@ -1,10 +1,10 @@
 If
-ScoreTracker iscomplete 6
+ScoreTracker iscomplete 4
 Then
-Goto 20
+Goto 6
 Endif
 If
-ScoreTracker iscomplete 1
+ScoreTracker iscomplete 0
 Then
 BloodBox/Divider play In
 Goto 14 
@@ -15,6 +15,6 @@ If
 ScoreTracker iscomplete 5
 Then
 ScoreTracker gain 1
-ScoreTracker complete 6
+ScoreTracker complete 4
 wait 1
 Endif

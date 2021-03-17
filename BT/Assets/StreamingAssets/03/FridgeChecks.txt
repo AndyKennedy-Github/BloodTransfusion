@@ -11,7 +11,7 @@ Wait 1
 Then
 Refrigerator/RefrigeratorDoor play open
 ScoreTracker gain 1
-ScoreTracker complete 3
+ScoreTracker complete 2
 Do '03/IceCheck.txt'
 Else
 Do '03/Scene03Start.txt'
