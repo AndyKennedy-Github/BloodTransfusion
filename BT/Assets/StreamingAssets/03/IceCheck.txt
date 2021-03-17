@@ -17,7 +17,7 @@ Refrigerator/FreezerDoor changeshader good
 Refrigerator/RefrigeratorDoor changeshader good
 Refrigerator/Refrigerator changeshader good
 ScoreTracker gain 1
-ScoreTracker complete 4
+ScoreTracker complete 3
 RefrigeratorDoor reset
 Do '03/Scene03Start.txt'
 Else

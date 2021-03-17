@@ -301,7 +301,7 @@ public class ObjectMessageHandler : MonoBehaviour
             }
             if(param == "3")
             {
-                bool boxFridge = false;
+                
                 bool openBox = false;
                 bool removeSelector = false;
                 bool openFridge = false;
@@ -311,7 +311,6 @@ public class ObjectMessageHandler : MonoBehaviour
                 bool GXMbox = false;
                 bool closeBox = false;
 
-                stages.Add(boxFridge);
                 stages.Add(openBox);
                 stages.Add(removeSelector);
                 stages.Add(openFridge);

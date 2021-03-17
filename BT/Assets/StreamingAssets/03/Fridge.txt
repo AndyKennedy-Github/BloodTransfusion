@@ -1,5 +1,5 @@
 If
-ScoreTracker iscomplete 3
+ScoreTracker iscomplete 2
 Then
 Do '03/IceFridge.txt'
 Endif

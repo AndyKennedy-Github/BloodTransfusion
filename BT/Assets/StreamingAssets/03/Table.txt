@@ -4,42 +4,38 @@ wait 1
 Table outlineoff
 GXMForm/FormGeom outlineon
 BloodBox/Divider outlineon
-wait 1
-/Canvas/SelectionPanel off
-/Canvas/Table on
-/Canvas/Table/Panel/LidClose off
 Label 'Loop'
 wait 1
 If
-/Canvas/Table/Panel/LidOpen pressed
+	/Canvas/MainMenu pressed
 Then
-/Canvas/Table/Panel/LidOpen reset
+	/Canvas/MainMenu reset
+	Do 'EndCheck.txt'
+Endif
+If
+BloodBox/Lid pressed
+Then
+BloodBox/Lid reset
 Do '03/LidOpen.txt'
 ENDIF
 wait 1
 If
-/Canvas/Table/Panel/LidClose pressed
+ IcePack pressed
  Then
-/Canvas/Table/Panel/LidClose reset
-Do '03/LidClose.txt'
-ENDIF
- If
-/Canvas/Table/Panel/Ice pressed
- Then
-/Canvas/Table/Panel/Ice reset
+IcePack reset
 IcePack play In
 Do '03/IceBoxCheck.txt'
 ENDIF
  If
-/Canvas/Table/Panel/Divider pressed
+Divider pressed
  Then
-/Canvas/Table/Panel/Divider reset
+Divider reset
 Do '03/DividerCheck.txt'
  ENDIF
  If
-/Canvas/Table/Panel/Paper pressed
+Paper/FormGeom pressed
  Then
-/Canvas/Table/Panel/Paper reset
+Paper/FormGeom reset
 Do '03/GXMCheck.txt'
 ENDIF
 If

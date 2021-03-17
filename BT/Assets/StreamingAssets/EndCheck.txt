@@ -1,3 +1,4 @@
+/JoystickCanvas off
 ScoreTracker getcompletepercent
 End on
 Do 'Perfect.txt'
