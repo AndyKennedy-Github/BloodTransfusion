@@ -59,8 +59,11 @@ public class ObjectMessageHandler : MonoBehaviour
     void OnMouseDown()
     {
         // Destroy the gameObject after clicking on it
-        print("Clicked on :" + this.name);
-        Pressed();
+        if(Input.mousePosition.x > Screen.width/3.0f && Input.mousePosition.y > Screen.height/3.0f)
+        {
+            print("Clicked on :" + this.name);
+            Pressed();
+        }
     }
 
     void Awake()
